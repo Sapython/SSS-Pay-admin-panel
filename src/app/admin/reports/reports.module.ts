@@ -5,6 +5,7 @@ import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsComponent } from './reports.component';
 import { ViewComponent } from './view/view.component';
 import { DownloadComponent } from './download/download.component';
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DownloadComponent } from './download/download.component';
   ],
   imports: [
     CommonModule,
-    ReportsRoutingModule
+    ReportsRoutingModule,
+    WidgetsModule
   ]
 })
 export class ReportsModule { }
