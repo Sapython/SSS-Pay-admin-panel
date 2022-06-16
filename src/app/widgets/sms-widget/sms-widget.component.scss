@@ -1,0 +1,26 @@
+.container{
+    margin: 10px;
+    background-color: #fff;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    &:hover{
+        background-color: var(--primary-light);
+    }
+    p{
+        margin-right: 15px;
+        margin-left: -8px;
+        margin-top: 2px;
+        font-size: var(--small);
+    }
+    input{
+        margin-top: -1%;
+        border: 0.5px solid var(--primary);
+    }
+    img{
+        clip-path: circle(30%);
+        width: 90px;
+    }
+}

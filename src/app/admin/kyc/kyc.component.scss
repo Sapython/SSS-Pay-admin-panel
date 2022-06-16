@@ -1,0 +1,113 @@
+
+.d{
+  position: left;
+width: 131px;
+height: 30px;
+left: 458px;
+top: 196px;
+margin-top: 100px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+
+/* identical to box height */
+
+color: rgba(0, 0, 0, 0.81);
+
+
+}
+.d1{
+  position: left;
+width: 33px;
+height: 30px;
+left: 647px;
+top: 197px;
+margin-top: 100px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+/* identical to box height */
+
+color: #000000;
+}
+.f{
+  display: flex;
+  justify-content: space-between;
+  width: 15rem;
+  margin-top: 0px;
+}
+.f1 span{
+  color: #009970;
+  position: left;
+width: 419px;
+height: 33px;
+left: 490px;
+top: 272px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+
+/* identical to box height */
+
+
+
+}
+.f1{
+  border-style: solid;
+  border-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  position: left;
+width: 1200px;
+height: 75px;
+left: 456px;
+top: 248px;
+padding: 1rem;
+align-items: center;
+background: #FFFFFF;
+box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.25);
+
+}
+.Parent .f1{
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+
+}
+.f1 p{
+
+width: 419px;
+height: 33px;
+left: 490px;
+top: 272px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+}
+.f1 button{
+  background-color: #009970;
+  position: right;
+width: 84px;
+height: 32px;
+left: 1726px;
+top: 273px;
+color:#FFFFFF;
+background: #06C190;
+border-radius: 10px;
+}
+
+
+
+
+

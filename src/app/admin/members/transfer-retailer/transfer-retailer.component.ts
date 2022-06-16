@@ -34,7 +34,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -71,7 +71,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -108,7 +108,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -145,7 +145,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -182,7 +182,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -194,7 +194,7 @@ export class TransferRetailerComponent implements OnInit {
     },
     {
       id: 6,
-      name: 'Johney Depp',
+      name: 'Johnny Depp',
       image: 'https://i.pravatar.cc/300',
         distributer: [
         {
@@ -219,7 +219,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -256,7 +256,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -293,7 +293,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -330,7 +330,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -367,7 +367,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {
@@ -404,7 +404,7 @@ export class TransferRetailerComponent implements OnInit {
         },
         {
           id: 6,
-          name: 'Johney Depp',
+          name: 'Johnny Depp',
           image: 'https://i.pravatar.cc/300',
         },
         {

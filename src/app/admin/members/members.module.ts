@@ -10,9 +10,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { ChangeMembersComponent } from './change-members/change-members.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog'; 
+import  {MatDialogModule } from '@angular/material/dialog'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import {MatInputModule} from '@angular/material/input'; 
+import { MatButtonModule } from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select'; 
 
-import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     MembersComponent,
@@ -20,7 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
     AddMemberComponent,
     TransferRetailerComponent,
     MessagesComponent,
-    ChangeMembersComponent
+    ChangeMembersComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,11 @@ import {MatSelectModule} from '@angular/material/select';
     WidgetsModule,
     MatIconModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatSelectModule
   ]
 })
