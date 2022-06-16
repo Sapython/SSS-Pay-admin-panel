@@ -38,7 +38,7 @@ export class UserDataService {
         name: username || user.displayName || '',
         photo: user.photoURL || this.getRandomImage(),
         phone: '',
-        age: 0,
+        dob: new Date(),
         access: {
           access: 'guest',
         },

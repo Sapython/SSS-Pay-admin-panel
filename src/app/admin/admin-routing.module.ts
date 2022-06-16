@@ -35,8 +35,7 @@ const routes: Routes = [
       },
       {
         path: 'kyc',
-        loadChildren: () =>
-          import('./kyc/kyc.module').then((m) => m.KycModule),
+        loadChildren: () => import('./kyc/kyc.module').then((m) => m.KycModule),
       },
       {
         path: 'manage',
