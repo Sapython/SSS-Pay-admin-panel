@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    WidgetsModule
+    WidgetsModule,
+    MatIconModule
   ]
 })
 export class DashboardModule { }
