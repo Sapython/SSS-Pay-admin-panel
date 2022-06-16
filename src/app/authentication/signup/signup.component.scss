@@ -1,10 +1,10 @@
 section {
-  background-color: var(--color-primary);
+  background-color: var(--secondary);
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
   display: flex;
-  font-family: var(--font);
+  font-family: var(--font-one);
   .signup_details {
     width: 50%;
     height: 100%;
@@ -15,7 +15,7 @@ section {
     gap: 50px;
     b {
       font-size: 30px;
-      color: var(--color-secondary);
+      color: var( --primary);
     }
     .input_conatiner {
       display: flex;
@@ -32,7 +32,7 @@ section {
         padding: 10px;
         box-sizing: border-box;
         font-size: 18px;
-        background-color: var(--color-secondary-light);
+        background-color: var(--input-light);
         border: none;
         outline: none;
       }
@@ -62,8 +62,8 @@ section {
         padding: 10px;
         box-sizing: border-box;
         font-size: 18px;
-        background-color: var(--color-light);
-        border: 2px solid var(--color-secondary);
+        background-color: var(  --primary-contrast);
+        border: 2px solid var(--primary);
         outline: none;
         display: flex;
         align-items: center;
@@ -87,10 +87,10 @@ section {
         padding: 10px;
         box-sizing: border-box;
         font-size: 18px;
-        background-color: var(--color-secondary);
+        background-color: var(--primary);
         border: none;
         outline: none;
-        color: var(--color-light);
+        color: var(--primary-contrast);
       }
     }
   }
