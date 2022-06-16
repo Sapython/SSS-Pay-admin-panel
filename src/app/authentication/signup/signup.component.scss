@@ -15,7 +15,9 @@ section {
     gap: 50px;
     b {
       font-size: 30px;
-      color: var( --primary);
+      color: var(--primary);
+      display: block;
+      margin-bottom: 30px;
     }
     .input_conatiner {
       display: flex;
@@ -63,7 +65,7 @@ section {
         padding: 10px;
         box-sizing: border-box;
         font-size: 18px;
-        background-color: var(  --primary-contrast);
+        background-color: var(--primary-contrast);
         border: 2px solid var(--primary);
         outline: none;
         display: flex;
@@ -94,7 +96,7 @@ section {
         color: var(--primary-contrast);
       }
     }
-    span{
+    span {
       margin-top: 10px;
     }
   }

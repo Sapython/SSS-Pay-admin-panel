@@ -8,6 +8,7 @@ export type UserData = {
     status:UserStatus;
     aadhaarNo:string;
     panCardNo:string;
+    gender:'male'|'female'|'other'|'unknown';
 }
 
 export type UserStatus = {

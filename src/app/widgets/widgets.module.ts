@@ -11,6 +11,7 @@ import {MatDialogModule} from '@angular/material/dialog'; const components = [He
     CommonModule,
     MatIconModule,
     MatDialogModule,
+    MatIconModule,
   ],
   exports:components
 })

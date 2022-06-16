@@ -1,7 +1,37 @@
+<app-header pageName="Transactions"></app-header>
+<h5>Total Balance {{totalBalance}}</h5>
 <div>
-    <h1></h1>
-    <h5>Total Balance {{totalBalance}}</h5>
-</div>
-<div>
-
+    <h3>New Members</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of newMembers; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td class="photo-and-name">
+                        <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
+                        {{ member.name }}
+                    </td>
+                    <td>{{ member.age }}</td>
+                    <td>{{ member.gender }}</td>
+                    <td>
+                        <div class="buttons">
+                            <button class="primary-button">
+                                <mat-icon>call</mat-icon>Call
+                            </button>
+                            <button class="primary-button">More</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
