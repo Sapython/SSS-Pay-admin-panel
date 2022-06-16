@@ -1,8 +1,58 @@
-.photo-and-name {
+section {
+  h3 {
+    font-family: var(--font-one);
+    font-size: var(--medium);
+    margin: 0;
+    margin-bottom: 0.75em;
+  }
+
+  #cards {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2em;
+
+    .card {
+      width: 50%;
+      margin-right: 0.5em;
+      position: relative;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      img {
+        width: 100%;
+        z-index: -1;
+      }
+
+      .card-text {
+        position: absolute;
+        top: 2em;
+        left: 2em;
+
+        h3,
+        p {
+          color: var(--primary-contrast);
+        }
+
+        p {
+          font-size: var(--small);
+        }
+      }
+    }
+  }
+
+  .photo-and-name {
     display: flex;
     align-items: center;
 
     img {
-        margin-right: 1em;
+      margin-right: 1em;
     }
+  }
 }
