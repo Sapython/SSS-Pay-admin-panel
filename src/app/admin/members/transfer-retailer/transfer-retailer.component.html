@@ -1,1 +1,23 @@
-<p>transfer-retailer works!</p>
+<app-header pageName="Transfer Retailer to other Distributor"></app-header>
+<section>
+  <div class="conatiner">
+    <div class="card" *ngFor="let reatiler of retailers">
+      <div class="retailer">
+        <img src="{{ reatiler.image }}" />
+        <p>{{ reatiler.name }}</p>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>
+          
+          {{ reatiler.name }}
+        </mat-label>
+        <mat-select>
+          <mat-option *ngFor="let dist of reatiler.distributer">
+           
+            {{ dist.name }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</section>

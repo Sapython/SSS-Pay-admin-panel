@@ -1,0 +1,76 @@
+.conatiner {
+font-family: var(--font-one);
+width: 85%;
+margin: auto;
+padding: 50px;
+height: fit-content;
+display: flex;
+gap: 30px;
+flex-wrap: wrap;
+  .card {
+    height: 170px;
+    width: 270px;
+    border-radius: 10px ;
+    background-color: var(--card-color);
+    padding: 10px;
+    .retailer{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        p{
+            font-size: 18px;
+            padding: 10px;
+            margin: 0;
+        }
+    }
+    mat-form-field{
+       width: 100%;
+       margin: 25px 0px;
+       background-color: white;
+       color: var(---primary);
+       height: 53px;
+       
+        mat-label{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            color: var(---primary);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            img{
+                height: 30px;
+                width:30px;
+                border-radius: 50%;
+        
+            }
+            p{
+                font-size: 18px;
+              
+                margin: 0;
+            }
+        }
+        mat-select{
+            color: var(---primary);
+            mat-option{
+                // img{
+                //     height: 30px;
+                //     width:30px;
+                //     border-radius: 50%;
+                //     display: block;
+                // }
+                p{
+                    font-size: 18px;
+                    padding: 10px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+  }
+}

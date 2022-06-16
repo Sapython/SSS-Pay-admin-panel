@@ -12,7 +12,7 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog'; 
 
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     MembersComponent,
@@ -27,7 +27,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MembersRoutingModule,
     WidgetsModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ]
 })
 export class MembersModule { }
