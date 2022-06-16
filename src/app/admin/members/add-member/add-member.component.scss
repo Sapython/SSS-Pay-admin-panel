@@ -21,17 +21,18 @@
         }
         input{
             border: none;
-            border: .5px solid grey;
-            margin: 10px 0px;
+            border: .5px solid #000;
+            margin: 30px 0px;
             display: block;
             border-radius: 5px;
-            padding: 05px;
+            padding: 10px;
+            width: 300px;
         }
     }
     label{
         color: #000;
         font-size: var(--msmall);
-        margin-top: 20px;
+        margin-top: 30px;
     }
     textarea{
         border: none;
@@ -41,7 +42,8 @@
         border-radius: 5px;
         padding: 05px;
         width: 80%;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+        border: .5px solid #000;
     }
     .buttons{
         display: flex;
