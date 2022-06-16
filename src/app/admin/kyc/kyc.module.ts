@@ -4,6 +4,12 @@ import { CommonModule } from '@angular/common';
 import { KycRoutingModule } from './kyc-routing.module';
 import { KycComponent } from './kyc.component';
 import { DetailComponent } from './detail/detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
+
 
 
 @NgModule({
@@ -13,7 +19,10 @@ import { DetailComponent } from './detail/detail.component';
   ],
   imports: [
     CommonModule,
-    KycRoutingModule
+    KycRoutingModule,
+    MatIconModule,
+    FlexLayoutModule,
+    WidgetsModule
   ]
 })
 export class KycModule { }
