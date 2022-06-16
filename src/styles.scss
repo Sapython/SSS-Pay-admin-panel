@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700;800;900&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root{
+    --color-light:#ffffff;
+    --color-primary:#EBF7F4;
+    --color-secondary:#009970;
+    --color-secondary-light:#00997033;
+    --font:'Poppins';
+}
