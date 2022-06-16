@@ -1,1 +1,28 @@
-<p>reports works!</p>
+<app-header pageName="Service Report"></app-header>
+<section>
+  <div class="datefilter">
+    <div class="date">
+      <b>From</b>
+      <input type="date" />
+    </div>
+    <div class="date">
+      <b>To</b>
+      <input type="date" />
+    </div>
+  </div>
+  <div class="services">
+    <div class="header">
+      <b>Name</b>
+      <b>Date</b>
+      <b>Service Report </b>
+    </div>
+    <div class="service" *ngFor="let service of serveices">
+      <b>{{service.name}}</b>
+      <b>{{service.Date}}</b>
+      <span>
+        <button>View</button>
+        <button>Download</button>
+      </span>
+    </div>
+  </div>
+</section>

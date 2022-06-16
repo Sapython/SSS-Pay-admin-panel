@@ -1,0 +1,84 @@
+section{
+    font-family: var(--font-one);
+    margin-top: 50px;
+    .datefilter{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        b{
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--primary);
+            margin: 0px 20px;
+        }
+        input{
+            height: 35px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+           background-color:  var(--input-light);
+           font-size: 15px;
+           
+        }
+    }
+    .services{
+        width: 90%;
+        height: fit-content;
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid var(--primary);
+        border-radius: 12px;
+        .header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--input-light);
+            height: 50px;
+            color: var(--primary-dark);
+            b{
+                width: 33%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .service{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid var(--primary-dark);
+            padding: 20px 0px;
+            b{
+                width: 33%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            span{
+                width: 33%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 15px;
+                button{
+                    height: 35px;
+                    width: 130px;
+                    background-color: var(--primary-dark);
+                    border: none;
+                    border-radius: 8px;
+                    color: var(  --primary-contrast);
+                    cursor:pointer;
+                    &:hover{
+                        transform: scale(1.02);
+                    }
+                }
+            }
+        }
+    }
+}
