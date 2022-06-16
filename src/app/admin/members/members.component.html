@@ -1,5 +1,11 @@
 <app-header pageName="Transactions"></app-header>
-<h3>Total Member {{members.length}}</h3>
+<div class="topInfo">
+    <h3>Total Member {{members.length}}</h3>
+    <div>
+        <button routerLink="transferRetail">Transfer Retailer</button>
+        <button>Change Membership</button>
+    </div>
+</div>
 <div class="table-container">
     <table>
         <thead>
