@@ -1,0 +1,16 @@
+div.topInfo{
+    display: flex;
+    justify-content: space-between;
+    div{
+        button{
+            padding:10px;
+            border:none;
+            margin:10px;
+            font-size: 17px;
+            box-shadow: 2px 3px 20px rgba(0,0,0,0.2);
+            border-radius: 7px;
+            background-color: #E7FFF9;
+            color:var(--primary)
+        }
+    }
+}

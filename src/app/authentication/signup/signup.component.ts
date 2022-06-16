@@ -51,4 +51,7 @@ export class SignupComponent implements OnInit {
       this.alertify.presentToast('Please fill all the fields correctly','info');
     }
   }
+  googleSSO(){
+    this.authService.signInWithGoogle();
+  }
 }

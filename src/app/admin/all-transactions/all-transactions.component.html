@@ -1,7 +1,48 @@
-<div>
-    <h1></h1>
-    <h5>Total Balance {{totalBalance}}</h5>
-</div>
-<div>
-
+<app-header pageName="Transactions"></app-header>
+<h3>Total Balance {{totalBalance}}</h3>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{transaction.id}}</td>
+                <td class="photo-and-name">
+                    <img [src]="transaction.merchantPhoto || 'assets/img/circle-user-solid.svg'" />
+                    {{ transaction.merchantName }}
+                </td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.date | date}}</td>
+                <td>
+                    <span class="success" *ngIf="transaction.status==='success'">
+                        <mat-icon>done_all</mat-icon>Success
+                    </span>
+                    <span class="pending" *ngIf="transaction.status==='pending'">
+                        <mat-icon>update</mat-icon>Pending
+                    </span>
+                    <span class="failed" *ngIf="transaction.status==='failed'">
+                        <mat-icon>dangerous</mat-icon>Failed
+                    </span>
+                </td>
+                <td>
+                    <div class="buttons">
+                        <button class="primary-button">
+                            <mat-icon>call</mat-icon>Call
+                        </button>
+                        <button class="primary-button">More</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

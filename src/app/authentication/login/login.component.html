@@ -1,18 +1,26 @@
-<div class="container">
-    <div class="box">
-        <p>Login</p>
-        <div class="inner-box">
-            <form action="">
-                <label for="">Email</label>
-                <input type="text" name="" id="">
-                <label for="">Password</label>
-                <input type="text" name="" id="">
-                <button type="button" class="forgot">Forgot Password?</button>
-                <button type="submit" id="submit">Submit</button>
-                <button type="button" id="google"><img src="assets/google.svg">Continue with Google</button>
-                <p>Don't have an Account? <button type="button" class="forgot">Sign Up</button></p>
-            </form>
+<section>
+    <div class="signup_details">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <b>Login</b>
+        <div class="input_conatiner">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="username@host.com" />
         </div>
+        <div class="input_conatiner">
+          <label>Password</label>
+          <input type="password" formControlName="password" placeholder="Password" />
+        </div>
+        <div class="authentication">
+          <button type="submit">Signup</button>
+          <button (click)="googleSSO()" type="button" class="google"><img src="../../../assets/google.svg">
+            <p>Continue with google</p>
+          </button>
+        </div>
+        <span>
+          Don't have an account?
+          <p routerLink="../signup">Signup</p>
+        </span>
+      </form>
     </div>
-    <img src="assets/login.png" alt="" id="login">
-</div>
+    <img src="../../../assets/signup.png" />
+  </section>

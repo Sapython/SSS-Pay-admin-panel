@@ -21,6 +21,7 @@ import {
   getDoc,
   increment,
   endAt,
+  where,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -53,5 +54,10 @@ export class DatabaseService {
     } else {
       return false;
     }
+  }
+  
+  getAgents(){
+    // return getDocs(query(collection(this.fs,'users'),where('access.access','==','agent')));
+    return getDocs(collection(this.fs,'users'));
   }
 }

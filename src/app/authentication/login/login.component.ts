@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.minLength(10),
+    ]),
+  });
+  constructor(private authService:AuthenticationService,private alertify: AlertsAndNotificationsService) { }
 
   ngOnInit(): void {
   }
-
+  login(){
+    if (this.loginForm.valid) {
+      this.authService.loginEmailPassword(
+        this.loginForm.value.email,
+        this.loginForm.value.password,
+      );
+    } else {
+      this.alertify.presentToast('Please fill all the fields correctly','info');
+    }
+  }
+  googleSSO(){
+    this.authService.signInWithGoogle();
+  }
 }

@@ -11,10 +11,6 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { DataProvider } from '../providers/data.provider';
-import {
-  ExtraLoginEmailInfo,
-  ExtraLoginGoogleInfo,
-} from '../structures/method.structure';
 import { UserData } from '../structures/user.structure';
 import { AlertsAndNotificationsService } from './uiService/alerts-and-notifications.service';
 
@@ -42,12 +38,14 @@ export class UserDataService {
         name: username || user.displayName || '',
         photo: user.photoURL || this.getRandomImage(),
         phone: '',
+        age: 0,
         access: {
           access: 'guest',
         },
         status: { access: 'active', isOnline: true },
         aadhaarNo: '',
         panCardNo: '',
+        gender:'unknown'
       };
       this.userDoc = doc(this.firestore, 'users/' + user.uid);
       await setDoc(this.userDoc, data).then(() => {
@@ -56,7 +54,7 @@ export class UserDataService {
       });
       this.dataProvider.pageSetting.blur = false;
     } else {
-      this.alertify.presentToast('Logged in as ' + user.displayName);
+      this.alertify.presentToast('Welcome back ' + user.displayName + ' to SSSPay Admin Panel 😁');
       this.router.navigate(['admin/dashboard']);
     }
   }

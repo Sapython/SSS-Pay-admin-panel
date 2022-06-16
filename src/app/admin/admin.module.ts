@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { MatIconModule } from '@angular/material/icon'
+import { WidgetsModule } from '../widgets/widgets.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MatIconModule } from '@angular/material/icon'
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatIconModule
+    MatIconModule,
+    WidgetsModule
   ]
 })
 export class AdminModule { }
