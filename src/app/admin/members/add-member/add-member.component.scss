@@ -1,0 +1,54 @@
+.container{
+    margin-left: 5%;
+    margin-top: 5%;
+    font-family: var(--font-one);
+    color: #000;
+    p{
+        color: #000;
+        font-size: var(--medium);
+        font-weight: 600;
+        margin: 5% 0%;
+    }
+    .box1{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+
+        label{
+            color: #000;
+            font-size: var(--msmall);
+        }
+        input{
+            border: none;
+            border: .5px solid grey;
+            margin: 10px 0px;
+            display: block;
+            border-radius: 5px;
+            padding: 05px;
+        }
+    }
+    label{
+        color: #000;
+        font-size: var(--msmall);
+        margin-top: 20px;
+    }
+    textarea{
+        border: none;
+        border: .5px solid grey;
+        margin: 10px 0px;
+        display: block;
+        border-radius: 5px;
+        padding: 05px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+        margin: 30px auto;
+        text-align: center;
+        margin-right: 20%;
+    }
+}

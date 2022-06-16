@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddMemberComponent } from './add-member/add-member.component';
 import { MembersComponent } from './members.component';
 
-const routes: Routes = [{ path: '', component: MembersComponent }];
+const routes: Routes = [{ path: '', component: MembersComponent },
+{path: 'add-member', component:  AddMemberComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
