@@ -26,6 +26,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./members/members.module').then((m) => m.MembersModule),
   },
+  { path: 'kyc', loadChildren: () => import('./kyc/kyc.module').then(m => m.KycModule) },
+  { path: 'manage', loadChildren: () => import('./manage/manage.module').then(m => m.ManageModule) },
 ];
 
 @NgModule({
