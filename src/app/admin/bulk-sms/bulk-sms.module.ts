@@ -1,3 +1,4 @@
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,8 @@ import { BulkSMSComponent } from './bulk-sms.component';
   ],
   imports: [
     CommonModule,
-    BulkSMSRoutingModule
+    BulkSMSRoutingModule,
+    WidgetsModule
   ]
 })
 export class BulkSMSModule { }

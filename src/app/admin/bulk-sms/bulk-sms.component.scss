@@ -1,0 +1,97 @@
+*{
+    font-family: var(--font-one);
+}
+.container{
+    margin-left: 3%;
+    margin-top: 5%;
+
+
+    #heading{
+        font-size: var(--medium);
+        font-weight: 600;
+    }
+
+    .box{
+        background-color: var(--primary-light);
+        margin: 3% 0%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px;
+        .inner-box{
+            display: flex;
+        }
+        .inner-box-second{
+            display: flex;
+            background-color: #fff;
+            padding: 05px;
+            border-radius: 05px;
+            input{
+                background-color: #fff;
+                color: var(--primary);
+                border: none;
+                &:focus{
+                    outline: none;
+                }
+            }
+            img{
+                width: 30px;
+                fill: #969696;
+                margin-right: 05px;
+            }
+        }
+        button{
+            background-color: #fff;
+            border: none;
+            color: var(--primary);
+            border-radius: 05px;
+            margin-right: 15px;
+        }
+        .select{
+            background-color: #fff;
+            color: var(--primary);
+            border-radius: 5px;
+            padding: 0px 5px;
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            input{
+            border-radius: 50%;
+            color: var(--primary);
+            margin-left: 10px;
+            margin-top: 2px;
+            }
+        }
+
+    }
+    .parent-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .bottom{
+        display: flex;
+        align-items: center;
+        margin-left: 30px;
+        margin-top: 5%;
+        textarea{
+            border-radius: 10px;
+        }
+        label{
+            font-size: var(--small);
+            display: block;
+            margin-bottom: 20px;
+            color: #000;
+            font-weight: 500;
+        }
+        .buttons{
+            display: flex;
+            margin-top: 100px;
+            margin-left: 100px;
+            button{
+                margin-right: 10px;
+            }
+        }
+    }
+}
