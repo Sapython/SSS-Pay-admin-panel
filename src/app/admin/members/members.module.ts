@@ -24,7 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
     AddMemberComponent,
     TransferRetailerComponent,
     MessagesComponent,
-    ChangeMembersComponent
+    ChangeMembersComponent,
   ],
   imports: [
     CommonModule,

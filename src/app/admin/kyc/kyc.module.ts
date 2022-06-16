@@ -17,12 +17,12 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
     KycComponent,
     DetailComponent
   ],
-  imports: [
+  imports:[
     CommonModule,
     KycRoutingModule,
     MatIconModule,
     FlexLayoutModule,
-    WidgetsModule
+    WidgetsModule,
   ]
 })
 export class KycModule { }
