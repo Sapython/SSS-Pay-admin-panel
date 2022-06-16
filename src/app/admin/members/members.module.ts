@@ -10,8 +10,12 @@ import { MessagesComponent } from './messages/messages.component';
 import { ChangeMembersComponent } from './change-members/change-members.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog'; 
-
+import  {MatDialogModule } from '@angular/material/dialog'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import {MatInputModule} from '@angular/material/input'; 
+import { MatButtonModule } from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +31,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MembersRoutingModule,
     WidgetsModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule
   ]
 })
 export class MembersModule { }
