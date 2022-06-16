@@ -1,1 +1,41 @@
-<p>wallet works!</p>
+<app-header pageName="Wallet"></app-header>
+<section>
+  <div class="teansaction_details">
+    <div class="graph">
+      <div style="width: 100%">
+        <canvas id="myChart" width="700" height="450" #mychart></canvas>
+      </div>
+    </div>
+    <div class="card last_transaction">
+        <p>LAST WEEK TARANSACTIONS</p>
+        <b>₹{{lastTransaction}}</b>
+        <img src="../../../assets/last-transaction.svg">
+    </div>
+    <div class="card wallet">
+        <p>WALLET</p>
+        <b>₹{{Balance}}</b>
+        <img src="../../../assets/wallet.svg">
+    </div>
+  </div>
+  <div class="Alltransactions">
+    <p class="last_week">Last week taransactions</p>
+    <table>
+        <tr class="header">
+          <th>ID</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+       
+        <tr *ngFor="let transaction of transactions">
+          <td>{{transaction.id}}</td>
+          <td>₹ {{transaction.amount}}</td>
+          <td>{{transaction.date}}</td>
+          <td>{{transaction.status}}</td>
+          <td><button>Details</button></td>
+        </tr>
+       
+      </table>
+  </div>
+</section>
