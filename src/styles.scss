@@ -1,11 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700;800;900&display=swap');
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-:root{
-    --color-light:#ffffff;
-    --color-primary:#EBF7F4;
-    --color-secondary:#009970;
-    --color-secondary-light:#00997033;
-    --font:'Poppins';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #009970;
+  --primary-contrast: #fff;
+  --secondary: #ebf7f4;
+  --secondary-contrast: #707477;
+  --tertiary: #000;
+
+  --normal-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --light-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  --xxlarge: 36px;
+  --xlarge: 32px;
+  --large: 28px;
+  --medium: 24px;
+  --small: 20px;
+  --msmall: 18px;
+  --xsmall: 16px;
+  --xxsmall: 14px;
+  --xxxsmall: 12px;
+
+  --font-one: 'Poppins', sans-serif;
+
+  --normal-radius: 7px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
