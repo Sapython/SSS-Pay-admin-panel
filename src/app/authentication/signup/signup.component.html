@@ -8,7 +8,7 @@
       </div>
       <div class="input_conatiner">
         <label>Email</label>
-        <input type="email" formControlName="email" placeholder="test@gmail.com" />
+        <input type="email" formControlName="email" placeholder="username@host.com" />
       </div>
       <div class="input_conatiner">
         <label>Password</label>
@@ -18,7 +18,12 @@
         <label>Confirm Password</label>
         <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
       </div>
-      <button type="submit">Signup</button>
+      <div class="authentication">
+        <button type="submit">Signup</button>
+        <button type="button" class="google"><img src="../../../assets/google.svg">
+          <p>Continue with google</p>
+        </button>
+      </div>
       <span>
         Already have account?
         <p routerLink="/login">Login</p>
