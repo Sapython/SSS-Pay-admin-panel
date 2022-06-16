@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
-
-const components = [HeaderComponent];
+import { NotificationsComponent } from './notifications/notifications.component';
+import {MatDialogModule} from '@angular/material/dialog'; const components = [HeaderComponent];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, NotificationsComponent],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
   ],
   exports:components
 })

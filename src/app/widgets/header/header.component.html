@@ -1,8 +1,8 @@
-<div id="top">
-    <h2>{{pageName}}</h2>
-    <div id="right">
-        <button><mat-icon>mail</mat-icon></button>
-        <button><mat-icon>notifications</mat-icon></button>
-        <button><mat-icon>search</mat-icon></button>
+<div class="main">
+    <h1>{{pageName}}</h1>
+    <div>
+        <button (click)="openMail()"><mat-icon>mail</mat-icon></button>
+        <button (click)="openNotification()"><mat-icon>notifications</mat-icon></button>
+        <button (click)="openSearch()"><mat-icon>search</mat-icon></button>
     </div>
 </div>
