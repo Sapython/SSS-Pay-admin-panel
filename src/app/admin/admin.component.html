@@ -1,1 +1,65 @@
-<p>admin works!</p>
+<div id="wrapper">
+  <div id="sidebar-container">
+    <aside>
+      <div>
+        <img src="assets/img/logo.png" alt="SSS Pay" />
+        <h1>SSS PAY</h1>
+      </div>
+      <ul>
+        <li>
+          <a routerLink="/admin/dashboard" routerLinkActive="active"
+            ><mat-icon aria-hidden>dashboard</mat-icon>Dashboard</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/allTransactions" routerLinkActive="active"
+            ><mat-icon aria-hidden>receipt_long</mat-icon>All Transactions</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/wallet" routerLinkActive="active"
+            ><mat-icon aria-hidden>wallet</mat-icon>Wallet</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/members" routerLinkActive="active"
+            ><mat-icon aria-hidden>group</mat-icon>Members</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/kyc" routerLinkActive="active"
+            ><mat-icon aria-hidden>how_to_reg</mat-icon>KYC</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/manage" routerLinkActive="active"
+            ><mat-icon aria-hidden>manage_accounts</mat-icon>Manage</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/bulk-sms" routerLinkActive="active"
+            ><mat-icon aria-hidden>sms</mat-icon>Bulk SMS</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/reports" routerLinkActive="active"
+            ><mat-icon aria-hidden>description</mat-icon>Reports</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/tickets" routerLinkActive="active"
+            ><mat-icon aria-hidden>style</mat-icon>Tickets</a
+          >
+        </li>
+        <li>
+          <a routerLink="/admin/settings" routerLinkActive="active"
+            ><mat-icon aria-hidden>settings</mat-icon>Settings</a
+          >
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
