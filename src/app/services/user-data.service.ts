@@ -32,14 +32,14 @@ export class UserDataService {
   ) {
     this.usersDoc = collection(this.firestore, 'users');
   }
-  public async setUserData(user: User) {
+  public async setUserData(user: User,username?:string) {
     if (!(await getDoc(doc(this.firestore, 'users/' + user.uid))).exists()) {
       this.dataProvider.pageSetting.blur = true;
       this.dataProvider.pageSetting.lastRedirect = '';
       let data: UserData = {
         userId: user.uid,
         email: user.email || '',
-        name: user.displayName || '',
+        name: username || user.displayName || '',
         photo: user.photoURL || this.getRandomImage(),
         phone: '',
         access: {
@@ -51,12 +51,13 @@ export class UserDataService {
       };
       this.userDoc = doc(this.firestore, 'users/' + user.uid);
       await setDoc(this.userDoc, data).then(() => {
-        this.alertify.presentToast('Welcome ' + user.displayName + ' to SSSPay Admin Panel &#128513');
+        this.alertify.presentToast('Welcome ' + username || user.displayName + ' to SSSPay Admin Panel 😁');
+        this.router.navigate(['admin/dashboard']);
       });
       this.dataProvider.pageSetting.blur = false;
     } else {
       this.alertify.presentToast('Logged in as ' + user.displayName);
-      this.router.navigate(['']);
+      this.router.navigate(['admin/dashboard']);
     }
   }
   getRandomImage(): string {

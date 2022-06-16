@@ -5,12 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class AlertsAndNotificationsService {
-  testFunction() {
-    console.log('testFunction');
-  }
-  toastAudio = new Audio();
-  toastErrorAudio = new Audio();
-  playAudio(type: 'toast' | 'errorToast') {
+
+  private toastAudio = new Audio();
+  private toastErrorAudio = new Audio();
+  private playAudio(type: 'toast' | 'errorToast') {
     if (type === 'toast') {
       this.toastAudio.play();
     } else if (type === 'errorToast') {

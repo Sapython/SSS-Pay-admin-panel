@@ -1,27 +1,29 @@
 <section>
   <div class="signup_details">
-    <b>Signup</b>
-    <div class="input_conatiner">
-      <label>Name</label>
-      <input type="text" placeholder="Full Name" />
-    </div>
-    <div class="input_conatiner">
-      <label>Email</label>
-      <input type="text" placeholder="test@gmail.com" />
-    </div>
-    <div class="input_conatiner">
-      <label>Password</label>
-      <input type="password" placeholder="Password" />
-    </div>
-    <div class="input_conatiner">
-      <label>Confirm Password</label>
-      <input type="password" placeholder="Confirm Password" />
-    </div>
-    <button>Signup</button>
-    <span>
-      Alredy have account?
-      <p routerLink="/login" >Login</p>
-    </span>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <b>Signup</b>
+      <div class="input_conatiner">
+        <label>Name</label>
+        <input formControlName="name" type="text" placeholder="Full Name" />
+      </div>
+      <div class="input_conatiner">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="test@gmail.com" />
+      </div>
+      <div class="input_conatiner">
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="Password" />
+      </div>
+      <div class="input_conatiner">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+      </div>
+      <button type="submit">Signup</button>
+      <span>
+        Already have account?
+        <p routerLink="/login">Login</p>
+      </span>
+    </form>
   </div>
   <img src="../../../assets/signup.png" />
 </section>

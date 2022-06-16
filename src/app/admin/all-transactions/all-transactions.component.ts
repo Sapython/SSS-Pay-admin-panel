@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-transactions.component.scss']
 })
 export class AllTransactionsComponent implements OnInit {
-
+  totalBalance:number  = 0;
   constructor() { }
 
   ngOnInit(): void {

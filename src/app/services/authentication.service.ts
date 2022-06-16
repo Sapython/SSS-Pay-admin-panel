@@ -154,7 +154,7 @@ export class AuthenticationService {
     this.dataProvider.pageSetting.lastRedirect = '';
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials: UserCredential) => {
-        this.userData.setUserData(credentials.user);
+        this.userData.setUserData(credentials.user,username);
       })
       .catch((error) => {
         this.dataProvider.pageSetting.blur = false;
