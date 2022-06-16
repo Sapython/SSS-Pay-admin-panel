@@ -1,1 +1,13 @@
-<p>detail works!</p>
+<ul>
+    <li><img [src]="user.photo"></li>
+    <li>Name: <span>{{user.name || 'N/A'}}</span></li>
+    <li>User Id: <span>{{user.userId || 'N/A'}}</span></li>
+    <li>Email: <span>{{user.email || 'N/A'}}</span></li>
+    <li>Phone: <span>{{user.phone || 'N/A'}}</span></li>
+    <li>Age: <span>{{user.age || 'N/A'}}</span></li>
+    <li>Access: <span>{{user.access.access || 'N/A'}}</span></li>
+    <li>Status: <span>{{user.status.access || 'N/A'}}</span></li>
+    <li>Aadhaar No: <span>{{user.aadhaarNo || 'N/A'}}</span></li>
+    <li>Pan Card No: <span>{{user.panCardNo || 'N/A'}}</span></li>
+    <li>Gender: <span>{{user.gender || 'N/A'}}</span></li>
+</ul>

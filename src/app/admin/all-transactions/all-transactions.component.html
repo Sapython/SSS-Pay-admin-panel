@@ -22,7 +22,7 @@
                     {{ transaction.merchantName }}
                 </td>
                 <td>{{ transaction.amount }}</td>
-                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.date | date}}</td>
                 <td>
                     <span class="success" *ngIf="transaction.status==='success'">
                         <mat-icon>done_all</mat-icon>Success

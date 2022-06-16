@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserData } from 'src/app/structures/user.structure';
 
 @Component({
   selector: 'app-detail',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public user: UserData) { }
 
   ngOnInit(): void {
   }

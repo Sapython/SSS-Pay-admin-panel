@@ -1,1 +1,35 @@
-<p>members works!</p>
+<app-header pageName="Transactions"></app-header>
+<h3>Total Member {{members.length}}</h3>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of members; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td class="photo-and-name">
+                    <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
+                    {{ member.name || 'N/A' }}
+                </td>
+                <td>{{ member.age || 'N/A' }}</td>
+                <td>{{ member.gender || 'N/A' }}</td>
+                <td>
+                    <div class="buttons">
+                        <a href="tel:{{member.phone}}" hidden #url></a>
+                        <button class="primary-button" (click)="url.click()">
+                            <mat-icon>call</mat-icon>Call
+                        </button>
+                        <button class="primary-button" (click)="moreDetail(member)">More</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

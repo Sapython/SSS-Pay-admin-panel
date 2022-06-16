@@ -8,6 +8,9 @@ import { AddMemberComponent } from './add-member/add-member.component';
 import { TransferRetailerComponent } from './transfer-retailer/transfer-retailer.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ChangeMembersComponent } from './change-members/change-members.component';
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
+import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { ChangeMembersComponent } from './change-members/change-members.componen
   ],
   imports: [
     CommonModule,
-    MembersRoutingModule
+    MembersRoutingModule,
+    WidgetsModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class MembersModule { }

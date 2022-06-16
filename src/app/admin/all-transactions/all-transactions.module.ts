@@ -7,11 +7,10 @@ import { TransactionDetailComponent } from './transaction-detail/transaction-det
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
 
-
 @NgModule({
   declarations: [
     AllTransactionsComponent,
-    TransactionDetailComponent
+    TransactionDetailComponent,
   ],
   imports: [
     CommonModule,
