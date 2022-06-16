@@ -13,7 +13,9 @@
   --text-color-light: #0000006a;
   --normal-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --light-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+  --danger:rgba(255, 79, 79, 0.967);
+  --success:rgb(25, 175, 95);
+  --warning: #ffc30e;
   --xxlarge: 36px;
   --xlarge: 32px;
   --large: 28px;
@@ -48,14 +50,15 @@
     }
 
     td {
-      color: var(--tertiary);
+      text-align: center;
+      color: var(--secondary-contrast);
       font-size: var(--xsmall);
-
       img {
         width: 40px;
         height: 40px;
         object-fit: cover;
         border-radius: 50%;
+        vertical-align: middle;
       }
 
       .buttons {
@@ -69,11 +72,21 @@
           }
         }
       }
+      span.failed{
+        color:var(--danger);
+      }
+      span.pending{
+        color:var(--warning);
+      }
+      span.success{
+        color:var(--success);
+      }
     }
+    
 
     thead {
       tr {
-        border-bottom: 2px solid var(--tertiary);
+        border-bottom: 2px solid var(--secondary-contrast);
       }
 
       th {
@@ -86,7 +99,7 @@
 
     tbody {
       tr {
-        border-bottom: 1px solid var(--tertiary);
+        border-bottom: 1px solid var(--secondary-contrast);
 
         &:last-of-type {
           border-width: 2px;
