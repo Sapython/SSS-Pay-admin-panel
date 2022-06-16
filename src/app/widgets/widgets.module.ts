@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NotificationsComponent } from './notifications/notifications.component';
-import {MatDialogModule} from '@angular/material/dialog'; const components = [HeaderComponent];
+import {MatDialogModule} from '@angular/material/dialog';
+import { SmsWidgetComponent } from './sms-widget/sms-widget.component'; 
+const components = [HeaderComponent, SmsWidgetComponent];
 
 @NgModule({
   declarations: [components, NotificationsComponent],
@@ -13,6 +15,6 @@ import {MatDialogModule} from '@angular/material/dialog'; const components = [He
     MatDialogModule,
     MatIconModule,
   ],
-  exports:components
+  exports:[components]
 })
-export class WidgetsModule { }
+export class WidgetsModule {}
