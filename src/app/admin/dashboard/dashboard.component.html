@@ -1,1 +1,53 @@
-<p>dashboard works!</p>
+<section>
+  <div id="cards">
+    <div class="card">
+      <h3>AEPS MEMBERS</h3>
+      <div class="card-text">
+        <p class="key">Total</p>
+        <p class="value">608</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>AEPS BALANCE</h3>
+      <div class="card-text">
+        <p class="key">Total</p>
+        <p class="value">₹90,00,000</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>New Members</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of newMembers; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td class="photo-and-name">
+              <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
+              {{ member.name }}
+            </td>
+            <td>{{ member.age }}</td>
+            <td>{{ member.gender }}</td>
+            <td>
+              <div class="buttons">
+                <button class="primary-button">
+                  <mat-icon>call</mat-icon>Call
+                </button>
+                <button class="primary-button">More</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

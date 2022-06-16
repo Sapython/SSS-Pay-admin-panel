@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   --primary: #009970;
@@ -22,13 +22,95 @@
   --xxsmall: 14px;
   --xxxsmall: 12px;
 
-  --font-one: 'Poppins', sans-serif;
+  --font-one: "Poppins", sans-serif;
 
   --normal-radius: 7px;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.table-container {
+  overflow-x: auto;
+
+  table {
+    font-family: var(--font-one);
+    border-collapse: collapse;
+    width: 100%;
+
+    td,
+    th {
+      text-align: left;
+      padding: 0.75em;
+    }
+
+    td {
+      color: var(--tertiary);
+      font-size: var(--xsmall);
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .buttons {
+        display: flex;
+
+        button {
+          margin-right: 0.5em;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    thead {
+      tr {
+        border-bottom: 2px solid var(--tertiary);
+      }
+
+      th {
+        font-size: var(--xsmall);
+        font-weight: 500;
+        text-align: left;
+        color: var(--primary);
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--tertiary);
+
+        &:last-of-type {
+          border-width: 2px;
+        }
+      }
+    }
+  }
+}
+
+.primary-button {
+  background-color: var(--primary);
+  color: var(--primary-contrast);
+  font-family: var(--font-one);
+  padding: 0.25em 0.5em;
+  border-radius: var(--normal-radius);
+  display: flex;
+  align-items: center;
+  font-size: var(--xsmall);
+  border: none;
+
+  mat-icon {
+    font-size: var(--xsmall);
+    width: fit-content;
+    height: fit-content;
+    margin-right: 0.25em;
+  }
 }
 
 html,
