@@ -18,7 +18,6 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     FlexLayoutModule,
     WidgetsModule,
-    RouterModule,
   ],
 })
 export class KycModule {}
