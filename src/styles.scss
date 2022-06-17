@@ -67,6 +67,7 @@ $my-theme: mat.define-light-theme((
   --font-one: "Poppins", sans-serif;
 
   --normal-radius: 7px;
+  --more-radius: 20px;
 }
 
 * {
@@ -157,12 +158,19 @@ $my-theme: mat.define-light-theme((
   align-items: center;
   font-size: var(--xsmall);
   border: none;
+  cursor: pointer;
+  transition: all .5s;
 
   mat-icon {
     font-size: var(--xsmall);
     width: fit-content;
     height: fit-content;
     margin-right: 0.25em;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: var(--light-shadow);
   }
 }
 

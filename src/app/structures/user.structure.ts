@@ -2,7 +2,7 @@ export type UserData = {
     userId:string;
     name:string;
     email:string;
-    age:0,
+    dob:Date,
     phone?:string;
     photo:string;
     access:UserAccess;

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { EditComponent } from './edit/edit.component';
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { EditComponent } from './edit/edit.component';
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    WidgetsModule,
+    MatIconModule
   ]
 })
 export class AccountModule { }

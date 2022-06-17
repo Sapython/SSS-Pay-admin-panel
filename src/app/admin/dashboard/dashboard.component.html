@@ -1,5 +1,5 @@
+<app-header pageName="Dashboard"></app-header>
 <section>
-  <app-header pageName="Dashboard"></app-header>
   <div id="cards">
     <div class="card" id="aeps-members-card">
       <img src="assets/img/aeps-members-background.png" />
@@ -36,7 +36,7 @@
               <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
               {{ member.name }}
             </td>
-            <td>{{ member.age }}</td>
+            <td>{{ member.dob }}</td>
             <td>{{ member.gender }}</td>
             <td>
               <div class="buttons">
