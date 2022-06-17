@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.scss']
+  styleUrls: ['./tickets.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TicketsComponent implements OnInit {
   constructor() { }
