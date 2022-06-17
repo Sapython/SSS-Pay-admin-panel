@@ -1,4 +1,4 @@
-.container{
+.container {
     margin: 10px;
     background-color: #fff;
     color: #000;
@@ -6,20 +6,36 @@
     display: flex;
     align-items: center;
     border-radius: 10px;
-    &:hover{
+
+    &:hover {
         background-color: var(--primary-light);
     }
-    p{
+
+    p {
         margin-right: 15px;
         margin-left: -8px;
         margin-top: 2px;
         font-size: var(--small);
     }
-    input{
-        margin-top: -1%;
-        border: 0.5px solid var(--primary);
+
+    #check {
+        margin-top: -5px;
+        width: 18px;
+        height: 18px;
+        border-radius: 10%;
+        border: 2px solid var(--primary);
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+
+        &:checked {
+            appearance: auto;
+            background-color: var(--primary);
+        }
     }
-    img{
+
+    img {
         clip-path: circle(30%);
         width: 90px;
     }

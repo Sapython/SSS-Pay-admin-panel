@@ -6,7 +6,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bulk-sms.component.scss']
 })
 export class BulkSMSComponent implements OnInit {
-
+  item = [
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+    {
+      name: 'Sankar Tripathi' 
+    },
+  ]
   constructor() { }
 
   ngOnInit(): void {

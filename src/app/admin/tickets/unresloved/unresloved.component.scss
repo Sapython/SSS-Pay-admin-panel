@@ -1,0 +1,25 @@
+table{
+    th{
+        color: var(--primary);
+    }
+    tr{
+        &:hover{
+            background-color: var(--primary-light);
+        }
+    }
+    td{
+        text-align: left;
+        .container,.box{
+            p:nth-child(1){
+                font-weight: 500;
+                font-size: var(--msmall);
+                color: #000;
+            }
+            p:nth-child(2){
+                font-weight: 500;
+                font-size: var(--xsmall);
+            }
+        }
+    }
+
+}

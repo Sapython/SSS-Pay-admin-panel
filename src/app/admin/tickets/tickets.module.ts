@@ -1,3 +1,5 @@
+import { MatIconModule } from '@angular/material/icon';
+import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +9,8 @@ import { DetailComponent } from './detail/detail.component';
 import { UnreslovedComponent } from './unresloved/unresloved.component';
 import { ResolvedComponent } from './resolved/resolved.component';
 import { OngoingComponent } from './ongoing/ongoing.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { OngoingComponent } from './ongoing/ongoing.component';
   ],
   imports: [
     CommonModule,
-    TicketsRoutingModule
+    TicketsRoutingModule,
+    WidgetsModule,
+    MatTabsModule,
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class TicketsModule { }

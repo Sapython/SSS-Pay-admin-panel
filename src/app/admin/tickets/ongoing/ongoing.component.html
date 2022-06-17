@@ -1,1 +1,27 @@
-<p>ongoing works!</p>
+<div class="table-container">
+    <table>
+        <tr>
+          <th width = 30%>Customer</th>
+          <th width = 15%>Ticket
+            number</th>
+          <th width = 40%>Ticket
+            Summary</th>
+          <th width = 15%>Time</th>
+        </tr>
+        <tr *ngFor="let item of items">
+          <td><app-ticket-widget></app-ticket-widget></td>
+          <td>0225648455</td>
+          <td>
+            <div class="container">
+                <p>{{item.status}}</p>
+                <p>{{item.status_info}}</p>
+            </div>
+            <td>
+                <div class="box">
+                    <p>{{item.date}}</p>
+                    <p>{{item.time}}</p>
+                </div>
+            </td>
+        </tr>
+      </table>
+</div>

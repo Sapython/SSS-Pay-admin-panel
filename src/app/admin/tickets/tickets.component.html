@@ -1,1 +1,9 @@
-<p>tickets works!</p>
+<app-header pageName="Tickets"></app-header>
+<hr>
+<div id="bar">
+    <mat-tab-group>
+        <mat-tab label="Ongoing"><app-ongoing></app-ongoing></mat-tab>
+        <mat-tab label="Unresolved"><app-unresloved></app-unresloved></mat-tab>
+        <mat-tab label="Resolved"><app-resolved></app-resolved></mat-tab>
+      </mat-tab-group>
+</div>

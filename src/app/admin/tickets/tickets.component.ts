@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tickets',
@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tickets.component.scss']
 })
 export class TicketsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
