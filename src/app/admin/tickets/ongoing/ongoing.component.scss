@@ -3,9 +3,7 @@ table{
         color: var(--primary);
     }
     tr{
-        &:hover{
-            background-color: var(--primary-light);
-        }
+        border-bottom: 1px solid var(--primary);
     }
     td{
         text-align: left;
