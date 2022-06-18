@@ -6,9 +6,16 @@
           "ssspay-app"
         ]
       }
+    },
+    "ssspay-prod": {
+      "hosting": {
+        "SSSPayAdminPanel": [
+          "ssspay-prod"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "ssspay-app"
+    "default": "ssspay-prod"
   }
 }
