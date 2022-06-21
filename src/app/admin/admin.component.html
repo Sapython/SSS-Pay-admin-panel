@@ -7,59 +7,60 @@
       </div>
       <ul>
         <li>
-          <a routerLink="/admin/account" routerLinkActive="active"
-            ><img [src]="'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' || 'assets/img/circle-user-solid.svg'"> Jayprakash Mansingh</a
-          >
+          <a routerLink="/admin/account" routerLinkActive="active">
+            <img [src]="dataProvider.userData?.photo">
+            {{dataProvider.userData?.name}}
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/dashboard" routerLinkActive="active"
-            ><mat-icon aria-hidden>dashboard</mat-icon>Dashboard</a
-          >
+          <a routerLink="/admin/dashboard" routerLinkActive="active">
+            <mat-icon aria-hidden>dashboard</mat-icon>Dashboard
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/allTransactions" routerLinkActive="active"
-            ><mat-icon aria-hidden>receipt_long</mat-icon>All Transactions</a
-          >
+          <a routerLink="/admin/allTransactions" routerLinkActive="active">
+            <mat-icon aria-hidden>receipt_long</mat-icon>All Transactions
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/wallet" routerLinkActive="active"
-            ><mat-icon aria-hidden>wallet</mat-icon>Wallet</a
-          >
+          <a routerLink="/admin/wallet" routerLinkActive="active">
+            <mat-icon aria-hidden>wallet</mat-icon>Wallet
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/members" routerLinkActive="active"
-            ><mat-icon aria-hidden>group</mat-icon>Members</a
-          >
+          <a routerLink="/admin/members" routerLinkActive="active">
+            <mat-icon aria-hidden>group</mat-icon>Members
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/kyc" routerLinkActive="active"
-            ><mat-icon aria-hidden>how_to_reg</mat-icon>KYC</a
-          >
+          <a routerLink="/admin/kyc" routerLinkActive="active">
+            <mat-icon aria-hidden>how_to_reg</mat-icon>KYC
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/manage" routerLinkActive="active"
-            ><mat-icon aria-hidden>manage_accounts</mat-icon>Manage</a
-          >
+          <a routerLink="/admin/manage" routerLinkActive="active">
+            <mat-icon aria-hidden>manage_accounts</mat-icon>Manage
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/bulk-sms" routerLinkActive="active"
-            ><mat-icon aria-hidden>sms</mat-icon>Bulk SMS</a
-          >
+          <a routerLink="/admin/bulk-sms" routerLinkActive="active">
+            <mat-icon aria-hidden>sms</mat-icon>Bulk SMS
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/reports" routerLinkActive="active"
-            ><mat-icon aria-hidden>description</mat-icon>Reports</a
-          >
+          <a routerLink="/admin/reports" routerLinkActive="active">
+            <mat-icon aria-hidden>description</mat-icon>Reports
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/tickets" routerLinkActive="active"
-            ><mat-icon aria-hidden>style</mat-icon>Tickets</a
-          >
+          <a routerLink="/admin/tickets" routerLinkActive="active">
+            <mat-icon aria-hidden>style</mat-icon>Tickets
+          </a>
         </li>
         <li>
-          <a routerLink="/admin/settings" routerLinkActive="active"
-            ><mat-icon aria-hidden>settings</mat-icon>Settings</a
-          >
+          <a routerLink="/admin/settings" routerLinkActive="active">
+            <mat-icon aria-hidden>settings</mat-icon>Settings
+          </a>
         </li>
       </ul>
     </aside>

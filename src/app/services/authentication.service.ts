@@ -19,6 +19,8 @@ import {
   createUserWithEmailAndPassword,
   UserCredential,
   GithubAuthProvider,
+  idToken,
+  getIdToken,
 } from '@angular/fire/auth';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -69,6 +71,9 @@ export class AuthenticationService {
 
   public get getUser(): Observable<User | null> {
     return this.user;
+  }
+  public getIdToken(user:User){
+    return getIdToken(user,true);
   }
   // Read functions end
   // Sign in functions start

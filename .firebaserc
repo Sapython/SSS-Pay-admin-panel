@@ -1,12 +1,5 @@
 {
   "targets": {
-    "ssspay-app": {
-      "hosting": {
-        "SSSPayAdminPanel": [
-          "ssspay-app"
-        ]
-      }
-    },
     "ssspay-prod": {
       "hosting": {
         "SSSPayAdminPanel": [

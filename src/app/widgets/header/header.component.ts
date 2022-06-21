@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Functions } from '@angular/fire/functions';
 import {MatDialog} from '@angular/material/dialog';
 import { httpsCallable } from '@firebase/functions';
+import { ServerService } from 'src/app/services/server.service';
 import { NotificationsComponent } from '../notifications/notifications.component';
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
 })
 export class HeaderComponent implements OnInit {
   @Input() pageName:string = 'provide page name as input';
-  constructor(public dialog: MatDialog,private serverFunction:Functions) { }
+  constructor(public dialog: MatDialog,private serverFunction:Functions,private serverService:ServerService) { }
 
   ngOnInit(): void {}
   openMail(){
@@ -23,5 +24,7 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(NotificationsComponent, {restoreFocus: false});
     dialogRef.afterClosed().subscribe(result => {})
   }
-  openSearch(){}
+  openSearch(){
+    this.serverService.checkAuth();
+  }
 }

@@ -99,6 +99,27 @@ section {
       span{
         margin-top: 10px;
       }
+      .loader{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button {
+          width: 450px;
+          height: 50px;
+          border-radius: 10px;
+          padding: 10px;
+          box-sizing: border-box;
+          font-size: 18px;
+          background-color: var(--primary);
+          border: none;
+          outline: none;
+          color: var(--primary-contrast);
+        }
+      }
+      .loader ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #009970;
+      }
     }
     img {
       width: 60%;

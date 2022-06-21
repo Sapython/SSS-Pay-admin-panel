@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 
@@ -17,9 +18,13 @@ export class LoginComponent implements OnInit {
       Validators.minLength(10),
     ]),
   });
-  constructor(private authService:AuthenticationService,private alertify: AlertsAndNotificationsService) { }
+  checked:boolean = false;
+  constructor(private authService:AuthenticationService,private alertify: AlertsAndNotificationsService,public dataProvider:DataProvider) { }
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user)=>{
+      this.checked = true;
+    })
   }
   login(){
     if (this.loginForm.valid) {

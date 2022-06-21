@@ -35,7 +35,7 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => {
       const auth = getAuth();
-      connectAuthEmulator(auth,'http://localhost:9099');
+      // connectAuthEmulator(auth,'http://localhost:9099');
       return auth;
     }),
     provideFirestore(() => {
@@ -45,7 +45,7 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     }),
     provideFunctions(() => {
       const functions = getFunctions();
-      connectFunctionsEmulator(functions,'localhost',5001);
+      // connectFunctionsEmulator(functions,'localhost',5001);
       return functions;
     }),
     provideMessaging(() => getMessaging()),
