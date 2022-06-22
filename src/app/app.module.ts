@@ -40,7 +40,7 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     }),
     provideFirestore(() => {
       const firestore = getFirestore();
-      connectFirestoreEmulator(firestore,'localhost',8080);
+      // connectFirestoreEmulator(firestore,'localhost',8080);
       return firestore;
     }),
     provideFunctions(() => {
@@ -52,7 +52,7 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     providePerformance(() => getPerformance()),
     provideStorage(() => {
       const storage = getStorage();
-      connectStorageEmulator(storage,'localhost',9199);
+      // connectStorageEmula  tor(storage,'localhost',9199);
       return storage;
     }),
     BrowserAnimationsModule,

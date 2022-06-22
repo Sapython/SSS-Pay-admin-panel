@@ -5,7 +5,7 @@
 .container {
   margin-left: 1%;
   margin-top: 3%;
-
+  position: relative;
   #heading {
     font-size: var(--medium);
     font-weight: 600;
@@ -19,7 +19,22 @@
     align-items: center;
     border-radius: 10px;
     padding: 10px;
+.new_message{
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10px;
+  i{
+    font-size: 20px;
+  }
+  &:hover{
+    transform: scale(1.02);
+  }
 
+}
     .inner-box {
       display: flex;
     }
@@ -123,7 +138,7 @@
 
     .buttons {
       display: flex;
-      margin-top: .5em;
+      margin-top: 0.5em;
 
       button {
         margin-right: 10px;

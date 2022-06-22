@@ -1,67 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DatabaseService } from 'src/app/services/database.service';
+import { UserData } from 'src/app/structures/user.structure';
+import { NewMessageComponent } from './new-message/new-message.component';
 
 @Component({
   selector: 'app-bulk-sms',
   templateUrl: './bulk-sms.component.html',
-  styleUrls: ['./bulk-sms.component.scss']
+  styleUrls: ['./bulk-sms.component.scss'],
 })
 export class BulkSMSComponent implements OnInit {
-  item = [
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-    {
-      name: 'Sankar Tripathi' 
-    },
-  ]
-  constructor() { }
+  customers: any = [];
+  constructor(
+    public dialog: MatDialog,
+    private databaseService: DatabaseService
+  ) {}
 
   ngOnInit(): void {
+    this.databaseService.getCustomers().then((value: any) => {
+      value.forEach((customer: any) => {
+        
+          
+        if( customer.data().phoneNumber) {
+          this.customers.push(customer.data())
+         }
+      });
+    });
+    
   }
+  openMessage() {
+    const dialogRef = this.dialog.open(NewMessageComponent);
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

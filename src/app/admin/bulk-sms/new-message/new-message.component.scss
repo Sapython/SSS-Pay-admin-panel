@@ -1,0 +1,60 @@
+.bottom {
+    margin: 1em;
+
+    textarea {
+      border-radius: 10px;
+      border: none;
+      border: 0.2rem solid var(--primary);
+      color: #000;
+      height: 300px;
+      width: 500px  ;
+      resize: none;
+      padding: 1.2rem;
+      font-size: 20px;
+      &:focus {
+        border: 2px solid var(--primary);
+      }
+    }
+
+    label {
+      font-size: var(--small);
+      display: block;
+      margin-bottom: 20px;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .buttons {
+      display: flex;
+      margin-top: 0.5em;
+
+      button {
+        margin-right: 10px;
+      }
+      .cancel{
+        background-color: var(--danger);
+      }
+    }
+  }
+
+  #userChip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    img{
+      width:25px;
+      height:25px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    p{
+      margin-left: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+    }
+  }
+  mat-form-field {
+    width: 100%;
+  }

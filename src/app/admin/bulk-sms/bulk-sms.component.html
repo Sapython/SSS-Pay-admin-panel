@@ -8,26 +8,23 @@
                 <p>Select All Members<input type="checkbox" id="round"></p>
             </div>
         </div>
+        <button class="new_message" (click)="openMessage()">
+            <i class="fa-solid fa-plus"></i>New Message
+          </button>
         <div class="inner-box-second">
             <img src="assets/search.svg" alt="">
             <input type="text" placeholder="Search">
         </div>
     </div>
     <div class="list-container">
+        
         <div class="parent-container">
             <app-sms-widget 
-            *ngFor="let items of item"
+            *ngFor="let customer of customers"
+            [name]="customer.displayName"
+            [image]="customer.photoURL"
             ></app-sms-widget>
         </div>
     </div>
-    <div class="bottom">
-        <div class="sec-second">
-            <label for="">Type SMS</label>
-            <textarea name="" id="" cols="80" rows="05"></textarea>
-        </div>
-        <div class="buttons">
-            <button class="primary-button">Save</button>
-            <button class="primary-button">Cancel</button>
-        </div>
-    </div>
+ 
 </div>

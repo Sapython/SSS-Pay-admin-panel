@@ -55,7 +55,10 @@ export class DatabaseService {
       return false;
     }
   }
-  
+  getCustomers(){
+    // return getDocs(query(collection(this.fs,'users'),where('access.access','==','customer')));
+    return getDocs(collection(this.fs,'users'));
+  }
   getAgents(){
     // return getDocs(query(collection(this.fs,'users'),where('access.access','==','agent')));
     return getDocs(collection(this.fs,'users'));
