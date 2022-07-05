@@ -35,7 +35,9 @@ import {
 })
 export class DatabaseService {
   storage = getStorage();
+
   constructor(private fs: Firestore) {}
+
   async upload(
     path: string,
     file: File | ArrayBuffer | Blob | Uint8Array
@@ -55,12 +57,20 @@ export class DatabaseService {
       return false;
     }
   }
-  getCustomers(){
+
+  getCustomers() {
     // return getDocs(query(collection(this.fs,'users'),where('access.access','==','customer')));
-    return getDocs(collection(this.fs,'users'));
+    return getDocs(collection(this.fs, 'users'));
   }
-  getAgents(){
+
+  getAgents() {
     // return getDocs(query(collection(this.fs,'users'),where('access.access','==','agent')));
-    return getDocs(collection(this.fs,'users'));
+    return getDocs(collection(this.fs, 'users'));
+  }
+
+  getTransactions() {
+    return getDocs(
+      query(collection(this.fs, 'transactions'), orderBy('timestamp', 'desc'))
+    );
   }
 }
