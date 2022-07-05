@@ -73,4 +73,12 @@ export class DatabaseService {
       query(collection(this.fs, 'transactions'), orderBy('timestamp', 'desc'))
     );
   }
+
+  getFirstTransactions(length: number) {
+    return getDocs(
+      query(collection(this.fs, 'transactions'), orderBy('timestamp', 'desc'), limit(length))
+    );
+  }
+
+  
 }

@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="Alltransactions">
-    <p class="last_week">Last week taransactions</p>
+    <p class="last_week">Recent taransactions</p>
     <table>
         <tr class="header">
           <th>ID</th>
@@ -29,9 +29,9 @@
         </tr>
        
         <tr *ngFor="let transaction of transactions">
-          <td>{{transaction.id}}</td>
+          <td>{{transaction.merchantId}}</td>
           <td>₹ {{transaction.amount}}</td>
-          <td>{{transaction.date}}</td>
+          <td>{{transaction.timestamp}}</td>
           <td>{{transaction.status}}</td>
           <td><button>Details</button></td>
         </tr>

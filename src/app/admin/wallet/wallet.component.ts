@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { DatabaseService } from 'src/app/services/database.service';
+import { Transaction } from 'src/app/structures/transaction.structure';
 
 @Component({
   selector: 'app-wallet',
@@ -8,67 +10,46 @@ import { Chart } from 'chart.js';
 })
 export class WalletComponent implements OnInit {
 
-  @Input() lastTransaction:number = 50200;
-  @Input() Balance:number = 250200;
-  constructor() { }
+  // @Input() lastTransaction: number = 50200;
+  @Input() Balance: number = 250200;
+  constructor(private databaseService: DatabaseService) { }
+  transactions: Transaction[];
 
-transactions=[
-  {
-    id:'SSS6574IND',
-    amount:'1,507',
-    date:'10/05/2022',
-    status:'Transfered',
-  },
-  {
-    id:'XSS6574IND',
-    amount:'5,507',
-    date:'10/05/2022',
-    status:'Transfered',
-  },
-  {
-    id:'SSS6574IND',
-    amount:'78,807',
-    date:'10/05/2022',
-    status:'Transfered',
-  },
-  {
-    id:'ADSS6SD74IND',
-    amount:'1,507',
-    date:'10/05/2022',
-    status:'Transfered',
-  },
-  {
-    id:'SSS6574IND',
-    amount:'1,507',
-    date:'10/05/2022',
-    status:'Transfered',
-  }
-]
+  lastTransaction: number = 50200;
+
   canvas: any;
   ctx: any;
-  @ViewChild('mychart') mychart:any;
+  @ViewChild('mychart') mychart: any;
 
   ngAfterViewInit() {
-    this.canvas = this.mychart.nativeElement; 
+    this.canvas = this.mychart.nativeElement;
     this.ctx = this.canvas.getContext('2d');
 
     new Chart(this.ctx, {
       type: 'line',
       data: {
-          datasets: [{
-              data: [0, 20, 40, 50],
-              backgroundColor: "rgb(115 185 243 / 30%)",
-              borderColor: "#009970",
-              fill: true,
-          },
-         ],
-          labels: ['January 2019', 'February 2019', 'March 2019', 'April 2019']
+        datasets: [{
+          data: [0, 20, 40, 50],
+          backgroundColor: "rgb(115 185 243 / 30%)",
+          borderColor: "#009970",
+          fill: true,
+        },
+        ],
+        labels: ['January 2019', 'February 2019', 'March 2019', 'April 2019']
       },
-  });
+    });
   }
 
 
   ngOnInit(): void {
-  }
+    this.databaseService.getFirstTransactions(4).then((docs) => {
+      this.transactions = [];
+      docs.forEach((doc) => {
+        const transaction = { transactionId: doc.id, ...doc.data() } as Transaction;
+        this.transactions.push(transaction);
+      });
+    });
 
+    
+  }
 }
