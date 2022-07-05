@@ -1,27 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
   collection,
-  collectionSnapshots,
-  deleteDoc,
   Firestore,
   getDocs,
   orderBy,
   query,
-  updateDoc,
-  Timestamp,
   limit,
-  startAt,
-  startAfter,
-  limitToLast,
-  endBefore,
-  addDoc,
   doc,
-  DocumentReference,
-  DocumentSnapshot,
-  getDoc,
-  increment,
-  endAt,
-  where,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -29,6 +14,7 @@ import {
   ref,
   uploadBytesResumable,
 } from '@angular/fire/storage';
+import { getDoc } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -76,9 +62,15 @@ export class DatabaseService {
 
   getFirstTransactions(length: number) {
     return getDocs(
-      query(collection(this.fs, 'transactions'), orderBy('timestamp', 'desc'), limit(length))
+      query(
+        collection(this.fs, 'transactions'),
+        orderBy('timestamp', 'desc'),
+        limit(length)
+      )
     );
   }
 
-  
+  getUser(userId: string) {
+    return getDoc(doc(this.fs, 'users/' + userId));
+  }
 }

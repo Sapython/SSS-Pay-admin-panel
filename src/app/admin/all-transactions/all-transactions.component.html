@@ -4,27 +4,20 @@
   <table>
     <thead>
       <tr>
-        <th>S. No.</th>
         <th>Transaction ID</th>
-        <th>Name</th>
+        <th>Sender</th>
+        <th>Receiver</th>
         <th>Amount</th>
-        <th>Date</th>
+        <th>Time</th>
         <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of transactions; let i = index">
-        <td>{{ i + 1 }}</td>
+      <tr *ngFor="let transaction of transactions">
         <td>{{ transaction.transactionId }}</td>
-        <td class="photo-and-name">
-          <!-- <img
-            [src]="
-              transaction.merchantPhoto || 'assets/img/circle-user-solid.svg'
-            "
-          /> -->
-          {{ transaction.merchantId }}
-        </td>
+        <td>{{ transaction.senderId }}</td>
+        <td>{{ transaction.receiverId }}</td>
         <td>{{ transaction.amount }}</td>
         <td>{{ transaction.timestamp }}</td>
         <td>
@@ -40,10 +33,7 @@
         </td>
         <td>
           <div class="buttons">
-            <button class="primary-button">
-              <mat-icon>call</mat-icon>Call
-            </button>
-            <button class="primary-button">More</button>
+            <button class="primary-button">View Details</button>
           </div>
         </td>
       </tr>
