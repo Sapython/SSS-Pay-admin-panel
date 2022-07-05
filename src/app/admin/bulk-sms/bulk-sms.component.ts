@@ -18,16 +18,13 @@ export class BulkSMSComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.databaseService.getCustomers().then((value: any) => {
-      value.forEach((customer: any) => {
-        
-          
-        if( customer.data().phoneNumber) {
-          this.customers.push(customer.data())
-         }
+    this.databaseService.getCustomers().then((docs: any) => {
+      docs.forEach((customer: any) => {
+        if (customer.data().phoneNumber) {
+          this.customers.push(customer.data());
+        }
       });
     });
-    
   }
   openMessage() {
     const dialogRef = this.dialog.open(NewMessageComponent);

@@ -45,7 +45,8 @@ export class UserDataService {
         status: { access: 'active', isOnline: true },
         aadhaarNo: '',
         panCardNo: '',
-        gender:'unknown'
+        gender:'unknown',
+        kycStatus: 'Pending'
       };
       this.userDoc = doc(this.firestore, 'users/' + user.uid);
       await setDoc(this.userDoc, data).then(() => {
