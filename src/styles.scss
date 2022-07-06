@@ -31,11 +31,14 @@ $my-theme: mat.define-light-theme((
  color: (
    primary: $my-primary,
    accent:$my-accent,
+   foreground: $ssspay-palette,
  )
 ));
 
 @include mat.core-theme($my-theme);
 @include mat.button-theme($my-theme);
+@include mat.tabs-theme($my-theme);
+
 :root {
   --primary: #009970;
   --primary-dark: #016e51;

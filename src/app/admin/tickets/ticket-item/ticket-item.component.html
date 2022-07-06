@@ -1,0 +1,21 @@
+<div class="ticketItem">
+    <div class="contactInfo">
+        <img [src]="avatar" alt="">
+        <span>
+            <p>{{name}}</p>
+            <p>{{email}}</p>
+        </span>
+    </div>
+    <div class="details">
+        <p class="ticketNumber">{{ticketNumber}}</p>
+        <span>
+            <h5>{{ticketSummaryTitle}}</h5>
+            <p>{{ticketSummaryBody}}</p>
+            <span class="status">{{status}}</span>
+        </span>
+        <span>
+            <h5>{{timeSummary}}</h5>
+            <p>{{actualTime | date}}</p>
+        </span>
+    </div>
+</div>

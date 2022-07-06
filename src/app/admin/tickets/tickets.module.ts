@@ -11,6 +11,7 @@ import { ResolvedComponent } from './resolved/resolved.component';
 import { OngoingComponent } from './ongoing/ongoing.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
+import { TicketItemComponent } from './ticket-item/ticket-item.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatSelectModule} from '@angular/material/select';
     DetailComponent,
     UnreslovedComponent,
     ResolvedComponent,
-    OngoingComponent
+    OngoingComponent,
+    TicketItemComponent
   ],
   imports: [
     CommonModule,

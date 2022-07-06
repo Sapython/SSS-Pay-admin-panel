@@ -1,27 +1,12 @@
 <div class="table-container">
-    <table>
-        <tr>
-          <th width = 30%>Customer</th>
-          <th width = 15%>Ticket
-            number</th>
-          <th width = 40%>Ticket
-            Summary</th>
-          <th width = 15%>Time</th>
-        </tr>
-        <tr *ngFor="let item of items">
-          <td><app-ticket-widget></app-ticket-widget></td>
-          <td>0225648455</td>
-          <td>
-            <div class="container">
-                <p>{{item.status}}</p>
-                <p>{{item.status_info}}</p>
-            </div>
-            <td>
-                <div class="box">
-                    <p>{{item.date}}</p>
-                    <p>{{item.time}}</p>
-                </div>
-            </td>
-        </tr>
-      </table>
+    <app-ticket-item 
+    avatar="https://i.pravatar.cc/300"
+    name="John Doe"
+    email="mail@exmaple.com"
+    ticketNumber="Ticket #123"
+    ticketSummaryTitle="Ticket Summary Title"
+    ticketSummaryBody="Ticket Summary Body"
+    status="open"
+    *ngFor="let item of items"
+    ></app-ticket-item>
 </div>
