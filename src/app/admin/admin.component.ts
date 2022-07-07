@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataProvider } from '../providers/data.provider';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,9 +9,11 @@ import { DataProvider } from '../providers/data.provider';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(public dataProvider:DataProvider) { }
+  constructor(public dataProvider:DataProvider,public authService:AuthenticationService) { }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.authService.logout();
+  }
 }

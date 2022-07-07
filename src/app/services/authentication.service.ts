@@ -176,6 +176,7 @@ export class AuthenticationService {
   // Sign out functions start
   public async logout() {
     this.alertify.presentToast('You have been logged out.');
+    this.router.navigate(['login'])
     return await signOut(this.auth);
   }
   private setDataObserver(user: Observable<User | null>) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,9 +42,16 @@ export class DashboardComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private databaseService:DatabaseService) { }
 
   ngOnInit(): void {
+    this.databaseService.getCustomers().then((data:any)=>{
+      this.newMembers = []
+      data.forEach((element:any) => {
+        this.newMembers.push(element.data());
+      });
+      console.log(this.newMembers);
+    })
   }
 
 }

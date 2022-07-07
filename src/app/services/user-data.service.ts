@@ -35,18 +35,24 @@ export class UserDataService {
       let data: UserData = {
         userId: user.uid,
         email: user.email || '',
-        name: username || user.displayName || '',
-        photo: user.photoURL || this.getRandomImage(),
-        phone: '',
+        displayName: username || user.displayName || '',
+        photoURL: user.photoURL || this.getRandomImage(),
+        phoneNumber: '',
         dob: new Date(),
         access: {
           access: 'guest',
         },
         status: { access: 'active', isOnline: true },
-        aadhaarNo: '',
-        panCardNo: '',
-        gender:'unknown',
-        kycStatus: 'Pending'
+        aadhaarNumber: '',
+        gender:'not-specified',
+        address:'',
+        emailVerified:false,
+        tutorialCompleted:false,
+        city:'',
+        nickName:'',
+        pincode:'',
+        state:'',
+        panCardNumber:'',
       };
       this.userDoc = doc(this.firestore, 'users/' + user.uid);
       await setDoc(this.userDoc, data).then(() => {

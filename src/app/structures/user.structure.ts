@@ -1,17 +1,23 @@
 export type UserData = {
-  userId: string;
-  name: string;
-  email: string;
-  dob: Date;
-  phone?: string;
-  photo: string;
-  access: UserAccess;
-  status: UserStatus;
-  kycStatus: 'Pending' | 'Approved' | 'Rejected';
-  aadhaarNo: string;
-  panCardNo: string;
-  gender: 'male' | 'female' | 'other' | 'unknown';
-};
+  userId:string;
+  displayName:string;
+  email:string;
+  phoneNumber?:string;
+  dob:Date;
+  photoURL:string;
+  gender:'male' | 'female' | 'other' | 'not-specified';
+  emailVerified:boolean;
+  access:UserAccess;
+  status:UserStatus;
+  nickName?:string;
+  state?:string;
+  city?:string;
+  pincode?:string;
+  address:string;
+  aadhaarNumber:string;
+  panCardNumber:string;
+  tutorialCompleted:boolean;
+}
 
 export type UserStatus = {
   isOnline: boolean;

@@ -39,4 +39,7 @@ export class LoginComponent implements OnInit {
   googleSSO(){
     this.authService.signInWithGoogle();
   }
+  logout(){
+    this.authService.logout();
+  }
 }

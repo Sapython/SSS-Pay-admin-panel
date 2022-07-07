@@ -24,7 +24,7 @@
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Age</th>
+            <th>Date of Birth</th>
             <th>Gender</th>
             <th>Actions</th>
           </tr>
@@ -36,7 +36,7 @@
               <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
               {{ member.name }}
             </td>
-            <td>{{ member.dob }}</td>
+            <td>{{ member.dob | date }}</td>
             <td>{{ member.gender }}</td>
             <td>
               <div class="buttons">

@@ -27,8 +27,16 @@
     </div>
     <div *ngIf="checked && dataProvider.loggedIn" class="loader">
       <p>You are already logged in.</p>
-      <button routerLink="">
+      <button routerLink="" *ngIf="dataProvider.userData?.access?.access==='admin'">
         <p>Continue to Admin Panel</p>
+      </button>
+      <a href="https://ssspay.co.in/">
+        <button *ngIf="dataProvider.userData?.access?.access!=='admin'">
+          <p>Continue to User Panel</p>
+        </button>
+      </a>
+      <button style="margin-top:10px;" (click)="logout()">
+        Logout
       </button>
     </div>
   </div>

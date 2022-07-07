@@ -1,5 +1,5 @@
 <div class="table-container">
-    <app-ticket-item 
+    <!-- <app-ticket-item 
     avatar="https://i.pravatar.cc/300"
     name="John Doe"
     email="mail@exmaple.com"
@@ -8,5 +8,30 @@
     ticketSummaryBody="Ticket Summary Body"
     status="open"
     *ngFor="let item of items"
-    ></app-ticket-item>
+    ></app-ticket-item> -->
+    <table>
+        <tr>
+          <th width = 30%>Customer</th>
+          <th width = 15%>Ticket
+            number</th>
+          <th width = 40%>Ticket
+            Summary</th>
+          <th width = 15%>Time</th>
+        </tr>
+        <tr *ngFor="let item of items">
+          <td><app-ticket-widget></app-ticket-widget></td>
+          <td>0225648455</td>
+          <td>
+            <div class="container">
+                <p>{{this.status}}</p>
+                <p>{{this.status_info}}</p>
+            </div>
+            <td>
+                <div class="box">
+                    <p>{{this.date}}</p>
+                    <p>{{this.time}}</p>
+                </div>
+            </td>
+        </tr>
+      </table>
 </div>

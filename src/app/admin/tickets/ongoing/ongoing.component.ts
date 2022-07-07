@@ -6,9 +6,98 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./ongoing.component.scss']
 })
 export class OngoingComponent implements OnInit {
-  items = [1,2,3,4,5]
   constructor() { }
+  @Input() status:string = 'Website is Down'
+  @Input() status_info:string = 'Website is down for several hours please fix....'
+  @Input() date:string = 'Today'
+  @Input() time:string = '12:45'
+  items = [
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
 
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+    {
+      status:'Website is Down',
+      status_info: 'Website is down for several hours please fix....',
+      date:'Today',
+      time:'12:45'
+
+    },
+
+]
   ngOnInit(): void {
   }
 

@@ -21,14 +21,14 @@
             <tr *ngFor="let member of members; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td class="photo-and-name">
-                    <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
-                    {{ member.name || 'N/A' }}
+                    <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" />
+                    {{ member.displayName || 'N/A' }}
                 </td>
                 <td>{{ member.dob || 'N/A' }}</td>
                 <td>{{ member.gender || 'N/A' }}</td>
                 <td>
                     <div class="buttons">
-                        <a href="tel:{{member.phone}}" hidden #url></a>
+                        <a href="tel:{{member.phoneNumber}}" hidden #url></a>
                         <button class="primary-button" (click)="url.click()">
                             <mat-icon>call</mat-icon>Call
                         </button>
