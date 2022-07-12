@@ -1,39 +1,33 @@
-.container{
-    margin: 10px;
-    background-color: #fff;
-    color: #000;
-    font-weight: 500;
-    padding-right: 15px;
+li{
+    list-style: none;
     display: flex;
-    align-items: center;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .box{
-        display: flex;
-    }
-    &:hover{
-        background-color: var(--primary-light);
-    }
-    .info{
-        margin-top: 10px;
-    }
-    #name{
-        margin-right: 15px;
-        margin-left: -8px;
-        margin-top: 15px;
-        font-size: var(--small);
-    }
-    #message{
-        font-size: var(--xsmall);
-        margin-left: -8px;
-    }
     img{
-        clip-path: circle(30%);
-        width: 150px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
     }
-    .time{
-        font-size: var(--small);
+    p{
+        margin: 0px;
+    }
+    p:nth-child(1){
+        font-size: 12px;   
+    }
+    p:nth-child(2){
+        font-size: 11px;
+        color:grey;
+    }
+    div{
+        margin-left: 10px;
+        span{
+            display: flex;
+            justify-content: space-between;
+            p{
+                font-size: 14px;
+            }
+            time{
+                font-size: 12px;
+                color:var(--primary);
+            }
+        }
     }
 }

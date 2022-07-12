@@ -27,7 +27,7 @@
     </div>
     <div *ngIf="checked && dataProvider.loggedIn" class="loader">
       <p>You are already logged in.</p>
-      <button routerLink="" *ngIf="dataProvider.userData?.access?.access==='admin'">
+      <button routerLink="../admin" *ngIf="dataProvider.userData?.access?.access==='admin'">
         <p>Continue to Admin Panel</p>
       </button>
       <a href="https://ssspay.co.in/">

@@ -1,7 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { Chart } from 'chart.js';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Transaction } from 'src/app/structures/transaction.structure';
+import { DetailComponent } from './detail/detail.component';
 
 @Component({
   selector: 'app-wallet',
@@ -12,7 +15,7 @@ export class WalletComponent implements OnInit {
 
   // @Input() lastTransaction: number = 50200;
   @Input() Balance: number = 250200;
-  constructor(private databaseService: DatabaseService) { }
+  constructor(private databaseService: DatabaseService,private dilaog:MatDialog) { }
   transactions: Transaction[];
 
   lastTransaction: number = 50200;
@@ -51,5 +54,16 @@ export class WalletComponent implements OnInit {
     });
 
     
+  }
+  openDetailModal(transaction:any){
+    const dialog = this.dilaog.open(DetailComponent,{
+      data:transaction
+    });
+    dialog.afterClosed().subscribe((data)=>{
+      console.log(`Dialog result: ${data}`)
+    })
+  }
+  getTimeStamp(time:Timestamp){
+    return time.toDate();
   }
 }

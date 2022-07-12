@@ -6,10 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./notification-widget.component.scss']
 })
 export class NotificationWidgetComponent implements OnInit {
-  @Input() name:string = 'Satayaprakash Tarai'
-  @Input() message:string = 'Why is transferred money not showing?'
-  @Input() date:string = 'Today'
-  @Input() time:string = '12:45'
+  @Input() name:string = 'Satayaprakash Tarai';
+  @Input() message:string = 'Why is transferred money not showing?';
+  @Input() date:Date = new Date();
+  @Input() id:string = "dsf7sd8fs5oi6456nm"
+  @Input() avatar:string = 'https://i.pravatar.cc/300';
   constructor() { }
 
   ngOnInit(): void {
