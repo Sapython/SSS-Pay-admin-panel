@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { RouterModule } from '@angular/router';
-
+import {MatDialogModule} from '@angular/material/dialog'; 
 @NgModule({
   declarations: [KycComponent, DetailComponent],
   imports: [
@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     FlexLayoutModule,
     WidgetsModule,
+    MatDialogModule
   ],
 })
 export class KycModule {}

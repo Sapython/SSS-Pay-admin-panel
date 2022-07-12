@@ -1,39 +1,11 @@
 <app-header pageName="KYC"></app-header>
-<div class="f">
-  <p class="d">Total requests:</p>
-  <p class="d1">155</p>
+<div>
+  <p>Total requests: <b>{{kycRequests.length}}</b></p>
 </div>
-<div class="Parent">
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Manahari Turki</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Sanjay Dalei</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-  <div class="f1">
-    <p class="g"><span>Niranjan Senapati</span> seeks KYC approval</p>
-    <button class="primary-button" routerLink="detail">View</button>
-  </div>
-</div>
+<ul>
+  <li *ngFor="let kyc of kycRequests;let i = index;">
+    <p>{{i+1}}. <b>{{kyc.name | titlecase}}</b> seeks KYC approval</p>
+    <p [class]="kyc.status">{{kyc.status | titlecase}}</p>
+    <button class="primary-button" (click)="openDetail(kyc)">View</button>
+  </li>
+</ul>

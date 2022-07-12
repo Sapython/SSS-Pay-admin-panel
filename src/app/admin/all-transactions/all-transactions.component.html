@@ -19,7 +19,7 @@
         <td>{{ transaction.senderId }}</td>
         <td>{{ transaction.receiverId }}</td>
         <td>{{ transaction.amount }}</td>
-        <td>{{ transaction.timestamp }}</td>
+        <td>{{ transaction.timestamp.toDate() | date }}</td>
         <td>
           <span class="success" *ngIf="transaction.status === 'Success'">
             <mat-icon>done_all</mat-icon>Success

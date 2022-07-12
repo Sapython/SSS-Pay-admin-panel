@@ -7,6 +7,9 @@ import {
   query,
   limit,
   doc,
+  where,
+  collectionSnapshots,
+  updateDoc,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -72,5 +75,17 @@ export class DatabaseService {
 
   getUser(userId: string) {
     return getDoc(doc(this.fs, 'users/' + userId));
+  }
+
+  getKycRequests() {
+    return collectionSnapshots(query(collection(this.fs, 'kycRequests'),where('status','in',['pending','rejected'])));
+  }
+
+  rejectKycRequest(id:string){
+    return updateDoc(doc(this.fs,'kycRequests/'+id),{status:'rejected'});
+  }
+
+  approveKycRequest(id:string){
+    return updateDoc(doc(this.fs,'kycRequests/'+id),{status:'approved'});
   }
 }

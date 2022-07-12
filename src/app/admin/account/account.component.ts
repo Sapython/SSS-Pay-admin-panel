@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts
 export class AccountComponent implements OnInit {
   editMode: boolean = false;
 
-  constructor(private alertService: AlertsAndNotificationsService) {}
+  constructor(private alertService: AlertsAndNotificationsService,public dataProvider:DataProvider) {}
 
   ngOnInit(): void {}
 

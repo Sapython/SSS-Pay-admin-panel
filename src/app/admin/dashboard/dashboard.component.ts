@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/services/database.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,42 +10,9 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  newMembers: any[] = [
-    {
-      name: 'Sankar Tripathi',
-      age: 20,
-      gender: 'Male',
-      phone: '+918729249923',
-      photo: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-    },
-    {
-      name: 'Sankar Tripathi',
-      age: 20,
-      gender: 'Male',
-      phone: '+918729249923'
-    },
-    {
-      name: 'Sankar Tripathi',
-      age: 20,
-      gender: 'Male',
-      phone: '+918729249923',
-      photo: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-    },
-    {
-      name: 'Sankar Tripathi',
-      age: 20,
-      gender: 'Male',
-      phone: '+918729249923'
-    },
-    {
-      name: 'Sankar Tripathi',
-      age: 20,
-      gender: 'Male',
-      phone: '+918729249923'
-    },
-  ]
+  newMembers: any[] = []
 
-  constructor(private databaseService:DatabaseService) { }
+  constructor(private databaseService:DatabaseService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.databaseService.getCustomers().then((data:any)=>{
@@ -53,5 +23,29 @@ export class DashboardComponent implements OnInit {
       console.log(this.newMembers);
     })
   }
-
+  getDate(date:any){
+    if(date){
+      if (date instanceof Timestamp) {
+        return date.toDate();
+      }
+      if(typeof date == 'string'){
+        return new Date(date);
+      }
+      return date.toDate();
+    }
+  }
+  editUser(userData:any){
+    this.dialog.open(EditUserComponent,{
+      data:userData
+    })
+  }
+  lockUser(userId:string){
+    
+  }
+  removeUser(userId:string){
+    
+  }
+  promoteUser(userId:string){
+    
+  }
 }

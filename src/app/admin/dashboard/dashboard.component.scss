@@ -1,3 +1,14 @@
+@keyframes moveBackground {
+  0%{
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 100% 100%;
+  }
+  100%{
+    background-position: 0 0;
+  }
+}
 section {
   h3 {
     font-family: var(--font-one);
@@ -8,42 +19,31 @@ section {
 
   #cards {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-evenly;
     margin-bottom: 2em;
-
-    .card {
-      width: 50%;
-      margin-right: 0.5em;
-      position: relative;
-      transition: all 0.3s;
-
-      &:hover {
-        transform: scale(1.01);
+    .card{
+      padding:40px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 30px rgba(0,0,0,0.3);
+      color:white;
+      background-color: #05e8ba;
+      background-image: linear-gradient(315deg, #18b373 0%, #08e175 74%);
+      background-size: 200%;
+      animation: moveBackground 5s linear alternate;
+      h1{
+        color:white;
+        font-size: 30px;
       }
-
-      &:last-of-type {
-        margin-right: 0;
+      p{
+        font-size: 25px;
       }
-
-      img {
-        width: 100%;
-        z-index: -1;
-      }
-
-      .card-text {
-        position: absolute;
-        top: 2em;
-        left: 2em;
-
-        h3,
-        p {
-          color: var(--primary-contrast);
-        }
-
-        p {
-          font-size: var(--small);
-        }
-      }
+    }
+    .card:nth-child(1){
+      animation-delay: random(2000) + ms;
+    }
+    .card:nth-child(2){
+      animation-delay: random(2000) + ms;
     }
   }
 
@@ -53,6 +53,36 @@ section {
 
     img {
       margin-right: 1em;
+    }
+  }
+  table {
+    thead {
+      th {
+        text-align: center;
+      }
+    }
+    tbody {
+      tr {
+        td.buttons {
+          display: flex;
+          justify-content: center;
+          column-gap: 10px;
+          align-items: center;
+          button,a{
+            text-decoration: none;
+            padding:10px;
+            transition: all 0.3s ease-in;
+            &:hover{
+              color:white;
+              scale:1.2;
+              box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            }
+          }
+          i{
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
 }

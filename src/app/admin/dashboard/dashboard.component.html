@@ -2,18 +2,12 @@
 <section>
   <div id="cards">
     <div class="card" id="aeps-members-card">
-      <img src="assets/img/aeps-members-background.png" />
-      <div class="card-text">
-        <h3>AEPS MEMBERS</h3>
-        <p>608</p>
-      </div>
+      <h1>AEPS MEMBERS</h1>
+      <p>608</p>
     </div>
     <div class="card" id="aeps-balance-card">
-      <img src="assets/img/aeps-balance-background.png" />
-      <div class="card-text">
-        <h3>AEPS BALANCE</h3>
-        <p>₹90,00,000</p>
-      </div>
+      <h1>AEPS BALANCE</h1>
+      <p>₹90,00,000</p>
     </div>
   </div>
   <div>
@@ -33,18 +27,19 @@
           <tr *ngFor="let member of newMembers; let i = index">
             <td>{{ i + 1 }}</td>
             <td class="photo-and-name">
-              <img [src]="member.photo || 'assets/img/circle-user-solid.svg'" />
-              {{ member.name }}
+              <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" referrerpolicy="no-referrer" />
+              {{ member?.displayName | titlecase }}
             </td>
-            <td>{{ member.dob | date }}</td>
-            <td>{{ member.gender }}</td>
-            <td>
-              <div class="buttons">
-                <button class="primary-button">
-                  <mat-icon>call</mat-icon>Call
-                </button>
-                <button class="primary-button">More</button>
-              </div>
+            <td>{{ getDate(member?.dob) | date }}</td>
+            <td>{{ member?.gender || 'not-specified' | titlecase }}</td>
+            <td class="buttons">
+              <a uk-tooltip="title: Call" href="tel:{{member.phoneNumber}}" class="primary-button">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+              <button (click)="editUser(member)" uk-tooltip="title: Edit User" class="primary-button"><i class="fa-solid fa-user-pen"></i></button>
+              <button (click)="lockUser(member.userId)" uk-tooltip="title: Lock User" class="primary-button"><i class="fa-solid fa-user-lock"></i></button>
+              <button (click)="removeUser(member.userId)" uk-tooltip="title: Remove User" class="primary-button"><i class="fa-solid fa-user-large-slash"></i></button>
+              <button (click)="promoteUser(member.userId)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-user-tag"></i></button>
             </td>
           </tr>
         </tbody>

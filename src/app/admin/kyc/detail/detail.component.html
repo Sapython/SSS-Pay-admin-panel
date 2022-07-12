@@ -1,14 +1,15 @@
-<app-header pageName="KYC"></app-header>
-<div class="p">
-  <div class ="p1"></div>
-  <div class ="p2">
-    <p>Name        :         Sanjay Dalei</p>
-    <p>Aadhaar number  :   4567 5454 5465</p>
-    <p>Aadhaar card photo : </p>
-    <p class="p21"></p>
-    <p> Pan Card : HJJJH5466A</p>
-    <p>Pan Card Photo:</p>
-    <p class ="p22"></p>
+<h2 mat-dialog-title>KYC Detail <i mat-dialog-close class="fa-solid fa-xmark" style="float:right"></i></h2>
+<img src="" alt="">
+<div class="details">
+  <p>Name: <b>{{name}}</b></p>
+  <p>Aadhaar Number: <b>{{aadhaarNumber}}</b></p>
+  <p>Pan Card: <b>{{panCardNumber}}</b></p>
+  <div uk-lightbox>
+    <a class="uk-button uk-button-default" [href]="panImage" data-alt="Image">Pan Image</a>
   </div>
-  <div class = "p3"></div>
+  <div uk-lightbox>
+    <a class="uk-button uk-button-default" [href]="aadhaarImage" data-alt="Image">Aadhaar Image</a>
+  </div>
 </div>
+<button mat-dialog-close="Approve" >Approve</button>
+<button class="deny" mat-dialog-close="Deny">Deny</button>
