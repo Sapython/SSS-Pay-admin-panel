@@ -1,13 +1,8 @@
-<div class="container">
-    <div class="box">
-        <img src="assets/dummy.jpg" alt="">
-        <div class="info">
-            <p id="name">{{name}}</p>
-            <p id="message">{{message}}</p>
-        </div>
+<li>
+    <img [src]="avatar">
+    <div>
+        <span><p>{{name}}</p><time>{{date | date:'short'}}</time> </span>
+        <p>{{id}}</p>
+        <p>{{message}}</p>
     </div>
-    <div class="time">
-        <p>{{date}}</p>
-        <p>{{time}}</p>
-    </div>
-</div>
+</li>

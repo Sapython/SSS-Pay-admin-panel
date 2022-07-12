@@ -1,1 +1,9 @@
-<p>detail works!</p>
+<h2>Wallet Transaction Detail</h2>
+<div>
+    <p>Retailer Name: {{transaction.retailerName}}</p>
+    <p>Amount: {{transaction.amount}}</p>
+    <p>Date: {{transaction.date | date:'long'}}</p> 
+    <p>Status: <span class="transaction.status">{{transaction.status | titlecase}}</span></p>
+    <p>Transaction Id: {{transaction.transactionId}}</p>
+    <p>Total Wallet Money: {{transaction.walletMoney}}</p>
+</div>
