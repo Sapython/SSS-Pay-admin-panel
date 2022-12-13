@@ -4,9 +4,9 @@ import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
-    path:'',
-    redirectTo:'login',
-    pathMatch:'full',
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
   {
     path: 'login',
@@ -28,11 +28,12 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'admin',
+    path: ':panel',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
-      canActivate:[AdminGuard]
+    canActivate: [AdminGuard],
   },
+  { path: 'r', loadChildren: () => import('./redirect/redirect.module').then(m => m.RedirectModule) }
 ];
 
 @NgModule({

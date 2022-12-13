@@ -5,6 +5,8 @@ import { WalletRoutingModule } from './wallet-routing.module';
 import { WalletComponent } from './wallet.component';
 import { DetailComponent } from './detail/detail.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
   imports: [
     CommonModule,
     WalletRoutingModule,
-    WidgetsModule
+    WidgetsModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class WalletModule { }

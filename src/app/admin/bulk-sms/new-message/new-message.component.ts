@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { map, startWith } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-new-message',
   templateUrl: './new-message.component.html',
@@ -70,6 +71,6 @@ export class NewMessageComponent implements OnInit {
     });
   }
   submitNewMessage() {
-    console.log(this.newMessage.value);
+    alert('Functionality currently disabled because of testing mode.')
   }
 }

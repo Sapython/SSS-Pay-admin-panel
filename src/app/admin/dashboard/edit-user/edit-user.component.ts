@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { DataProvider } from 'src/app/providers/data.provider';
 
@@ -9,19 +10,19 @@ import { DataProvider } from 'src/app/providers/data.provider';
   styleUrls: ['./edit-user.component.scss'],
 })
 export class EditUserComponent implements OnInit {
-  constructor(public dataProvider:DataProvider) {}
+  constructor(public dataProvider:DataProvider,@Inject(MAT_DIALOG_DATA) public data: any) {}
   userForm: FormGroup = new FormGroup({
-    displayName: new FormControl(this.dataProvider.userData?.displayName),
-    email: new FormControl(this.dataProvider.userData?.email),
-    phoneNumber: new FormControl(this.dataProvider.userData?.phoneNumber),
-    dob: new FormControl(this.dataProvider.userData?.dob),
+    displayName: new FormControl(this.data?.displayName),
+    email: new FormControl(this.data?.email),
+    phoneNumber: new FormControl(this.data?.phoneNumber),
+    dob: new FormControl(this.data?.dob),
     photo: new FormControl(''),
-    gender:new FormControl(this.dataProvider.userData?.gender),
-    access:new FormControl(this.dataProvider.userData?.access.access),
-    state:new FormControl(this.dataProvider.userData?.state),
-    city:new FormControl(this.dataProvider.userData?.city),
-    address:new FormControl(this.dataProvider.userData?.address),
-    pincode:new FormControl(this.dataProvider.userData?.pincode),
+    gender:new FormControl(this.data?.gender),
+    access:new FormControl(this.data?.access.access),
+    state:new FormControl(this.data?.state),
+    city:new FormControl(this.data?.city),
+    address:new FormControl(this.data?.address),
+    pincode:new FormControl(this.data?.pincode),
   });
   states = [
     {

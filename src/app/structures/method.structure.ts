@@ -1,5 +1,3 @@
-import { type } from "os"
-
 export type PageSetting = {
     blur: boolean;
     lastRedirect: string;

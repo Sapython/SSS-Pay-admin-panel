@@ -6,6 +6,13 @@ import { ReportsComponent } from './reports.component';
 import { ViewComponent } from './view/view.component';
 import { DownloadComponent } from './download/download.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +24,15 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
   imports: [
     CommonModule,
     ReportsRoutingModule,
-    WidgetsModule
+    WidgetsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatButtonModule
   ]
 })
 export class ReportsModule { }

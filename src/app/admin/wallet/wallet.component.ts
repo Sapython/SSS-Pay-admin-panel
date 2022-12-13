@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Chart } from 'chart.js';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Transaction } from 'src/app/structures/transaction.structure';
 import { DetailComponent } from './detail/detail.component';
@@ -15,7 +16,7 @@ export class WalletComponent implements OnInit {
 
   // @Input() lastTransaction: number = 50200;
   @Input() Balance: number = 250200;
-  constructor(private databaseService: DatabaseService,private dilaog:MatDialog) { }
+  constructor(private databaseService: DatabaseService,private dilaog:MatDialog,private dataProvider:DataProvider) { }
   transactions: Transaction[];
 
   lastTransaction: number = 50200;
@@ -45,13 +46,26 @@ export class WalletComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.databaseService.getFirstTransactions(4).then((docs) => {
-      this.transactions = [];
-      docs.forEach((doc) => {
-        const transaction = { transactionId: doc.id, ...doc.data() } as Transaction;
-        this.transactions.push(transaction);
-      });
-    });
+    this.databaseService.getTransactions(this.dataProvider.userData?.userId || '').then((data)=>{
+        this.transactions = [];
+        data.forEach((doc:any)=>{
+          const transaction:Transaction = { id: doc.id, ...doc.data() };
+          this.transactions.push(transaction);
+        })
+        // get last week transactions amount
+        const lastWeekTransactions = this.transactions.filter((transaction)=>{
+          const date = transaction.date.toDate();
+          const today = new Date();
+          const diff = today.getTime() - date.getTime();
+          const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+          return diffDays <= 7;
+        })
+        this.lastTransaction = lastWeekTransactions.reduce((acc,transaction)=>{
+          return acc + transaction.amount;
+        },0)
+        // get total balance
+        this.Balance = this.dataProvider.wallet.balance;
+    })
 
     
   }

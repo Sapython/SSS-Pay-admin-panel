@@ -53,16 +53,33 @@ export class UserDataService {
         pincode:'',
         state:'',
         panCardNumber:'',
+        onboardingDone:false,
+        selfieImage: '',
+        shopImage: '',
+        kycStatus:'incomplete',
+        qrCode:'',
+        memberAssigned:false,
+        onboardingSteps: {
+          phoneDobDone: false,
+          panDone: false,
+          locationDone: false,
+          aadhaarDone: false,
+          photosDone: false,
+        },
+        payoutDetailsCompleted:false,
+        primaryPayoutAccount:null,
+        payoutFundAccount:[],
       };
       this.userDoc = doc(this.firestore, 'users/' + user.uid);
       await setDoc(this.userDoc, data).then(() => {
         this.alertify.presentToast('Welcome ' + username || user.displayName + ' to SSSPay Admin Panel 😁');
-        this.router.navigate(['admin/dashboard']);
+        this.router.navigate(['admin/account']);
       });
       this.dataProvider.pageSetting.blur = false;
     } else {
       this.alertify.presentToast('Welcome back ' + user.displayName + ' to SSSPay Admin Panel 😁');
-      this.router.navigate(['admin/dashboard']);
+      this.router.navigate(['admin/account']);
+      this.dataProvider.pageSetting.blur = false;
     }
   }
   getRandomImage(): string {

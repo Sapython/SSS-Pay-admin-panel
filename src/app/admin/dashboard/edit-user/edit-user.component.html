@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Edit Profile</h2>
 
 <mat-dialog-content class="mat-typography">
-    <img [src]="image.value ? image.value : dataProvider.userData?.photoURL" alt="">
+    <img [src]="image.value ? image.value : this.data?.photoURL" alt="">
     <input type="file" hidden (change)="this.userForm.value.photo = $event" #image>
     <form [formGroup]="userForm">
         <mat-form-field appearance="fill">

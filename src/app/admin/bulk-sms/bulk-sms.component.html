@@ -5,7 +5,7 @@
         <div class="inner-box">
             <button>Select Member type</button>
             <div class="select">
-                <p>Select All Members<input type="checkbox" id="round"></p>
+                <p>Select All Members<input type="checkbox" (change)="selectAll()" id="round"></p>
             </div>
         </div>
         <button class="new_message" (click)="openMessage()">
@@ -23,6 +23,7 @@
             *ngFor="let customer of customers"
             [name]="customer.displayName"
             [image]="customer.photoURL"
+            [selected]="customer.selected"
             ></app-sms-widget>
         </div>
     </div>

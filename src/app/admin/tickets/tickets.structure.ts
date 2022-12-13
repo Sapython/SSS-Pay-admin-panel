@@ -1,11 +1,16 @@
 export type Ticket = {
+    id?: string;
     avatar:string;
-    name:string;
+    displayName:string;
     email:string;
-    ticketNumber:string;
-    ticketSummaryTitle:string;
-    ticketSummaryBody:string;
-    timeSummary:string;
-    actualTime:Date;
-    status:'open' | 'closed' | 'in-progress';
+    userId:string;
+    status:'ongoing' | 'unresolved' | 'resolved';
+    problem:Problem
+    date:any;
+}
+
+type Problem = {
+    subject:string;
+    description:string;
+    log:any;
 }

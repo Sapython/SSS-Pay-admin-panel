@@ -4,14 +4,17 @@
     <div id="top">
       <div id="center">
         <div id="profile-photo">
-          <img [src]="dataProvider.userData?.photoURL || 'assets/img/circle-user-solid.svg'" alt="Profile Photo" />
+          <img [src]="dataProvider.userData?.photoURL || 'assets/img/circle-user-solid.svg'" referrerpolicy="no-referrer" alt="Profile Photo" />
         </div>
       </div>
     </div>
     <div id="container">
-      <div class="data-field">
-        <h4>Name</h4>
-        <p>{{dataProvider.userData?.displayName || 'N/A' | titlecase}}</p>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Name</h4>
+          <p>{{dataProvider.userData?.displayName || 'N/A' | titlecase}}</p>
+        </div>
+        <button mat-flat-button color="primary" (click)="checkOnboardingStatus()">Check Onboarding Status</button>
       </div>
       <div class="flex-data-fields">
         <div class="data-field">
@@ -40,7 +43,7 @@
       <div class="flex-data-fields">
         <div class="data-field">
           <h4>Pincode</h4>
-          <p>{{dataProvider.userData?.pincode || 'N/A' | titlecase}}</p>
+          <p>{{dataProvider.userData?.pincode || 'N/A'}}</p>
         </div>
         <div class="data-field">
           <h4>Country</h4>
@@ -50,7 +53,7 @@
       <div class="flex-data-fields">
         <div class="data-field">
           <h4>Date of Birth</h4>
-          <p>{{(dataProvider.userData?.dob | date ) || 'N/A'}}</p>
+          <p>{{(dataProvider.userData?.dob.toDate() | date ) || 'N/A'}}</p>
         </div>
         <div class="data-field">
           <h4>Gender</h4>
@@ -64,7 +67,7 @@
         </div>
         <div class="data-field">
           <h4>PAN No.</h4>
-          <p>{{dataProvider.userData?.panCardNumber || 'N/A' | titlecase}}</p>
+          <p>{{dataProvider.userData?.panCardNumber || 'N/A'}}</p>
         </div>
       </div>
       <div id="buttons">
@@ -156,4 +159,5 @@
       </div>
     </form>
   </ng-template>
+  <a hidden [href]="webLink" #webRef target="_blank"></a>
 </section>

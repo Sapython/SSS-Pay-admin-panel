@@ -6,6 +6,7 @@ import { AccountComponent } from './account.component';
 import { EditComponent } from './edit/edit.component';
 import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     AccountRoutingModule,
     WidgetsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class AccountModule { }

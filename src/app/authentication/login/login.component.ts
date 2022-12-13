@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
     ]),
   });
   checked:boolean = false;
+  supervisors:any[] = [
+    "superDistributor",
+    "masterDistributor",
+    "distributor",
+    "retailer"
+  ];
   constructor(private authService:AuthenticationService,private alertify: AlertsAndNotificationsService,public dataProvider:DataProvider) { }
 
   ngOnInit(): void {

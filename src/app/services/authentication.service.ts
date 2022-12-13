@@ -175,21 +175,30 @@ export class AuthenticationService {
   // Sign in functions end
   // Sign out functions start
   public async logout() {
-    this.alertify.presentToast('You have been logged out.');
+    if (confirm('Are you sure you want to logout?')){
+      this.alertify.presentToast('You have been logged out.');
     this.router.navigate(['login'])
     return await signOut(this.auth);
+    }
   }
   private setDataObserver(user: Observable<User | null>) {
     if (user) {
       user.subscribe((u) => {
         if (u) {
           this.dataProvider.loggedIn = true;
+          this.dataProvider.userInstance = u;
           this.dataProvider.gettingUserData = true;
           this.dataProvider.userID = u.uid;
           this.userDoc = doc(this.firestore, 'users/' + u.uid);
           if (this.userServerSubscription != undefined) {
             this.userServerSubscription.unsubscribe();
           }
+          docData(
+            doc(this.firestore, 'users/' + u.uid + '/wallet/wallet')
+          ).subscribe((walletData: any) => {
+            this.dataProvider.wallet = walletData;
+            console.log('Wallet Data', walletData);
+          });
           if (u.isAnonymous) {
             this.dataProvider.gettingUserData = false;
           } else {

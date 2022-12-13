@@ -21,7 +21,7 @@ export class BulkSMSComponent implements OnInit {
     this.databaseService.getCustomers().then((docs: any) => {
       docs.forEach((customer: any) => {
         if (customer.data().phoneNumber) {
-          this.customers.push(customer.data());
+          this.customers.push({...customer.data(),selected:false});
         }
       });
     });
@@ -33,4 +33,10 @@ export class BulkSMSComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  selectAll(){
+    this.customers.forEach((customer:any)=>{
+      customer.selected = true;
+    })
+  }
+  
 }

@@ -1,0 +1,54 @@
+<app-header pageName="Charges"></app-header>
+<div>
+    <h3>Charges List</h3>
+    <button mat-raised-button color="primary" (click)="addCommission()">Add <mat-icon>add</mat-icon></button>
+</div>
+<table [cellSpacing]="0">
+    <thead>
+        <tr>
+            <th>Sr. No</th>
+            <th>Service Name</th>
+            <th>Minimum</th>
+            <th>Maximum</th>
+            <th>Service</th>
+            <th>Type</th>
+            <th>Last updated</th>
+            <th>Admin</th>
+            <th>Super Distributor</th>
+            <th>Master Distributor</th>
+            <th>Distributor</th>
+            <th>Retailer</th>
+            <th>Actions</th>
+        </tr>
+        <br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let commission of charges;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{commission.serviceName | titlecase}}</td>
+            <td>{{commission.minimumAmount || 'N/A'}}</td>
+            <td>{{commission.maximumAmount || 'N/A'}}</td>
+            <td>{{commission.service || 'N/A' | titlecase}}</td>
+            <td>{{commission.type | titlecase}}</td>
+            <td>{{commission.updateDate.toDate() | date }}</td>
+            <td>{{commission.admin || 'N/A'}}</td>
+            <td>{{commission.superDistributor || 'N/A'}}</td>
+            <td>{{commission.masterDistributor || 'N/A'}}</td>
+            <td>{{commission.distributor || 'N/A'}}</td>
+            <td>{{commission.retailer || 'N/A'}}</td>
+            <td>
+                <!-- <button mat-flat-button color="primary"><mat-icon>visibility</mat-icon></button> -->
+                <button mat-flat-button color="primary" (click)="editCommission(commission)"><mat-icon>edit</mat-icon></button>
+                <button mat-flat-button color="primary" (click)="deleteCommission(commission)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+    </tbody>
+    <!-- <tfoot>
+        <tr>
+            <td colspan="6">
+                <button>Add New Commission</button>
+                <button>Refresh</button>
+            </td>
+        </tr>
+    </tfoot> -->
+</table>

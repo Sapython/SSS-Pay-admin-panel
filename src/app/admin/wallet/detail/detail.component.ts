@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Transaction } from 'src/app/structures/transaction.structure';
 
 @Component({
   selector: 'app-detail',
@@ -8,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DetailComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public transaction: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public transaction: Transaction) { }
 
   ngOnInit(): void {
   }

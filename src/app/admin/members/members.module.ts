@@ -16,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import { MatButtonModule } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,12 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSelectModule,
     MatButtonModule,
-    MatSelectModule
+    MatNativeDateModule,
   ]
 })
 export class MembersModule { }

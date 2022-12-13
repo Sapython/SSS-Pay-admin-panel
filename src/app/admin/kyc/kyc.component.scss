@@ -24,5 +24,11 @@ ul{
     p.pending{
       color:var(--warning);
     }
+    p.approved{
+      color:var(--success)
+    }
+    p.incomplete{
+      color:orange;
+    }
   }
 }

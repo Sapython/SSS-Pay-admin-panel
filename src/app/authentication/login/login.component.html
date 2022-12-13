@@ -11,7 +11,7 @@
         <input type="password" formControlName="password" placeholder="Password" />
       </div>
       <div class="authentication">
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
         <button (click)="googleSSO()" type="button" class="google"><img src="../../../assets/google.svg">
           <p>Continue with google</p>
         </button>
@@ -30,11 +30,12 @@
       <button routerLink="../admin" *ngIf="dataProvider.userData?.access?.access==='admin'">
         <p>Continue to Admin Panel</p>
       </button>
-      <a href="https://ssspay.co.in/">
-        <button *ngIf="dataProvider.userData?.access?.access!=='admin'">
-          <p>Continue to User Panel</p>
-        </button>
-      </a>
+      <button *ngIf="dataProvider.userData?.access?.access==='guest'" routerLink="../user">
+        <p>Continue to User Panel</p>
+      </button>
+      <button *ngIf="supervisors.includes(dataProvider.userData?.access?.access)" routerLink="../distributor">
+        <p>Continue to {{dataProvider.userData?.access?.access | titlecase}} Panel</p>
+      </button>
       <button style="margin-top:10px;" (click)="logout()">
         Logout
       </button>

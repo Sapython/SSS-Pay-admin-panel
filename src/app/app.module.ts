@@ -22,6 +22,7 @@ import { AlertsAndNotificationsService } from './services/uiService/alerts-and-n
 import { DataProvider } from './providers/data.provider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { connectFirestoreEmulator } from '@firebase/firestore';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => {

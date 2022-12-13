@@ -15,25 +15,31 @@
     </thead>
     <tbody>
       <tr *ngFor="let transaction of transactions">
-        <td>{{ transaction.transactionId }}</td>
-        <td>{{ transaction.senderId }}</td>
-        <td>{{ transaction.receiverId }}</td>
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.extraData.customerId || 'N/A' }}</td>
+        <td>{{ transaction.receiver }}</td>
         <td>{{ transaction.amount }}</td>
-        <td>{{ transaction.timestamp.toDate() | date }}</td>
+        <td>{{ transaction.date.toDate() | date }}</td>
         <td>
-          <span class="success" *ngIf="transaction.status === 'Success'">
+          <span class="success" *ngIf="transaction.status === 'success'">
             <mat-icon>done_all</mat-icon>Success
           </span>
-          <span class="pending" *ngIf="transaction.status === 'Pending'">
+          <span class="pending" *ngIf="transaction.status === 'pending'">
             <mat-icon>update</mat-icon>Pending
           </span>
-          <span class="failed" *ngIf="transaction.status === 'Failed'">
+          <span class="pending" *ngIf="transaction.status === 'started'">
+            <mat-icon>update</mat-icon>Started
+          </span>
+          <span class="pending" *ngIf="transaction.status === 'unknown'">
+            <mat-icon>update</mat-icon>Unknown
+          </span>
+          <span class="failed" *ngIf="transaction.status === 'error'">
             <mat-icon>dangerous</mat-icon>Failed
           </span>
         </td>
         <td>
           <div class="buttons">
-            <button class="primary-button">View Details</button>
+            <button class="primary-button" (click)="viewDetails(transaction)">View Details</button>
           </div>
         </td>
       </tr>

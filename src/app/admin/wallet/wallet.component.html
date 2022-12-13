@@ -27,9 +27,9 @@
         </tr>
        
         <tr *ngFor="let transaction of transactions">
-          <td>{{transaction.transactionId}}</td>
+          <td>{{transaction.id}}</td>
           <td>₹ {{transaction.amount}}</td>
-          <td>{{transaction.timestamp.toDate() | date:'short'}}</td>
+          <td>{{transaction.date.toDate() | date:'short'}}</td>
           <td>{{transaction.status}}</td>
           <td><button (click)="openDetailModal(transaction)">Details</button></td>
         </tr>

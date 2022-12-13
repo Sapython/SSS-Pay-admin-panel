@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { PageSetting } from '../structures/method.structure';
 import { UserData } from '../structures/user.structure';
 
@@ -13,10 +14,13 @@ export class DataProvider{
         messageType:'Error'
     };
     public userData:UserData | undefined;
+    public wallet:any;
     public loggedIn:boolean = false;
     public ingredientsCopy:any;
     public gettingUserData:boolean = true;
     public userID:string | undefined;
+    public userInstance:User;
+    public page:string = 'user';
     public verifyEmail:boolean | undefined;
     public reloadPage:boolean = false;
     public checkoutData:any;

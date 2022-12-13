@@ -4,8 +4,8 @@
 </div>
 <ul>
   <li *ngFor="let kyc of kycRequests;let i = index;">
-    <p>{{i+1}}. <b>{{kyc.name | titlecase}}</b> seeks KYC approval</p>
-    <p [class]="kyc.status">{{kyc.status | titlecase}}</p>
-    <button class="primary-button" (click)="openDetail(kyc)">View</button>
+    <p>{{i+1}}. <b>{{kyc.displayName | titlecase}}</b> seeks KYC approval</p>
+    <p [class]="kyc.kycStatus">{{kyc.kycStatus | titlecase}}</p>
+    <button class="primary-button" *ngIf="kyc.kycStatus!='incomplete'" (click)="openDetail(kyc)">View</button>
   </li>
 </ul>

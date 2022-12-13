@@ -10,6 +10,12 @@ import {
   where,
   collectionSnapshots,
   updateDoc,
+  deleteDoc,
+  addDoc,
+  DocumentSnapshot,
+  startAfter,
+  endAt,
+  limitToLast,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -18,6 +24,7 @@ import {
   uploadBytesResumable,
 } from '@angular/fire/storage';
 import { getDoc } from '@firebase/firestore';
+import { Ticket } from '../admin/tickets/tickets.structure';
 
 @Injectable({
   providedIn: 'root',
@@ -53,22 +60,46 @@ export class DatabaseService {
   }
 
   getAgents() {
-    // return getDocs(query(collection(this.fs,'users'),where('access.access','==','agent')));
-    return getDocs(collection(this.fs, 'users'));
+    return getDocs(query(collection(this.fs,'users'),where('access.access','in',['superDistributor','masterDistributor','distributor','retailer'])));
+    // return getDocs(collection(this.fs, 'users'));
   }
 
-  getTransactions() {
+  getTransactions(userId:string) {
     return getDocs(
-      query(collection(this.fs, 'transactions'), orderBy('timestamp', 'desc'))
+      query(collection(this.fs, 'users/'+userId+'/transaction'), orderBy('date', 'desc'))
     );
   }
 
+  getAllTransactions() {
+    return getDocs(query(collection(this.fs, 'transaction'),orderBy('date', 'desc'),));
+  }
+
   getFirstTransactions(length: number) {
+    // alert('Getting first recipes')
+    return getDocs(
+      query(collection(this.fs, 'transaction'), orderBy('date', 'desc'), limit(length))
+    );
+  }
+  getNextTransactions(length: number, lastDocument: DocumentSnapshot) {
+    // alert('Getting next recipes')
     return getDocs(
       query(
-        collection(this.fs, 'transactions'),
-        orderBy('timestamp', 'desc'),
-        limit(length)
+        collection(this.fs, 'transaction'),
+        orderBy('date', 'desc'),
+        limit(length),
+        startAfter(lastDocument)
+      )
+    );
+  }
+
+  getPreviousTransactions(length: number, firstDocument: DocumentSnapshot) {
+    // alert('Getting previous recipes')
+    return getDocs(
+      query(
+        collection(this.fs, 'transaction'),
+        orderBy('date', 'desc'),
+        limitToLast(length),
+        endAt(firstDocument)
       )
     );
   }
@@ -77,15 +108,69 @@ export class DatabaseService {
     return getDoc(doc(this.fs, 'users/' + userId));
   }
 
+  getAadhaarInfo(userId:string){ 
+    return getDoc(doc(this.fs,`users/${userId}/aadhaar/data`));
+  }
+
+  getPanInfo(userId:string){
+    return getDoc(doc(this.fs,`users/${userId}/pan/data`));
+  }
+
   getKycRequests() {
-    return collectionSnapshots(query(collection(this.fs, 'kycRequests'),where('status','in',['pending','rejected'])));
+    return collectionSnapshots(query(collection(this.fs, 'users'),where('kycStatus','in',['pending','rejected','approved'])));
   }
 
-  rejectKycRequest(id:string){
-    return updateDoc(doc(this.fs,'kycRequests/'+id),{status:'rejected'});
+  rejectKycRequest(userId:string){
+    return updateDoc(doc(this.fs,'users/'+userId),{kycStatus:'rejected'});
   }
 
-  approveKycRequest(id:string){
-    return updateDoc(doc(this.fs,'kycRequests/'+id),{status:'approved'});
+  approveKycRequest(userId:string){
+    return updateDoc(doc(this.fs,'users/'+userId),{kycStatus:'approved'});
+  }
+  // Commissions
+  getCommissions() {
+    return getDocs(collection(this.fs, 'commissions'));
+  }
+  getCommission(id: string) {
+    return getDoc(doc(this.fs, 'commissions/' + id));
+  }
+  addCommission(commission: any) {
+    return addDoc(collection(this.fs,'commissions'), commission);
+  }
+  updateCommission(id: string, commission: any) {
+    return updateDoc(doc(this.fs, 'commissions/' + id), commission);
+  }
+  deleteCommission(id: string) {
+    return deleteDoc(doc(this.fs, 'commissions/' + id));
+  }
+  // Charge
+  getCharges() {
+    return getDocs(collection(this.fs, 'charges'));
+  }
+  getCharge(id: string) {
+    return getDoc(doc(this.fs, 'charges/' + id));
+  }
+  addCharge(commission: any) {
+    return addDoc(collection(this.fs,'charges'), commission);
+  }
+  updateCharge(id: string, commission: any) {
+    return updateDoc(doc(this.fs, 'charges/' + id), commission);
+  }
+  deleteCharge(id: string) {
+    return deleteDoc(doc(this.fs, 'charges/' + id));
+  }
+
+  // tickets
+
+  addTicket(ticket: Ticket) {
+    return addDoc(collection(this.fs,'tickets'), ticket);
+  }
+
+  getTickets(type:'ongoing' | 'unresolved' | 'resolved') {
+    return collectionSnapshots(query(collection(this.fs, 'tickets'),orderBy('date', 'desc'),where('status', '==', type)));
+  }
+
+  setStatus(id:string,status:'ongoing' | 'unresolved' | 'resolved'){
+    return updateDoc(doc(this.fs,'tickets/'+id),{status:status});
   }
 }

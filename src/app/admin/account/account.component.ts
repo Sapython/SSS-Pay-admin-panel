@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataProvider } from 'src/app/providers/data.provider';
+import { ServerService } from 'src/app/services/server.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
+  @ViewChild('webRef') webRef:any;
   editMode: boolean = false;
-
-  constructor(private alertService: AlertsAndNotificationsService,public dataProvider:DataProvider) {}
+  webLink:string = '';
+  constructor(private alertService: AlertsAndNotificationsService,public dataProvider:DataProvider,private serverService:ServerService) {}
 
   ngOnInit(): void {}
 
@@ -58,5 +60,28 @@ export class AccountComponent implements OnInit {
     this.editMode = false;
     document.documentElement.style.setProperty('--post-background', '');
     (document.getElementById('photo-input') as HTMLInputElement).value = '';
+  }
+
+  checkOnboardingStatus(){
+    this.serverService.getAepsKycStatus().then((res:any) => {
+      console.log(res)
+      if (res.message){
+        this.alertService.presentToast(res.message);
+        if (res.response_code==0){
+          this.serverService.onboardingForAepsKyc().then((onboardingRes:any) => {
+            console.log("onboardingForAepsKyc",onboardingRes)
+            if (onboardingRes.onboard_pending==1){
+              this.alertService.presentToast("Your KYC is pending. Please complete your KYC to continue");
+                 this.webLink = onboardingRes.redirecturl;
+                if(this.webRef){
+                  console.log("webRef",this.webRef);
+                  this.webRef.nativeElement.href = this.webLink;
+                  this.webRef.nativeElement.click()
+                }              
+            }
+          })
+        }
+      }
+    })
   }
 }

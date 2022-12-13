@@ -1,0 +1,55 @@
+<h3>Add Commission</h3>
+<form [formGroup]="addCommissionForm">
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Commission Name</mat-label>
+            <input formControlName="serviceName" matInput placeholder="Name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Minimum Amount</mat-label>
+            <input formControlName="minimumAmount" matInput placeholder="Amount" [min]="0" [max]="500000" #min type="number">
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Maximum Amount</mat-label>
+            <input formControlName="maximumAmount" matInput placeholder="Amount" [min]="min.value" [max]="5000000" type="number">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Commission Type</mat-label>
+            <mat-select formControlName="type" #type (selectionChange)="changeControlForCommission(type.value)">
+                <mat-option *ngFor="let commissionType of commissionTypes" [value]="commissionType">
+                    {{commissionType | titlecase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Services</mat-label>
+            <mat-select formControlName="service">
+                <mat-option *ngFor="let service of services" [value]="service.value">
+                    {{service.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Access Level</mat-label>
+            <mat-select multiple formControlName="accessLevels" (selectionChange)="setControls($event)">
+                <mat-option *ngFor="let accessLevel of accessLevels" [value]="accessLevel">
+                    {{accessLevel | titlecase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <div class="grid">
+        <mat-form-field appearance="standard" *ngFor="let item of accessAmountControls;let i = index;">
+            <mat-label>{{item.name | titlecase}}</mat-label>
+            <input [formControlName]="item.name" matInput placeholder="Amount"
+                [max]="type.value == 'percentage' ? 100 : 500000" type="number">
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" [mat-dialog-close]="addCommissionForm.value" [disabled]="!addCommissionForm.valid" (click)="submit()">Submit</button>
+</form>

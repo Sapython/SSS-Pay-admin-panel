@@ -12,7 +12,13 @@ import { OngoingComponent } from './ongoing/ongoing.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { AddTicketComponent } from './add-ticket/add-ticket.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu'; 
 
 @NgModule({
   declarations: [
@@ -21,15 +27,23 @@ import { TicketItemComponent } from './ticket-item/ticket-item.component';
     UnreslovedComponent,
     ResolvedComponent,
     OngoingComponent,
-    TicketItemComponent
+    TicketItemComponent,
+    AddTicketComponent
   ],
   imports: [
     CommonModule,
     TicketsRoutingModule,
     WidgetsModule,
     MatTabsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class TicketsModule { }

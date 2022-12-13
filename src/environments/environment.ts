@@ -12,6 +12,8 @@ export const environment = {
     messagingSenderId: '1044964269542',
     measurementId: 'G-QL9TMZGB6C',
   },
+  // serverBaseUrl: 'http://localhost:8081',
+  serverBaseUrl: 'https://ssspay-proxy-server-76zqkqboia-em.a.run.app',
   production: false
 };
 

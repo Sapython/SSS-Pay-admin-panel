@@ -2,7 +2,7 @@
   <div id="sidebar-container">
     <aside>
       <div>
-        <img src="assets/img/logo.png" alt="SSS Pay" />
+        <img src="assets/img/logo.png" referrerpolicy="no-referrer" alt="SSS Pay" />
         <h1>SSS PAY</h1>
       </div>
       <ul>
@@ -12,12 +12,12 @@
             {{dataProvider.userData?.displayName}}
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/dashboard" routerLinkActive="active">
             <mat-icon aria-hidden>dashboard</mat-icon>Dashboard
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/allTransactions" routerLinkActive="active">
             <mat-icon aria-hidden>receipt_long</mat-icon>All Transactions
           </a>
@@ -27,37 +27,42 @@
             <mat-icon aria-hidden>wallet</mat-icon>Wallet
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/members" routerLinkActive="active">
             <mat-icon aria-hidden>group</mat-icon>Members
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/kyc" routerLinkActive="active">
             <mat-icon aria-hidden>how_to_reg</mat-icon>KYC
           </a>
         </li>
-        <li>
-          <a routerLink="/admin/manage" routerLinkActive="active">
-            <mat-icon aria-hidden>manage_accounts</mat-icon>Manage
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/commission" routerLinkActive="active">
+            <mat-icon aria-hidden>currency_exchange</mat-icon>Commission
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/charges" routerLinkActive="active">
+            <mat-icon aria-hidden>payments</mat-icon>Charges
+          </a>
+        </li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/bulk-sms" routerLinkActive="active">
             <mat-icon aria-hidden>sms</mat-icon>Bulk SMS
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/reports" routerLinkActive="active">
             <mat-icon aria-hidden>description</mat-icon>Reports
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/tickets" routerLinkActive="active">
             <mat-icon aria-hidden>style</mat-icon>Tickets
           </a>
         </li>
-        <li>
+        <li *ngIf="allowedPanels.includes(this.dataProvider.userData?.access?.access || '')">
           <a routerLink="/admin/settings" routerLinkActive="active">
             <mat-icon aria-hidden>settings</mat-icon>Settings
           </a>

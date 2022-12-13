@@ -1,0 +1,46 @@
+table {
+    border-spacing: 0px;
+  thead {
+    th {
+      text-align: center;
+    }
+  }
+  tbody {
+    tr {
+        &:hover{
+            background-color: rgb(243, 255, 247);
+        }
+      td {
+        padding: 10px;
+        font-size: 15px;
+        border-bottom: 2px solid rgb(219, 219, 219);
+      }
+      td:nth-child(1){
+        color:grey;
+      }
+      td:nth-child(2){
+        color:var(--primary)
+      }
+      td.buttons {
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+        align-items: center;
+        button,
+        a {
+          text-decoration: none;
+          padding: 10px;
+          transition: all 0.3s ease-in;
+          &:hover {
+            color: white;
+            scale: 1.2;
+            box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.3);
+          }
+        }
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
