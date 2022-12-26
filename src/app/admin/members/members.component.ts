@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { DatabaseService } from 'src/app/services/database.service';
 import { ServerService } from 'src/app/services/server.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
@@ -19,13 +21,13 @@ export class MembersComponent implements OnInit {
   members: any[] = []
   selectable:boolean = false;
   mainSelected:string = '';
-  constructor(private databaseService:DatabaseService,public dialog: MatDialog,private serverService:ServerService,private alertify:AlertsAndNotificationsService) { }
+  constructor(private databaseService:DatabaseService,public dialog: MatDialog,private serverService:ServerService,private alertify:AlertsAndNotificationsService,private dataProvider: DataProvider) { }
 
   ngOnInit(): void {
     this.databaseService.getAgents().then((res:any)=>{
-      res.forEach((element:any) => {
+      res.forEach(async (element:any) => {
         console.log(element);
-        this.members.push({...element.data(),id:element.id , selected:false});
+        this.members.push({...element.data(),id:element.id , selected:false, balance:this.databaseService.getUserBalance(element.id)});
       });
     })
   }
@@ -47,25 +49,7 @@ export class MembersComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  editUser(userData:any){
-    this.dialog.open(EditUserComponent,{
-      data:userData
-    })
-  }
-  lockUser(userId:string){
-    
-  }
-  removeUser(userId:string){
-    
-  }
-  promoteUser(user:any){
-    const dialog = this.dialog.open(PromoteUserComponent,{
-      data:user,
-    })
-    dialog.componentInstance.emitAndSaveEvent.subscribe((data:any)=>{
-      this.serverService.changeUserAccess(user.uid,data.accessLevel);   
-    })
-  }
+
   transferRetail(){
     // filter out members with distributors level access
     const distributors = this.members.filter((member:any)=>member.access.access == 'distributor');
@@ -90,7 +74,93 @@ export class MembersComponent implements OnInit {
     })
   }
 
-  getType(object:any){
-    return typeof object
+  getDate(date: any) {
+    if (date) {
+      if (date instanceof Timestamp) {
+        return date.toDate();
+      }
+      if (typeof date == 'string') {
+        return new Date(date);
+      }
+      return date.toDate();
+    }
+  }
+  editUser(userData: any) {
+    this.dialog.open(EditUserComponent, {
+      data: userData,
+    });
+  }
+  lockUser(userId: string) {
+    if (confirm('Are you sure you want to lock this user?')) {
+      console.log(userId);
+      this.dataProvider.pageSetting.blur = true;
+      this.serverService
+        .lockUser({ blockID: userId })
+        .then((data: any) => {
+          console.log(data);
+          this.ngOnInit();
+        })
+        .catch((error: any) => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.dataProvider.pageSetting.blur = false;
+        });
+    }
+  }
+  unlockUser(userId: string) {
+    if (confirm('Are you sure you want to unlock this user?')) {
+      console.log(userId);
+      this.dataProvider.pageSetting.blur = true;
+      this.serverService
+        .unlockUser({ blockID: userId })
+        .then((data: any) => {
+          console.log(data);
+          this.ngOnInit();
+        })
+        .catch((error: any) => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.dataProvider.pageSetting.blur = false;
+        });
+    }
+  }
+  removeUser(userId: string) {
+    if (confirm('Are you sure you want to remove this user?')) {
+      console.log(userId);
+      this.dataProvider.pageSetting.blur = true;
+      this.serverService
+        .deleteUser({ deleteUserId: userId })
+        .then((data: any) => {
+          console.log(data);
+          this.ngOnInit();
+        })
+        .catch((error: any) => {
+          console.log(error);
+        })
+        .finally(() => {
+          this.dataProvider.pageSetting.blur = false;
+        });
+    }
+  }
+  promoteUser(user: any) {
+    const dialog = this.dialog.open(PromoteUserComponent, {
+      data: user,
+    });
+    dialog.componentInstance.emitAndSaveEvent.subscribe((data: any) => {
+      this.dataProvider.pageSetting.blur = true;
+      this.serverService.changeUserAccess(user.userId, data).then(() => {
+        this.ngOnInit();
+        dialog.close();
+      }).catch((error: any) => {
+        console.log(error);
+      }).finally(() => {
+        this.dataProvider.pageSetting.blur = false;
+      })
+    });
+  }
+  getType(object: any) {
+    return typeof object;
   }
 }

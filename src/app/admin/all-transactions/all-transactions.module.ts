@@ -8,6 +8,8 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     WidgetsModule,
     MatIconModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    MatButtonModule
   ]
 })
 export class AllTransactionsModule { }

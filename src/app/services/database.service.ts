@@ -1,3 +1,4 @@
+import { I } from '@angular/cdk/keycodes';
 import { Injectable } from '@angular/core';
 import {
   collection,
@@ -172,5 +173,15 @@ export class DatabaseService {
 
   setStatus(id:string,status:'ongoing' | 'unresolved' | 'resolved'){
     return updateDoc(doc(this.fs,'tickets/'+id),{status:status});
+  }
+
+  async getUserBalance(userId:string){
+    let res = await getDoc(doc(this.fs,'users/'+userId+'/wallet/wallet'));
+    var data = res.data()
+    if(data){
+      return data['balance'];
+    } else {
+      return 'Cannot Fetch Balance';
+    }
   }
 }

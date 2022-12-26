@@ -1,20 +1,28 @@
 <app-header pageName="Transactions"></app-header>
 <h3>Total Balance {{ totalBalance }}</h3>
+<mat-button-toggle-group name="timePeriod" (valueChange)="changeView($event)" aria-label="Time period">
+  <mat-button-toggle value="daily">Daily</mat-button-toggle>
+  <mat-button-toggle value="weekly">Weekly</mat-button-toggle>
+  <mat-button-toggle value="monthly">Monthly</mat-button-toggle>
+  <mat-button-toggle value="yearly">Yearly</mat-button-toggle>
+  <mat-button-toggle value="all">All</mat-button-toggle>
+</mat-button-toggle-group>
+
 <div class="table-container">
   <table>
     <thead>
       <tr>
-        <th>Transaction ID</th>
-        <th>Sender</th>
-        <th>Receiver</th>
-        <th>Amount</th>
-        <th>Time</th>
-        <th>Status</th>
-        <th>Actions</th>
+        <th>Transaction ID <button mat-icon-button color="primary" (click)="sortBy('id')"><mat-icon>sort</mat-icon></button></th>
+        <th>Sender <button mat-icon-button color="primary" (click)="sortBy('sender')"><mat-icon>sort</mat-icon></button></th>
+        <th>Receiver <button mat-icon-button color="primary" (click)="sortBy('receiver')"><mat-icon>sort</mat-icon></button></th>
+        <th>Amount <button mat-icon-button color="primary" (click)="sortBy('amount')"><mat-icon>sort</mat-icon></button></th>
+        <th>Time <button mat-icon-button color="primary" (click)="sortBy('date')"><mat-icon>sort</mat-icon></button></th>
+        <th>Status <button mat-icon-button color="primary" (click)="sortBy('status')"><mat-icon>sort</mat-icon></button></th>
+        <th>Actions </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of transactions">
+      <tr *ngFor="let transaction of this.selectedMode != 'none' ? filteredTransactions : transactions">
         <td>{{ transaction.id }}</td>
         <td>{{ transaction.extraData.customerId || 'N/A' }}</td>
         <td>{{ transaction.receiver }}</td>
