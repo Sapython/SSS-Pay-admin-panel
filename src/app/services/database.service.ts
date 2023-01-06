@@ -61,7 +61,7 @@ export class DatabaseService {
   }
 
   getAgents() {
-    return getDocs(query(collection(this.fs,'users'),where('access.access','in',['superDistributor','masterDistributor','distributor','retailer'])));
+    return getDocs(query(collection(this.fs,'users'),where('access.access','in',['superDistributor','masterDistributor','distributor','retailer','guest','blocked'])));
     // return getDocs(collection(this.fs, 'users'));
   }
 

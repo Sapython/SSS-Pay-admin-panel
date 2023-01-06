@@ -25,6 +25,7 @@ export class MembersComponent implements OnInit {
 
   ngOnInit(): void {
     this.databaseService.getAgents().then((res:any)=>{
+      this.members = []
       res.forEach(async (element:any) => {
         console.log(element);
         this.members.push({...element.data(),id:element.id , selected:false, balance:this.databaseService.getUserBalance(element.id)});
