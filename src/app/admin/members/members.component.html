@@ -18,12 +18,13 @@
         <th>Date of Birth</th>
         <th>Gender</th>
         <th>Wallet Balance</th>
+        <th>Commission</th>
         <th>Access</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let member of members; let i = index">
+      <tr *ngFor="let member of members; let i = index" [matTooltip]="member?.userId || '<No User Id>'">
         <td>{{ i + 1 }}</td>
         <td class="photo-and-name">
           <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" referrerPolicy="no-referrer" />
@@ -34,8 +35,16 @@
         <td>{{ member?.gender || 'not-specified' | titlecase }}</td>
         <td>{{ member?.balance | async}}</td>
         <td>
-          <span [class]="member?.access.access">
-            {{ member?.access.access || 'not-specified' | titlecase }}
+          <ng-container *ngIf="(member?.commission | async); let commission">
+            <p *ngIf="(commission|| []).length == 0">No Commission</p>
+            <button *ngIf="(commission|| []).length > 0" mat-flat-button color="primary" (click)="showCommissions(commission)">
+              Show {{commission?.length}} Commissions
+            </button>
+          </ng-container>
+        </td>
+        <td>
+          <span [class]="member?.access?.access">
+            {{ member?.access?.access || 'not-specified' | titlecase }}
           </span>
         </td>
         <td class="buttons">

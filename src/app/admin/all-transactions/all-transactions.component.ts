@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Transaction } from 'src/app/structures/transaction.structure';
+import { SeeCommissionsComponent } from './see-commissions/see-commissions.component';
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
 
 @Component({
@@ -128,5 +129,9 @@ export class AllTransactionsComponent implements OnInit {
     })
     
     this.currentField = field
+  }
+
+  seeCommissions(commissions:any[]){
+    const dialog = this.dialog.open(SeeCommissionsComponent,{data:commissions})
   }
 }

@@ -59,5 +59,6 @@ export type UserAccess = {
     | 'masterDistributor'
     | 'distributor'
     | 'retailer'
-    | 'guest';
+    | 'guest'
+    | 'blocked';
 };

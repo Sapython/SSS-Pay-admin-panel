@@ -16,6 +16,7 @@
         <th>Sender <button mat-icon-button color="primary" (click)="sortBy('sender')"><mat-icon>sort</mat-icon></button></th>
         <th>Receiver <button mat-icon-button color="primary" (click)="sortBy('receiver')"><mat-icon>sort</mat-icon></button></th>
         <th>Amount <button mat-icon-button color="primary" (click)="sortBy('amount')"><mat-icon>sort</mat-icon></button></th>
+        <th>Commission</th>
         <th>Time <button mat-icon-button color="primary" (click)="sortBy('date')"><mat-icon>sort</mat-icon></button></th>
         <th>Status <button mat-icon-button color="primary" (click)="sortBy('status')"><mat-icon>sort</mat-icon></button></th>
         <th>Actions </th>
@@ -27,6 +28,10 @@
         <td>{{ transaction.extraData.customerId || 'N/A' }}</td>
         <td>{{ transaction.receiver }}</td>
         <td>{{ transaction.amount }}</td>
+        <td>
+          <p *ngIf="(transaction.commissions || []).length ==0">No Commission</p>
+          <button *ngIf="(transaction.commissions || []).length > 0" mat-flat-button color="primary" (click)="seeCommissions(transaction.commissions || [])">See Commissions</button>
+        </td>
         <td>{{ transaction.date.toDate() | date }}</td>
         <td>
           <span class="success" *ngIf="transaction.status === 'success'">

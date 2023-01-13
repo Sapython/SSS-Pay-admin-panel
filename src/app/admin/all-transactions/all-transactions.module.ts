@@ -10,11 +10,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 import { MatButtonModule } from '@angular/material/button';
+import { SeeCommissionsComponent } from './see-commissions/see-commissions.component';
 
 @NgModule({
   declarations: [
     AllTransactionsComponent,
     TransactionDetailComponent,
+    SeeCommissionsComponent,
   ],
   imports: [
     CommonModule,

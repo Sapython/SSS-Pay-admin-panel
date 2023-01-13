@@ -1,0 +1,18 @@
+<table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
+    <thead>
+        <tr>
+            <th>Access</th>
+            <th>Amount</th>
+            <th>Member</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let commission of data">
+            <td>{{commission.access}}</td>
+            <td>{{commission.amount}}</td>
+            <td>{{commission.member}}</td>
+            <td>{{commission.name}}</td>
+        </tr>
+    </tbody>
+</table>

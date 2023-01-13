@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let member of newMembers; let i = index">
+          <tr *ngFor="let member of newMembers; let i = index" [matTooltip]="member?.userId">
             <td>{{ i + 1 }}</td>
             <td class="photo-and-name">
               <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" referrerPolicy="no-referrer" />

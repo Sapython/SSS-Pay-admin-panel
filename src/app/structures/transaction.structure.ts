@@ -4,6 +4,7 @@ export type Transaction = {
   id?:string;
   title?:string;
   receiver:string;
+  commissions?:any[];
   date:any;
   type:'aeps'|'cableDth'|'fastTag'|'gas'|'recharge'|'expressPayout'|'dailyPayout';
   amount:number;

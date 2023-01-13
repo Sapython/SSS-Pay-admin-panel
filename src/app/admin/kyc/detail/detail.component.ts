@@ -26,8 +26,8 @@ export class DetailComponent implements OnInit {
     this.aadhaarNumber = this.data.aadhaarNumber;
     this.panCardNumber = this.data.panNumber;
     this.panImage = this.data.panImage;
-    this.aadhaarFront = this.data.aadhaarFront;
-    this.aadhaarBack = this.data.aadhaarBackImage;
+    this.aadhaarFront = this.data.aadhaarFrontImageUrl;
+    this.aadhaarBack = this.data.aadhaarBackImageUrl;
     this.personSelfie = this.data.selfieImage;
     this.shopSelfieImage = this.data.shopImage;
     this.address = this.data.address;

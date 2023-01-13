@@ -184,4 +184,11 @@ export class DatabaseService {
       return 'Cannot Fetch Balance';
     }
   }
+  counter = 0;
+  async getUserCommission(userId:string){
+    console.log("counter",this.counter+=1);
+    
+    let res = await getDocs(collection(this.fs,'users/'+userId+'/commissions'));
+    return res.docs.map((doc)=> {return {...doc.data(),id:doc.id} as any})
+  }
 }
