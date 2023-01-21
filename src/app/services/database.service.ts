@@ -191,4 +191,8 @@ export class DatabaseService {
     let res = await getDocs(collection(this.fs,'users/'+userId+'/commissions'));
     return res.docs.map((doc)=> {return {...doc.data(),id:doc.id} as any})
   }
+
+  getWalletNarrations(userId:string){
+    return getDocs(query(collection(this.fs,'users/'+userId+'/walletNarration'),orderBy('date','desc')));
+  }
 }

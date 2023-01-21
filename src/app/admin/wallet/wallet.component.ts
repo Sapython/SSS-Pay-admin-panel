@@ -46,28 +46,14 @@ export class WalletComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.databaseService.getTransactions(this.dataProvider.userData?.userId || '').then((data)=>{
-        this.transactions = [];
-        data.forEach((doc:any)=>{
-          const transaction:Transaction = { id: doc.id, ...doc.data() };
-          this.transactions.push(transaction);
-        })
-        // get last week transactions amount
-        const lastWeekTransactions = this.transactions.filter((transaction)=>{
-          const date = transaction.date.toDate();
-          const today = new Date();
-          const diff = today.getTime() - date.getTime();
-          const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-          return diffDays <= 7;
-        })
-        this.lastTransaction = lastWeekTransactions.reduce((acc,transaction)=>{
-          return acc + transaction.amount;
-        },0)
-        // get total balance
-        this.Balance = this.dataProvider.wallet.balance;
+    this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
+      console.log("Wallet narration docs",data.docs);
+      data.forEach((transaction)=>{
+        console.log("Wallet narration",transaction.data());
+      })
+    }).catch((error)=>{
+      console.log("Error",error);
     })
-
-    
   }
   openDetailModal(transaction:any){
     const dialog = this.dilaog.open(DetailComponent,{
