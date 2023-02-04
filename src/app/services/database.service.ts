@@ -196,4 +196,8 @@ export class DatabaseService {
     console.log('users/'+userId+'/walletNarration');
     return getDocs(query(collection(this.fs,'users/'+userId+'/walletNarration'),orderBy('transactionTime','desc')));
   }
+
+  getDownlineMembers(userId:string){
+    return getDocs(query(collection(this.fs,'users'),where('ownerId','==',userId)));
+  }
 }

@@ -5,6 +5,7 @@ import { Chart } from 'chart.js';
 import { DataProvider } from 'src/app/providers/data.provider';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Transaction } from 'src/app/structures/transaction.structure';
+import { UserData } from 'src/app/structures/user.structure';
 import { DetailComponent } from './detail/detail.component';
 
 @Component({
@@ -18,7 +19,7 @@ export class WalletComponent implements OnInit {
   @Input() Balance: number = 250200;
   constructor(private databaseService: DatabaseService,private dilaog:MatDialog,private dataProvider:DataProvider) { }
   transactions: WalletNarration[];
-
+  downlineMembers:UserData[] = [];
   lastTransaction: number = 50200;
 
   canvas: any;
@@ -46,7 +47,9 @@ export class WalletComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("userId",this.dataProvider.userData!.userId);
+    this.databaseService.getDownlineMembers(this.dataProvider.userData!.userId).then((data)=>{
+      console.log("Downline members",data.docs.map((doc)=>{return { ...doc.data(),id:doc.id}}));
+    })
     this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
       this.transactions = []
       data.forEach((transaction)=>{

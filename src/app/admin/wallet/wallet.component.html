@@ -44,4 +44,26 @@
         </tr>
       </table>
   </div>
+  <div class="members">
+    <table>
+      <tr>
+        <th>Member Name</th>
+        <th>Access</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>User Id</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let user of downlineMembers">
+        <td>{{user.displayName}}</td>
+        <td>{{user.access.access}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.userId}}</td>
+        <td><button mat-icon-button color="primary" (click)=""><mat-icon>receipt_long</mat-icon></button></td>
+      </tr>
+    </table>
+    <!-- <div class="member" *ngFor="let user of downlineMembers">
+    </div> -->
+  </div>
 </section>
