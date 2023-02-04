@@ -17,7 +17,7 @@ export class WalletComponent implements OnInit {
   // @Input() lastTransaction: number = 50200;
   @Input() Balance: number = 250200;
   constructor(private databaseService: DatabaseService,private dilaog:MatDialog,private dataProvider:DataProvider) { }
-  transactions: Transaction[];
+  transactions: WalletNarration[];
 
   lastTransaction: number = 50200;
 
@@ -46,15 +46,19 @@ export class WalletComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log("userId",this.dataProvider.userData!.userId);
     this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
-      console.log("Wallet narration docs",data.docs);
+      this.transactions = []
       data.forEach((transaction)=>{
-        console.log("Wallet narration",transaction.data());
+        if (transaction.data()['amount'] > 0){
+          this.transactions.push(transaction.data() as WalletNarration);
+        }
       })
     }).catch((error)=>{
       console.log("Error",error);
     })
   }
+
   openDetailModal(transaction:any){
     const dialog = this.dilaog.open(DetailComponent,{
       data:transaction
@@ -63,7 +67,17 @@ export class WalletComponent implements OnInit {
       console.log(`Dialog result: ${data}`)
     })
   }
+
   getTimeStamp(time:Timestamp){
     return time.toDate();
   }
+}
+
+type WalletNarration ={
+  amount:number;
+  narration:string;
+  service:string;
+  transactionTime:any;
+  transactionType:'credit' | 'debit';
+  balance:number;
 }

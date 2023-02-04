@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.minLength(10),
     ]),
   });
   checked:boolean = false;
@@ -32,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.checked = true;
     })
   }
+
   login(){
     if (this.loginForm.valid) {
       this.authService.loginEmailPassword(
@@ -42,9 +42,11 @@ export class LoginComponent implements OnInit {
       this.alertify.presentToast('Please fill all the fields correctly','info');
     }
   }
+
   googleSSO(){
     this.authService.signInWithGoogle();
   }
+  
   logout(){
     this.authService.logout();
   }

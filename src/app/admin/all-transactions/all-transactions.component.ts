@@ -43,7 +43,7 @@ export class AllTransactionsComponent implements OnInit {
     this.dialog.open(TransactionDetailComponent, { data: transaction });
   }
 
-  changeView(event:any){
+  filterOnTime(event:any){
     if(event){
       this.filteredTransactions = []
       console.log(event)
@@ -91,6 +91,40 @@ export class AllTransactionsComponent implements OnInit {
       }
     } else {
       this.selectedMode = 'none'
+    }
+  }
+
+  filterOnType(event:any){
+    console.log(event);
+    if (this.filteredTransactions.length == 0){
+      if(event){
+        this.filteredTransactions = []
+        if(event=='all'){
+          this.filteredTransactions = this.transactions
+        } else {
+          this.filteredTransactions = this.transactions.filter((transaction:Transaction)=>{
+            return transaction.type == event
+          })
+        }
+      } else {
+        this.filteredTransactions = []
+      }
+    } else if (this.filteredTransactions.length > 0) {
+      if(event){
+        if(event=='all'){
+          this.filteredTransactions = this.filteredTransactions
+        } else {
+          this.filteredTransactions = this.filteredTransactions.filter((transaction:Transaction)=>{
+            if (event == 'CW' || event == 'BE' || event == 'MS'){
+              return transaction?.extraData?.aepsData?.transactionType == event
+            } else {
+              return transaction.type == event
+            }
+          })
+        }
+      } else {
+        this.filteredTransactions = []
+      }
     }
   }
 

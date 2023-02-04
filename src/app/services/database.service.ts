@@ -193,6 +193,7 @@ export class DatabaseService {
   }
 
   getWalletNarrations(userId:string){
-    return getDocs(query(collection(this.fs,'users/'+userId+'/walletNarration'),orderBy('date','desc')));
+    console.log('users/'+userId+'/walletNarration');
+    return getDocs(query(collection(this.fs,'users/'+userId+'/walletNarration'),orderBy('transactionTime','desc')));
   }
 }

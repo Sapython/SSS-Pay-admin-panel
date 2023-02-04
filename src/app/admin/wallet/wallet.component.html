@@ -19,21 +19,29 @@
     <p class="last_week">Wallet Transactions</p>
     <table>
         <tr class="header">
-          <th>Transaction ID</th>
+          <th>Time</th>
           <th>Amount</th>
-          <th>Date</th>
-          <th>Status</th>
-          <th>Actions</th>
+          <th>Narration</th>
+          <th>Service</th>
+          <th>Type</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Balance</th>
         </tr>
-       
         <tr *ngFor="let transaction of transactions">
-          <td>{{transaction.id}}</td>
+          <td>{{transaction.transactionTime.toDate() | date:'short'}}</td>
           <td>₹ {{transaction.amount}}</td>
-          <td>{{transaction.date.toDate() | date:'short'}}</td>
-          <td>{{transaction.status}}</td>
-          <td><button (click)="openDetailModal(transaction)">Details</button></td>
+          <td>{{transaction.narration}}</td>
+          <td>{{transaction.service | titlecase}}</td>
+          <td>
+            <div  [class]="transaction.transactionType">
+              {{transaction.transactionType | titlecase}}
+            </div>
+          </td>
+          <td>₹ {{transaction.transactionType == 'credit' ? transaction.amount : 'N/A'}}</td>
+          <td>₹ {{transaction.transactionType == 'debit' ? transaction.amount : 'N/A'}}</td>
+          <td>{{transaction.balance ? transaction.balance : 'No Record'}}</td>
         </tr>
-       
       </table>
   </div>
 </section>
