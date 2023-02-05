@@ -17,53 +17,55 @@ export class WalletComponent implements OnInit {
 
   // @Input() lastTransaction: number = 50200;
   @Input() Balance: number = 250200;
-  constructor(private databaseService: DatabaseService,private dilaog:MatDialog,private dataProvider:DataProvider) { }
+  constructor(private databaseService: DatabaseService,private dialog:MatDialog,private dataProvider:DataProvider) { }
   transactions: WalletNarration[];
   downlineMembers:UserData[] = [];
   lastTransaction: number = 50200;
-
+  showTransactions: boolean = false;
+  filteredTransactions: WalletNarration[] = [];
+  currentMember:UserData|undefined;
   canvas: any;
   ctx: any;
-  @ViewChild('mychart') mychart: any;
+  pageSize: number = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageIndex: number = 0;
 
-  ngAfterViewInit() {
-    this.canvas = this.mychart.nativeElement;
-    this.ctx = this.canvas.getContext('2d');
-
-    new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        datasets: [{
-          data: [0, 20, 40, 50],
-          backgroundColor: "rgb(115 185 243 / 30%)",
-          borderColor: "#009970",
-          fill: true,
-        },
-        ],
-        labels: ['January 2019', 'February 2019', 'March 2019', 'April 2019']
-      },
-    });
+  seeTransactions(member:UserData){
+    this.showTransactions = !this.showTransactions;
+    if (this.showTransactions){
+      this.currentMember = member;
+      this.dataProvider.pageSetting.blur = true;
+      this.databaseService.getWalletNarrations(member.userId).then((data)=>{
+        this.transactions = data.docs.map((doc:any)=>{return { ...doc.data(),id:doc.id}});
+        // reset page index and page size to default
+        this.pageIndex = 0;
+        this.pageSize = 10;
+        this.filteredTransactions = this.transactions.slice(this.pageIndex * this.pageSize, this.pageIndex * this.pageSize + this.pageSize);
+      }).finally(()=>{
+        this.dataProvider.pageSetting.blur = false;
+      })
+    }
   }
-
 
   ngOnInit(): void {
     this.databaseService.getDownlineMembers(this.dataProvider.userData!.userId).then((data)=>{
       console.log("Downline members",data.docs.map((doc)=>{return { ...doc.data(),id:doc.id}}));
+      this.downlineMembers = data.docs.map((doc:any)=>{return { ...doc.data(),id:doc.id}});
     })
-    this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
-      this.transactions = []
-      data.forEach((transaction)=>{
-        if (transaction.data()['amount'] > 0){
-          this.transactions.push(transaction.data() as WalletNarration);
-        }
-      })
-    }).catch((error)=>{
-      console.log("Error",error);
-    })
+    // this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
+    //   this.transactions = []
+    //   data.forEach((transaction)=>{
+    //     if (transaction.data()['amount'] > 0){
+    //       this.transactions.push(transaction.data() as WalletNarration);
+    //     }
+    //   })
+    // }).catch((error)=>{
+    //   console.log("Error",error);
+    // })
   }
 
   openDetailModal(transaction:any){
-    const dialog = this.dilaog.open(DetailComponent,{
+    const dialog = this.dialog.open(DetailComponent,{
       data:transaction
     });
     dialog.afterClosed().subscribe((data)=>{
@@ -74,6 +76,14 @@ export class WalletComponent implements OnInit {
   getTimeStamp(time:Timestamp){
     return time.toDate();
   }
+
+  loadPagedData(event:any){
+    console.log("Event",event);
+    let start = event.pageIndex * event.pageSize;
+    let pageIndex = event.pageIndex;
+    let pageSize = event.pageSize;
+    this.filteredTransactions = this.transactions.slice(start, start + pageSize);
+  }
 }
 
 type WalletNarration ={
@@ -83,4 +93,5 @@ type WalletNarration ={
   transactionTime:any;
   transactionType:'credit' | 'debit';
   balance:number;
+  availableBalance:number;
 }

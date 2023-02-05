@@ -8,7 +8,7 @@ import { WidgetsModule } from 'src/app/widgets/widgets.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     WidgetsModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ]
 })
 export class WalletModule { }
