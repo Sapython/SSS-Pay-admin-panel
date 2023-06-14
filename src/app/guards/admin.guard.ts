@@ -12,7 +12,10 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.dataProvider.loggedIn){
-      return true;
+      let url =state.url.split('/')[2]
+      let urls:any = this.dataProvider.allowedPanels
+      console.log(url,urls,(url in urls) && urls[url].includes(this.dataProvider.userData?.access?.access || ''));
+      return (url in urls) && urls[url].includes(this.dataProvider.userData?.access?.access || '')
     } else {
       this.router.navigate(['/login']);
       return false;

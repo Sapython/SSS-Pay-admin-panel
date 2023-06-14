@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy":"ng build --prod --aot && firebase deploy --only hosting"
+    "deploy": "ng build --prod --aot && firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
@@ -24,9 +24,12 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "chart.js": "^3.8.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
     "ng2-charts": "^3.0.11",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

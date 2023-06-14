@@ -19,9 +19,13 @@
   <mat-button-toggle value="expressPayout">Express Payout</mat-button-toggle>
   <mat-button-toggle value="dailyPayout">Daily Payout</mat-button-toggle>
 </mat-button-toggle-group>
-
+<div class="actions">
+  <button mat-flat-button (click)="exportTransactionsPDF()">Export PDF<mat-icon>print</mat-icon></button>
+  <button mat-flat-button (click)="exportTransactionsExcel()">Export Excel<mat-icon>print</mat-icon></button>
+</div>
+<hr>
 <div class="table-container">
-  <table>
+  <table id="transactionsTable">
     <thead>
       <tr>
         <th>Transaction ID <button mat-icon-button color="primary" (click)="sortBy('id')"><mat-icon>sort</mat-icon></button></th>
@@ -38,8 +42,8 @@
     <tbody>
       <tr *ngFor="let transaction of this.selectedMode != 'none' ? filteredTransactions : transactions">
         <td>{{ transaction.id }}</td>
-        <td>{{ transaction.extraData.customerId || 'N/A' }}</td>
-        <td>{{ transaction.extraData.merchantCode }}</td>
+        <td>{{ transaction.extraData?.customerId || 'N/A' }}</td>
+        <td>{{ transaction.extraData?.merchantCode }}</td>
         <td>{{ transaction.type == 'aeps' ? transaction.type + ' : ' +transaction.extraData?.aepsData?.transactionType : transaction.type}}</td>
         <td>{{ transaction.amount }}</td>
         <td>
@@ -72,4 +76,10 @@
       </tr>
     </tbody>
   </table>
+  <mat-paginator [length]="transactionsLength"
+              [pageSize]="currentPageSize"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="loadPage($event)"
+              aria-label="Select page">
+  </mat-paginator>
 </div>

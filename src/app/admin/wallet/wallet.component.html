@@ -39,7 +39,7 @@
           <th>Balance</th>
         </tr>
         <tr *ngFor="let transaction of this.filteredTransactions">
-          <td>{{ transaction.transactionTime.toDate() | date : "short" }}</td>
+          <td>{{ transaction.transactionTime.toDate() | date : "long" }}</td>
           <td>₹ {{ transaction.amount }}</td>
           <td>{{ transaction.narration }}</td>
           <td>{{ transaction.service | titlecase }}</td>

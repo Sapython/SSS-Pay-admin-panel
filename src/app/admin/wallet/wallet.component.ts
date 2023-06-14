@@ -48,10 +48,16 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.databaseService.getDownlineMembers(this.dataProvider.userData!.userId).then((data)=>{
-      console.log("Downline members",data.docs.map((doc)=>{return { ...doc.data(),id:doc.id}}));
-      this.downlineMembers = data.docs.map((doc:any)=>{return { ...doc.data(),id:doc.id}});
-    })
+    if (this.dataProvider.userData?.access.access=='admin'){
+      this.databaseService.getAgents().then((data)=>{
+        this.downlineMembers = data.docs.map((doc:any)=>{return { ...doc.data(),id:doc.id}});
+      }) 
+    } else {
+      this.databaseService.getDownlineMembers(this.dataProvider.userData!.userId).then((data)=>{
+        console.log("Downline members",data.docs.map((doc)=>{return { ...doc.data(),id:doc.id}}));
+        this.downlineMembers = data.docs.map((doc:any)=>{return { ...doc.data(),id:doc.id}});
+      })
+    }
     // this.databaseService.getWalletNarrations(this.dataProvider.userData!.userId).then((data)=>{
     //   this.transactions = []
     //   data.forEach((transaction)=>{

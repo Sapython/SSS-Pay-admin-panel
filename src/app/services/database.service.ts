@@ -17,6 +17,10 @@ import {
   startAfter,
   endAt,
   limitToLast,
+  collectionGroup,
+  getCountFromServer,
+  serverTimestamp,
+  increment,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -26,6 +30,7 @@ import {
 } from '@angular/fire/storage';
 import { getDoc } from '@firebase/firestore';
 import { Ticket } from '../admin/tickets/tickets.structure';
+import { filter, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -78,14 +83,14 @@ export class DatabaseService {
   getFirstTransactions(length: number) {
     // alert('Getting first recipes')
     return getDocs(
-      query(collection(this.fs, 'transaction'), orderBy('date', 'desc'), limit(length))
+      query(collectionGroup(this.fs, 'transaction'), orderBy('date', 'desc'), limit(length))
     );
   }
   getNextTransactions(length: number, lastDocument: DocumentSnapshot) {
     // alert('Getting next recipes')
     return getDocs(
       query(
-        collection(this.fs, 'transaction'),
+        collectionGroup(this.fs, 'transaction'),
         orderBy('date', 'desc'),
         limit(length),
         startAfter(lastDocument)
@@ -97,7 +102,7 @@ export class DatabaseService {
     // alert('Getting previous recipes')
     return getDocs(
       query(
-        collection(this.fs, 'transaction'),
+        collectionGroup(this.fs, 'transaction'),
         orderBy('date', 'desc'),
         limitToLast(length),
         endAt(firstDocument)
@@ -117,7 +122,14 @@ export class DatabaseService {
     return getDoc(doc(this.fs,`users/${userId}/pan/data`));
   }
 
-  getKycRequests() {
+  getKycRequests(downlineMembers?:string[]) {
+    if (downlineMembers){
+      console.log("for ",downlineMembers,);
+      return collectionSnapshots(query(collection(this.fs, 'users'),where('kycStatus','in',['pending','rejected','approved']))).pipe(map(data => data.filter(usr => {
+        console.log("data in pipe",data,usr);
+        return usr.id in downlineMembers
+      })));
+    }
     return collectionSnapshots(query(collection(this.fs, 'users'),where('kycStatus','in',['pending','rejected','approved'])));
   }
 
@@ -200,4 +212,57 @@ export class DatabaseService {
   getDownlineMembers(userId:string){
     return getDocs(query(collection(this.fs,'users'),where('ownerId','==',userId)));
   }
+
+  getAllUserTransactions(){
+    return getDocs(query(collectionGroup(this.fs,'transaction'),limit(10),orderBy('date','desc')));
+  };
+
+  getCountTransaction(){
+    let collection = query(collectionGroup(this.fs,'transaction'));
+    return getCountFromServer(collection);
+  }
+
+  async addWalletNarration(amount:number,narration:string,userId:string){
+    let docData = await getDoc(doc(this.fs,'users/'+userId+'/wallet/wallet'))
+    if(docData.exists()){
+      await addDoc(collection(this.fs,'users/'+userId+'/walletNarration'),{
+        amount:amount,
+        narration:narration,
+        transactionTime:serverTimestamp(),
+        transactionType:'credit',
+        balance:docData.data()['balance'],
+        service:'receive',
+        actionType:'Transaction-Credit',
+      });
+      return updateDoc(doc(this.fs,'users/'+userId+'/wallet/wallet'),{
+        balance:increment(amount)
+      })
+    } else {
+      // return failed promise
+      return Promise.reject('Wallet Not Found');
+    }
+  }
+
+  async deductWalletNarration(amount:number,narration:string,userId:string){
+    let docData = await getDoc(doc(this.fs,'users/'+userId+'/wallet/wallet'))
+    if(docData.exists()){
+      if (docData.data()['balance'] < amount) return Promise.reject('Insufficient Balance');
+      await addDoc(collection(this.fs,'users/'+userId+'/walletNarration'),{
+        amount:-amount,
+        narration:narration,
+        transactionTime:serverTimestamp(),
+        transactionType:'debit',
+        balance:docData.data()['balance'],
+        service:'send',
+        actionType:'Transaction-Credit',
+      });
+      return updateDoc(doc(this.fs,'users/'+userId+'/wallet/wallet'),{
+        balance:increment(-amount)
+      })
+    } else {
+      // return failed promise
+      return Promise.reject('Wallet Not Found');
+    }
+  }
+
 }

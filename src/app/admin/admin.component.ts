@@ -11,16 +11,15 @@ import { AuthenticationService } from '../services/authentication.service';
 export class AdminComponent implements OnInit {
 
   constructor(public dataProvider:DataProvider,public authService:AuthenticationService,private activatedRoute:ActivatedRoute,private router:Router) { }
-  allowedPanels = ['user','admin','distributor'];
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params:any) => {
-      if (this.allowedPanels.includes(params.panel)) {
-        this.dataProvider.page = params.panel;
-      } else {
-        this.dataProvider.page = 'user';
-        this.router.navigate(['../login']);
-      }
-    })
+    // this.activatedRoute.params.subscribe((params:any) => {
+    //   if (this.allowedPanels.includes(params.panel)) {
+    //     this.dataProvider.page = params.panel;
+    //   } else {
+    //     this.dataProvider.page = 'user';
+    //     this.router.navigate(['../login']);
+    //   }
+    // })
   }
   logout(){
     this.authService.logout();

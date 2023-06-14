@@ -56,6 +56,7 @@
           <button *ngIf="member.access.access=='blocked'" (click)="unlockUser(member.userId)" uk-tooltip="title: UnLock User" class="primary-button"><i class="fa-solid fa-user-check"></i></button>
           <button (click)="removeUser(member.userId)" uk-tooltip="title: Remove User" class="primary-button"><i class="fa-solid fa-user-large-slash"></i></button>
           <button (click)="promoteUser(member)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-user-tag"></i></button>
+          <button *ngIf="this.dataProvider.userData?.access?.access == 'admin'" (click)="addMoney(member)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-wallet"></i></button>
         </td>
       </tr>
     </tbody>

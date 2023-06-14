@@ -20,6 +20,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SeeCommissionsComponent } from './see-commissions/see-commissions.component';
+import { WalletManagementComponent } from './wallet-management/wallet-management.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { SeeCommissionsComponent } from './see-commissions/see-commissions.compo
     MessagesComponent,
     ChangeMembersComponent,
     SeeCommissionsComponent,
+    WalletManagementComponent,
   ],
   imports: [
     CommonModule,
@@ -45,7 +48,8 @@ import { SeeCommissionsComponent } from './see-commissions/see-commissions.compo
     MatSelectModule,
     MatButtonModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule
   ]
 })
 export class MembersModule { }

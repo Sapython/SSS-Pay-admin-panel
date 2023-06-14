@@ -4,7 +4,9 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { Transaction } from 'src/app/structures/transaction.structure';
 import { SeeCommissionsComponent } from './see-commissions/see-commissions.component';
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
-
+import { jsPDF } from "jspdf";
+import { read, writeFileXLSX,utils } from "xlsx";
+import autoTable from 'jspdf-autotable'
 @Component({
   selector: 'app-all-transactions',
   templateUrl: './all-transactions.component.html',
@@ -13,7 +15,13 @@ import { TransactionDetailComponent } from './transaction-detail/transaction-det
 export class AllTransactionsComponent implements OnInit {
   transactions: Transaction[] = [];
   filteredTransactions: Transaction[] = [];
+  recipeLength: number = 0;
+  lastDocReference: any;
+  firstDocReference: any;
+  lastPaginatorEvent:any;
   userNames: { [key: string]: string };
+  transactionsLength: number = 50;
+  currentPageSize:number = 10;
   totalBalance: number = 0;
   currentField: string = ''; 
   selectedMode:'daily'|'weekly'|'monthly'|'yearly'|'all'|'none' = 'none';
@@ -22,23 +30,34 @@ export class AllTransactionsComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
+  exportTransactionsPDF(){
+    var doc = new jsPDF();
+    doc.text('Transactions', 10, 10);
+    autoTable(doc, { html: '#transactionsTable' })
+    doc.save('transactions.pdf');
+  }
+
+  exportTransactionsExcel(){
+    var workbook = utils.table_to_book(document.getElementById('transactionsTable'));
+    writeFileXLSX(workbook, 'transactions.xlsx');
+  }
+
   ngOnInit(): void {
     this.transactions = [];
-    this.databaseService.getCustomers().then((customers: any) => {
-      customers.forEach((customer: any) => {
-        this.databaseService
-          .getTransactions(customer.id)
-          .then((transactions: any) => {
-            transactions.forEach((transaction: any) => {
-              this.transactions.push({
-                id: transaction.id,
-                ...transaction.data(),
-              });
-            });
-          });
+    this.databaseService.getAllUserTransactions().then((transactions) => {
+      console.log("transactions",transactions.docs)
+      this.firstDocReference = transactions.docs[0]
+      this.lastDocReference = transactions.docs[transactions.docs.length-1]
+      this.transactions = transactions.docs.map((transaction) => {
+        return { ...transaction.data(), id: transaction.id } as Transaction;
       });
-    });
+    })
+    this.databaseService.getCountTransaction().then((transactions) => {
+      console.log("transactions",transactions.data().count)
+      this.transactionsLength = transactions.data().count;
+    })
   }
+
   viewDetails(transaction: any) {
     this.dialog.open(TransactionDetailComponent, { data: transaction });
   }
@@ -167,5 +186,54 @@ export class AllTransactionsComponent implements OnInit {
 
   seeCommissions(commissions:any[]){
     const dialog = this.dialog.open(SeeCommissionsComponent,{data:commissions})
+  }
+
+  loadPage(event:any){
+    // event from mat paginator
+    // console.log(event)
+    if (event.previousPageIndex < event.pageIndex) {
+      const lastDoc = this.lastDocReference;
+      const length = event.pageSize;
+      this.databaseService.getNextTransactions(length, lastDoc).then((docs: any) => {
+        // this.allStocks.push(...docs.docs)
+        this.firstDocReference = docs.docs[0];
+        this.lastDocReference = docs.docs[docs.docs.length - 1];
+        this.transactions = docs.docs.map((doc: any) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+      });
+    }else if (event.previousPageIndex > event.pageIndex) {
+      const firstDoc = this.firstDocReference;
+      const length = event.pageSize;
+      this.databaseService.getPreviousTransactions(length, firstDoc).then((docs: any) => {
+        // this.allStocks.push(...docs.docs)
+        this.firstDocReference = docs.docs[0];
+        this.lastDocReference = docs.docs[docs.docs.length - 1];
+        this.transactions = docs.docs.map((doc: any) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+      });
+    } else if (
+      event.previousPageIndex === event.pageIndex &&
+      event.pageIndex === 0
+    ) {
+      this.databaseService.getFirstTransactions(event.pageSize).then((docs: any) => {
+        // this.allStocks.push(...docs.docs)
+        this.firstDocReference = docs.docs[0];
+        this.lastDocReference = docs.docs[docs.docs.length - 1];
+        this.transactions = docs.docs.map((doc: any) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+      });
+    }
   }
 }

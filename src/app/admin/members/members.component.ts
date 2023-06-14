@@ -13,6 +13,7 @@ import { ChangeMembersComponent } from './change-members/change-members.componen
 import { DetailComponent } from './detail/detail.component';
 import { SeeCommissionsComponent } from './see-commissions/see-commissions.component';
 import { TransferRetailerComponent } from './transfer-retailer/transfer-retailer.component';
+import { WalletManagementComponent } from './wallet-management/wallet-management.component';
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
@@ -23,7 +24,7 @@ export class MembersComponent implements OnInit {
   selectable:boolean = false;
   mainSelected:string = '';
   
-  constructor(private databaseService:DatabaseService,public dialog: MatDialog,private serverService:ServerService,private alertify:AlertsAndNotificationsService,private dataProvider: DataProvider) { }
+  constructor(private databaseService:DatabaseService,public dialog: MatDialog,private serverService:ServerService,private alertify:AlertsAndNotificationsService,public dataProvider: DataProvider) { }
 
   ngOnInit(): void {
     this.databaseService.getAgents().then((res:any)=>{
@@ -32,6 +33,31 @@ export class MembersComponent implements OnInit {
         console.log(element);
         this.members.push({...element.data(),id:element.id , selected:false, balance:this.databaseService.getUserBalance(element.id),commission:this.databaseService.getUserCommission(element.id)});
       });
+    })
+  }
+
+  addMoney(user:UserData){
+    const dialogRef = this.dialog.open(WalletManagementComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        if (result.type == 'credit') {
+          this.databaseService.addWalletNarration(result.amount,result.narration,user.userId).then((res:any)=>{
+            console.log(res);
+            this.alertify.presentToast('Wallet credited successfully');
+          }).catch((error:any)=>{
+            console.log(error); 
+            this.alertify.presentToast(error.message,'error');
+          })
+        } else {
+          this.databaseService.deductWalletNarration(result.amount,result.narration,user.userId).then((res:any)=>{
+            console.log(res);
+            this.alertify.presentToast('Wallet debited successfully');
+          }).catch((error:any)=>{
+            console.log(error);
+            this.alertify.presentToast('Insufficient balance','error');
+          })
+        }
+      }
     })
   }
   moreDetail(user:UserData){

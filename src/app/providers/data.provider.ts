@@ -30,4 +30,18 @@ export class DataProvider{
     public dataThree:any;
     public dataFour:any;
     public siteData:any = {};
+    public allowedPanels = {
+        'account':['admin','retailer','masterDistributor','distributor','superDistributor'],
+        'dashboard':['admin'],
+        'allTransactions':['admin'],
+        'wallet':['admin','masterDistributor','distributor','superDistributor'],
+        'members':['admin'],
+        'kyc':['admin'],
+        'commission':['admin'],
+        'charges':['admin'],
+        'bulk':['admin'],
+        'reports':['admin'],
+        'tickets':['admin'],
+        'settings':['admin'],
+    };
 }

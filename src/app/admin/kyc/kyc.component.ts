@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 import { DetailComponent } from './detail/detail.component';
+import { DataProvider } from 'src/app/providers/data.provider';
 
 @Component({
   selector: 'app-kyc',
@@ -16,7 +17,8 @@ export class KycComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private dialog: MatDialog, 
-    private alertify:AlertsAndNotificationsService
+    private alertify:AlertsAndNotificationsService,
+    private dataProvider: DataProvider, 
   ) {}
 
   openDetail(kyc: any) {
@@ -35,8 +37,16 @@ export class KycComponent implements OnInit {
       }
     });
   }
-  ngOnInit(): void {
-    this.kycRequestsSubscription = this.databaseService.getKycRequests().subscribe((data: any) => {
+  async ngOnInit(): Promise<void> {
+    let userSub:Observable<any>;
+    userSub = this.databaseService.getKycRequests()
+    // if(this.dataProvider.userData?.access.access == 'admin'){
+    // } else {
+    //   let res = await this.databaseService.getDownlineMembers(this.dataProvider.userData!.userId)
+    //   userSub = this.databaseService.getKycRequests(res.docs.map((d)=>d.id))
+    // }
+    this.kycRequestsSubscription = userSub.subscribe((data: any) => {
+      console.log("Data",data);
       this.kycRequests = [];
       data.forEach((doc: any, index: number) => {
         if (doc.exists) {
