@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ssspay-prod": {
+      "hosting": {
+        "SSSPayAdminPanel": [
+          "ssspay-prod"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ssspay-prod"
+  }
+}

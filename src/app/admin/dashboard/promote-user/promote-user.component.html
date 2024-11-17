@@ -1,0 +1,12 @@
+<h2>Promote User</h2>
+<h4>Current Access Level: <span>{{data.access.access | titlecase}}</span></h4>
+<mat-form-field appearance="fill">
+    <mat-label>Access</mat-label>
+    <mat-select (selectionChange)="emitAndSave($event)">
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="superDistributor">Super Distributor</mat-option>
+        <mat-option value="masterDistributor">Master Distributor</mat-option>
+        <mat-option value="distributor">Distributor</mat-option>
+        <mat-option value="retailer">Retailer</mat-option>
+    </mat-select>
+</mat-form-field>

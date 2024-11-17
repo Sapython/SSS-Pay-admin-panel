@@ -1,0 +1,193 @@
+@use '@angular/material' as mat;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+$ssspay-palette: (
+ 50: #cefff2,
+ 100: #7affdc,
+ 200: #51ffd1,
+ 300: #0dffbe,
+ 400:rgb(12, 202, 151),
+ 500:#00be8b,
+ 600:#03a479,
+ 700:#009970,
+ 800:#016e51,
+ 900:#008d67,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+$my-primary: mat.define-palette($ssspay-palette, 700);
+$my-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent:$my-accent,
+   foreground: $ssspay-palette,
+ )
+));
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.tabs-theme($my-theme);
+@include mat.input-theme($my-theme);
+@include mat.form-field-theme($my-theme);
+@include mat.progress-spinner-theme($my-theme);
+@include mat.checkbox-color($my-theme);
+@include mat.datepicker-theme($my-theme);
+@include mat.datepicker-color($my-theme);
+
+:root {
+  --primary: #009970;
+  --primary-dark: #016e51;
+  --primary-light: #d3eee7;
+  --primary-contrast: #fff;
+  --primary-contrast2: #00FFBC; 
+  --secondary: #ebf7f4;
+  --secondary-dark: #bec8c5;
+  --secondary-contrast: #707477;
+  --input-light: #0099703d;
+  --tertiary: #000;
+  --text-color-light: #0000006a;
+  --card-color:#F0F0F0;
+  --normal-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --light-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --danger:rgba(255, 79, 79, 0.967);
+  --success:rgb(25, 175, 95);
+  --warning: #ffc30e;
+  --xxlarge: 36px;
+  --xlarge: 32px;
+  --large: 28px;
+  --medium: 24px;
+  --small: 20px;
+  --msmall: 18px;
+  --xsmall: 16px;
+  --xxsmall: 14px;
+  --xxxsmall: 12px;
+
+  --font-one: "Poppins", sans-serif;
+
+  --normal-radius: 7px;
+  --more-radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.table-container {
+  overflow-x: auto;
+
+  table {
+    font-family: var(--font-one);
+    border-collapse: collapse;
+    width: 100%;
+
+    td,
+    th {
+      text-align: left;
+      padding: 0.75em;
+    }
+
+    td {
+      text-align: center;
+      color: var(--secondary-contrast);
+      font-size: var(--xsmall);
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+
+      .buttons {
+        display: flex;
+
+        button {
+          margin-right: 0.5em;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+      span.failed{
+        color:var(--danger);
+      }
+      span.pending{
+        color:var(--warning);
+      }
+      span.success{
+        color:var(--success);
+      }
+    }
+    
+
+    thead {
+      tr {
+        border-bottom: 2px solid var(--secondary-contrast);
+      }
+
+      th {
+        font-size: var(--xsmall);
+        font-weight: 500;
+        text-align: left;
+        color: var(--primary);
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--secondary-contrast);
+
+        &:last-of-type {
+          border-width: 2px;
+        }
+      }
+    }
+  }
+}
+
+.primary-button {
+  background-color: var(--primary);
+  color: var(--primary-contrast);
+  font-family: var(--font-one);
+  padding: 0.25em 1em;
+  border-radius: var(--normal-radius);
+  display: flex;
+  align-items: center;
+  font-size: var(--xsmall);
+  border: none;
+  cursor: pointer;
+  transition: all .5s;
+
+  mat-icon {
+    font-size: var(--xsmall);
+    width: fit-content;
+    height: fit-content;
+    margin-right: 0.25em;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: var(--light-shadow);
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

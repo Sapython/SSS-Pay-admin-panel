@@ -1,0 +1,54 @@
+div.topInfo{
+    display: flex;
+    justify-content: space-between;
+    div{
+        button{
+            padding:10px;
+            border:none;
+            margin:10px;
+            font-size: 17px;
+            box-shadow: 2px 3px 20px rgba(0,0,0,0.2);
+            border-radius: 7px;
+            background-color: #E7FFF9;
+            color:var(--primary)
+        }
+    }
+}
+table {
+    thead {
+      th {
+        text-align: center;
+      }
+    }
+    tbody {
+      tr {
+        td{
+          text-align: center;
+        }
+        td > i{
+          font-size: 20px;
+          border-radius: 50%;
+          color:var(--primary)
+        }
+        td.buttons {
+          display: flex;
+          justify-content: center;
+          column-gap: 10px;
+          align-items: center;
+          button,a{
+            text-decoration: none;
+            padding:10px;
+            transition: all 0.3s ease-in;
+            &:hover{
+              color:white;
+              scale:1.2;
+              box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            }
+          }
+          i{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }

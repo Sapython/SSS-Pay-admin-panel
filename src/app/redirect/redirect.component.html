@@ -1,0 +1,24 @@
+<main [class]="loading ? 'loading' : (status ? 'success' : 'failed')">
+    <div class="text" *ngIf="loading">
+        <div class="innerText">
+            <p>Payment in process do not press any button</p>
+        </div>
+        <div class="lds-dual-ring"></div>
+        <div class="overlay"></div>
+    </div>
+    
+    <ng-container *ngIf="!loading">
+        <div class="text" *ngIf="status">
+            <div class="innerText">
+                <p>Payment done 😁</p>
+                <p>You can go back to SSSPay app.</p>
+            </div>
+        </div>
+        <div class="text" *ngIf="!status">
+            <div class="innerText">
+                <p>Payment failed ⚠️</p>
+            </div>
+        </div>
+    </ng-container>
+</main>
+<img src="/assets/img/logo.png" alt="">

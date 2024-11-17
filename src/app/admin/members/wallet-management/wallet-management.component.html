@@ -1,0 +1,20 @@
+<section>
+    <form [formGroup]="walletForm" (ngSubmit)="addMoney()">
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input type="number" formControlName="amount" matInput>
+        </mat-form-field>
+        <mat-button-toggle-group name="type" aria-label="Type" formControlName="type">
+            <mat-button-toggle value="credit">Credit</mat-button-toggle>
+            <mat-button-toggle value="debit">Debit</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-form-field>
+            <mat-label>Narration</mat-label>
+            <input type="text" formControlName="narration" matInput>
+        </mat-form-field>
+        <div class="actions">
+            <button mat-raised-button [disabled]="!walletForm.valid" [mat-dialog-close]="walletForm.value" color="primary">Add Money</button>
+            <button mat-raised-button color="primary" type="button" mat-dialog-close="">Cancel</button>
+        </div>
+    </form>
+</section>

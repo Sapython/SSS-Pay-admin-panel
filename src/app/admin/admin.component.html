@@ -1,0 +1,81 @@
+<div id="wrapper">
+  <div id="sidebar-container">
+    <aside>
+      <div>
+        <img src="assets/img/logo.png" referrerpolicy="no-referrer" alt="SSS Pay" />
+        <h1>SSS PAY</h1>
+      </div>
+      <ul>
+        <li *ngIf="this.dataProvider.allowedPanels['account'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/account" routerLinkActive="active">
+            <img [src]="dataProvider.userData?.photoURL">
+            {{dataProvider.userData?.displayName}}
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['dashboard'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/dashboard" routerLinkActive="active">
+            <mat-icon aria-hidden>dashboard</mat-icon>Dashboard
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['allTransactions'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/allTransactions" routerLinkActive="active">
+            <mat-icon aria-hidden>receipt_long</mat-icon>All Transactions
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['wallet'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/wallet" routerLinkActive="active">
+            <mat-icon aria-hidden>wallet</mat-icon>Wallet
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['members'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/members" routerLinkActive="active">
+            <mat-icon aria-hidden>group</mat-icon>Members
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['kyc'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/kyc" routerLinkActive="active">
+            <mat-icon aria-hidden>how_to_reg</mat-icon>KYC
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['commission'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/commission" routerLinkActive="active">
+            <mat-icon aria-hidden>currency_exchange</mat-icon>Commission
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['charges'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/charges" routerLinkActive="active">
+            <mat-icon aria-hidden>payments</mat-icon>Charges
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['bulk'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/bulk-sms" routerLinkActive="active">
+            <mat-icon aria-hidden>sms</mat-icon>Bulk SMS
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['reports'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/reports" routerLinkActive="active">
+            <mat-icon aria-hidden>description</mat-icon>Reports
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['tickets'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/tickets" routerLinkActive="active">
+            <mat-icon aria-hidden>style</mat-icon>Tickets
+          </a>
+        </li>
+        <li *ngIf="this.dataProvider.allowedPanels['settings'].includes(this.dataProvider.userData?.access?.access || '')">
+          <a routerLink="/admin/settings" routerLinkActive="active">
+            <mat-icon aria-hidden>settings</mat-icon>Settings
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" routerLinkActive="active">
+            <mat-icon aria-hidden>logout</mat-icon>Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

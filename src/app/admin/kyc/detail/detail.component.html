@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>KYC Detail <i mat-dialog-close class="fa-solid fa-xmark" style="float:right"></i></h2>
+<img src="" alt="">
+<div class="details">
+  <p>Name: <b>{{name}}</b></p>
+  <p>Aadhaar Number: <b>{{aadhaarNumber}}</b></p>
+  <p>Pan Card: <b>{{panCardNumber}}</b></p>
+  <p>Address: <b>{{address}}</b></p>
+  <button (click)="seeImages()">
+    See Images
+  </button>
+  <div uk-lightbox>
+    <a data-type="image" loading="preload" class="uk-button uk-button-default" [href]="panImage" data-alt="Pan Image">Pan Image</a>
+  </div>
+  <div uk-lightbox>
+    <a data-type="image" loading="preload" class="uk-button uk-button-default" [href]="aadhaarFront" data-alt="Aadhaar Image">Aadhaar Front Image</a>
+  </div>
+  <div uk-lightbox>
+    <a data-type="image" loading="preload" class="uk-button uk-button-default" [href]="aadhaarBack" data-alt="Aadhaar Image">Aadhaar Back Image</a>
+  </div>
+  <div uk-lightbox>
+    <a data-type="image" loading="preload" class="uk-button uk-button-default" [href]="personSelfie" data-alt="Aadhaar Image">Person Selfie Image</a>
+  </div>
+  <div uk-lightbox>
+    <a data-type="image" loading="preload" class="uk-button uk-button-default" [href]="shopSelfieImage" data-alt="Aadhaar Image">Shop Selfie Image</a>
+  </div>
+</div>
+<button mat-dialog-close="Approve">Approve</button>
+<button class="deny" mat-dialog-close="Deny">Deny</button>

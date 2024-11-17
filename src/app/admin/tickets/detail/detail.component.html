@@ -1,0 +1,75 @@
+<app-header></app-header>
+<hr />
+<div class="container">
+  <div class="parent-container">
+    <div class="inner-container">
+      <div class="box">
+        <p>{{ status }}</p>
+      </div>
+      <div class="box-sec">
+        <img
+          class="img"
+          [src]="
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' ||
+            'assets/img/circle-user-solid.svg'
+          "
+        />
+        <p>{{ email }}</p>
+      </div>
+    </div>
+    <div class="section-one">
+      <div class="inner-sec-one">
+        <div class="info">
+          <p>{{ date }}</p>
+          <p id="time">{{ time }}</p>
+        </div>
+        <div class="name">
+          <img
+            class="img"
+            [src]="
+              'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' ||
+              'assets/img/circle-user-solid.svg'
+            "
+          />
+          <p>{{ name }}</p>
+        </div>
+        <p id="info">{{ info }}</p>
+      </div>
+      <div class="inner-sec-sec">
+        <div class="image">
+          <img src="assets/add-image.svg" alt="" />
+        </div>
+        <label>Choose Image</label>
+        <input type="file" hidden #fileInput />
+        <select (change)="fileInput.click()">
+          <option>Choose</option>
+          <option>Image</option>
+          <option>Documents</option>
+        </select>
+      </div>
+    </div>
+    <div class="section-one" id="second">
+      <div class="box-third">
+        <div class="reply">
+          <p>Post a Reply</p>
+        </div>
+        <div class="inner-box">
+          <img src="assets/logo1.png" alt="" />
+          <p>SSS Pay</p>
+        </div>
+      </div>
+      <textarea name="" id="" cols="30" rows="10" id="reply"></textarea>
+      <button class="primary-button">Reply</button>
+    </div>
+  </div>
+  <div class="small-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of statusOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

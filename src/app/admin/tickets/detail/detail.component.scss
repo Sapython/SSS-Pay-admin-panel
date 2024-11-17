@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  font-family: var(--font-one);
+  justify-content: space-between;
+  .parent-container {
+    width: 80%;
+  }
+  .small-container {
+    background-color: var(--primary-light);
+    padding: 10px;
+    font-family: var(--font-one);
+    width: 18%;
+    border-radius: 15px;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  .inner-container {
+    display: flex;
+    background-color: var(--primary-light);
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .box {
+    p {
+      color: #000;
+      font-weight: 600;
+      font-size: var(--small);
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  .box-sec {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+  }
+  .section-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #969696;
+    border-radius: 15px;
+    .info,
+    .name {
+      display: flex;
+      align-items: center;
+    }
+    .info {
+      p:nth-child(1) {
+        font-weight: 500;
+        font-size: var(--msmall);
+      }
+      p:nth-child(2) {
+        margin-left: 25px;
+      }
+    }
+    .name {
+      margin-bottom: 25px;
+      p {
+        font-size: var(--small);
+        font-weight: 500;
+        color: #000;
+        margin-top: 10px;
+      }
+    }
+    #info {
+      font-size: var(--msmall);
+      width: 600px;
+    }
+    .image {
+      border: 1px solid #969696;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px;
+    }
+    label {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+    select {
+      border: 1px solid var(--primary);
+      padding: 2px;
+      border-radius: 3px;
+    }
+    .box-third {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      color: var(--primary);
+      background-color: var(--primary-light);
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: 500;
+      font-size: var(--small);
+      .inner-box {
+        display: flex;
+        align-items: center;
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  #second {
+    display: block;
+  }
+  #reply {
+    font-size: var(--msmall);
+    width: 600px;
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: var(--primary);
+    border: none;
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    width: 95%;
+  }
+  .primary-button {
+    margin-left: 15px;
+  }
+}
+.img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}

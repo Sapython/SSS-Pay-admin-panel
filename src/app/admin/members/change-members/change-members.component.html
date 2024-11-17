@@ -1,0 +1,27 @@
+<form [formGroup]="changeMembershipForm" (ngSubmit)="changeMembership()">
+    <mat-form-field appearance="standard">
+        <mat-label>Member Id</mat-label>
+        <input matInput placeholder="Member Id">
+        <mat-icon matSuffix>person_4</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Member Type</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let type of memberTypes" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        <mat-label>Package Type</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let type of packages" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="warn">Cancel</button>
+    </div>
+</form>

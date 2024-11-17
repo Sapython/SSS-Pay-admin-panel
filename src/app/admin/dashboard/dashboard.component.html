@@ -1,0 +1,58 @@
+<app-header pageName="Dashboard"></app-header>
+<section>
+  <div id="cards">
+    <div class="card" id="aeps-members-card">
+      <h1>MEMBERS</h1>
+      <p>{{newMembers.length}}</p>
+    </div>
+    <div class="card" id="aeps-balance-card">
+      <h1>BALANCE</h1>
+      <p>₹90,00,000</p>
+    </div>
+  </div>
+  <div>
+    <h3>New Members</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email/Phone</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Access</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of newMembers; let i = index" [matTooltip]="member?.userId">
+            <td>{{ i + 1 }}</td>
+            <td class="photo-and-name">
+              <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" referrerPolicy="no-referrer" />
+              {{ (member?.displayName ? member?.displayName : "< No Name >") | titlecase }}
+            </td>
+            <td>{{ member?.email ? member?.email : member?.phoneNumber }}</td>
+            <td>{{ getType(member?.dob)=='string' ? member.dob : member.dob.toDate() | date }}</td>
+            <td>{{ member?.gender || 'not-specified' | titlecase }}</td>
+            <td>
+              <span [class]="member?.access.access">
+                {{ member?.access.access || 'not-specified' | titlecase }}
+              </span>
+            </td>
+            <td class="buttons">
+              <a uk-tooltip="title: Call" href="tel:{{member.phoneNumber}}" class="primary-button">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+              <button (click)="editUser(member)" uk-tooltip="title: Edit User" class="primary-button"><i class="fa-solid fa-user-pen"></i></button>
+              <button *ngIf="member.access.access!='blocked'" (click)="lockUser(member.userId)" uk-tooltip="title: Lock User" class="primary-button"><i class="fa-solid fa-user-lock"></i></button>
+              <button *ngIf="member.access.access=='blocked'" (click)="unlockUser(member.userId)" uk-tooltip="title: UnLock User" class="primary-button"><i class="fa-solid fa-user-check"></i></button>
+              <button (click)="removeUser(member.userId)" uk-tooltip="title: Remove User" class="primary-button"><i class="fa-solid fa-user-large-slash"></i></button>
+              <button (click)="promoteUser(member)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-user-tag"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

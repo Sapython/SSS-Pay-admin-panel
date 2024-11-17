@@ -1,0 +1,59 @@
+div.ticketItem{
+    display: flex;
+    justify-content: space-between;
+    padding:10px 7px;
+    margin:0px;
+    flex:1;
+    border-bottom: 2px solid var(--primary);
+    div.contactInfo{
+        display: flex;
+        column-gap: 20px;
+        img{
+            border-radius: 50%;
+            object-fit: cover;
+            width: 70px;
+            height:70px;
+            box-shadow: 5px 2px 10px rgba(0,0,0,0.3);
+        }
+        span{
+            p:nth-child(1){
+                font-size: 16px;
+                font-weight: 600;
+                color:rgb(14, 14, 14);
+            }
+            p:nth-child(2){
+                font-size: 13px;
+                font-weight: 400;
+                color:grey;
+            }
+        }
+    }
+    div.details{
+        display: flex;
+        justify-content: space-between;
+        flex: 2;
+        p.ticketNumber{
+            font-size: 15px;
+            font-weight: 500;
+            color:grey;
+        }
+        span{
+            h5{
+                font-size: 16px;
+                font-weight: 600;
+                color:rgb(14, 14, 14);
+            }
+            p{
+                font-size: 13px;
+                font-weight: 400;
+                color:grey;
+            }
+            span.status{
+                background-color: var(--primary);
+                padding:5px 10px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+}

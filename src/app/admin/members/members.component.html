@@ -1,0 +1,64 @@
+<app-header pageName="Members"></app-header>
+<div class="topInfo">
+  <h3>Total Member {{members.length}}</h3>
+  <div>
+    <button (click)="addMember()">Add Member</button>
+    <button *ngIf="selectable" (click)="transferRetail()">Transfer Retailer</button>
+    <button *ngIf="selectable" (click)="changeMembership()">Change Membership</button>
+    <button (click)="selectable = !selectable">{{selectable ? 'De-Select' : 'Select'}} Agents</button>
+  </div>
+</div>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email/Phone</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Wallet Balance</th>
+        <th>Commission</th>
+        <th>Access</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members; let i = index" [matTooltip]="member?.userId || '<No User Id>'">
+        <td>{{ i + 1 }}</td>
+        <td class="photo-and-name">
+          <img [src]="member.photoURL || 'assets/img/circle-user-solid.svg'" referrerPolicy="no-referrer" />
+          {{ (member?.displayName ? member?.displayName : "< No Name >") | titlecase }}
+        </td>
+        <td>{{ member?.email ? member?.email : member?.phoneNumber }}</td>
+        <td>{{ getType(member?.dob)=='string' ? member.dob : member.dob.toDate() | date }}</td>
+        <td>{{ member?.gender || 'not-specified' | titlecase }}</td>
+        <td>{{ member?.balance | async}}</td>
+        <td>
+          <ng-container *ngIf="(member?.commission | async); let commission">
+            <p *ngIf="(commission|| []).length == 0">No Commission</p>
+            <button *ngIf="(commission|| []).length > 0" mat-flat-button color="primary" (click)="showCommissions(commission)">
+              Show {{commission?.length}} Commissions
+            </button>
+          </ng-container>
+        </td>
+        <td>
+          <span [class]="member?.access?.access">
+            {{ member?.access?.access || 'not-specified' | titlecase }}
+          </span>
+        </td>
+        <td class="buttons">
+          <a uk-tooltip="title: Call" href="tel:{{member.phoneNumber}}" class="primary-button">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+          <button (click)="editUser(member)" uk-tooltip="title: Edit User" class="primary-button"><i class="fa-solid fa-user-pen"></i></button>
+          <button *ngIf="member.access.access!='blocked'" (click)="lockUser(member.userId)" uk-tooltip="title: Lock User" class="primary-button"><i class="fa-solid fa-user-lock"></i></button>
+          <button *ngIf="member.access.access=='blocked'" (click)="unlockUser(member.userId)" uk-tooltip="title: UnLock User" class="primary-button"><i class="fa-solid fa-user-check"></i></button>
+          <button (click)="removeUser(member.userId)" uk-tooltip="title: Remove User" class="primary-button"><i class="fa-solid fa-user-large-slash"></i></button>
+          <button (click)="promoteUser(member)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-user-tag"></i></button>
+          <button *ngIf="this.dataProvider.userData?.access?.access == 'admin'" (click)="addMoney(member)" uk-tooltip="title: Promote User" class="primary-button"><i class="fa-solid fa-wallet"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

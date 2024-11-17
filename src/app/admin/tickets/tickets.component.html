@@ -1,0 +1,10 @@
+<app-header pageName="Tickets"></app-header>
+<button mat-raised-button color="primary" (click)="addTicket()">Add Ticket</button>
+<hr />
+<div id="bar">
+  <mat-tab-group >
+    <mat-tab label="Ongoing"><app-ongoing></app-ongoing></mat-tab>
+    <mat-tab label="Unresolved"><app-unresloved></app-unresloved></mat-tab>
+    <mat-tab label="Resolved"><app-resolved></app-resolved></mat-tab>
+  </mat-tab-group>
+</div>

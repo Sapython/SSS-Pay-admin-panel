@@ -1,0 +1,41 @@
+<div class="bottom">
+  <form [formGroup]="newMessage" (ngSubmit)="submitNewMessage()">
+    <div class="sec-second">
+      <label for="">Type SMS</label>
+      <textarea placeholder="Maximum 260 Character " name="" id="" maxlength="260" cols="80" rows="05"></textarea>
+    </div>
+    <div>
+      <h3>Recipients</h3>
+      <i class="ri-contacts-book-upload-fill"></i>
+    </div>
+    <mat-form-field class="recipients" appearance="fill">
+      <mat-label>Recipients</mat-label>
+      <mat-chip-list #chipList1 aria-label="Room Selection">
+        <mat-chip *ngFor="let customer of filteredCustomers" (removed)="remove(customer)">
+          <div id="userChip">
+            <img [src]="customer.photoURL" *ngIf="customer.photoURL" referrerPolicy="no-referrer" alt="" />
+            <p>{{ customer.displayName }}</p>
+          </div>
+          <button matChipRemove>
+            <i class="ri-close-fill"></i>
+          </button>
+        </mat-chip>
+        <input placeholder="Add..." #roomInput [formControl]="customerControl" [matAutocomplete]="auto1"
+          [matChipInputFor]="chipList1" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)" />
+      </mat-chip-list>
+      <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let customer of customers; index as i" [value]="customer.id">
+          <div id="userChip">
+            <img referrerPolicy="no-referrer" [src]="customer.photoURL" *ngIf="customer.photoURL" alt="" />
+            <p>{{ customer.displayName }}</p>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="buttons">
+      <button class="primary-button send" type="submit">Send</button>
+      <!-- <button class="primary-button cancel">Cancel</button> -->
+    </div>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+table {
+  th {
+    color: var(--primary);
+  }
+  tr {
+    border-bottom: 1px solid var(--primary);
+  }
+  td {
+    text-align: left;
+    .container,
+    .box {
+      p:nth-child(1) {
+        font-weight: 500;
+        font-size: var(--msmall);
+        color: #000;
+      }
+      p:nth-child(2) {
+        font-weight: 500;
+        font-size: var(--xsmall);
+      }
+    }
+  }
+  td.user{
+    display: flex;
+    div.userData{
+      
+    }
+  }
+}

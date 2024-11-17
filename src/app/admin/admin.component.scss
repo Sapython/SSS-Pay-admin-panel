@@ -1,0 +1,104 @@
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+
+  #sidebar-container {
+    width: 300px;
+
+    aside {
+      background-color: var(--secondary);
+      box-shadow: var(--normal-shadow);
+      width: 300px;
+      overflow-y: auto;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 2em 1em;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: var(--secondary-dark);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--primary);
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
+      }
+
+      img {
+        display: block;
+        width: 80px;
+        margin: 0 auto 1em auto;
+      }
+
+      h1 {
+        font-size: var(--small);
+        text-align: center;
+        color: var(--tertiary);
+        font-weight: 600;
+      }
+
+      ul {
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: 2em;
+
+        li {
+          margin-bottom: 0.5em;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            padding: 0.5em 1em;
+            border-radius: 7px;
+            transition: all 0.5s;
+            color: var(--secondary-contrast);
+            text-decoration: none;
+            font-size: var(--xsmall);
+            font-family: var(--font-one);
+
+            &:hover,
+            &.active {
+              box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 7px;
+              background-color: var(--primary);
+              color: var(--primary-contrast);
+            }
+
+            img {
+              margin: 0;
+              object-fit: cover;
+              border-radius: 50%;
+            }
+
+            img,
+            mat-icon {
+              margin-right: 10px;
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    overflow-y: auto;
+    position: relative;
+    width: calc(100% - 300px);
+    padding: 1.5em;
+  }
+}

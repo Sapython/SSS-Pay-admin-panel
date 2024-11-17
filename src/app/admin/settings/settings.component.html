@@ -1,0 +1,50 @@
+<app-header></app-header>
+<hr>
+<div class="container">
+    <img [src]="dataProvider.userData?.photoURL" />
+    <p id="name">{{dataProvider.userData?.displayName}}</p>
+    <p id="email">{{dataProvider.userData?.email}}</p>
+    <div class="inner-container">
+        <div class="box">
+            <div class="inner-box">
+                <p>Allow New Users</p>
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Allow New Transactions</p>
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Clear Analytics</p>
+                <button class="primary-button">Clear</button>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Allow New Tickets</p>
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Assign a New Admin</p>
+                <mat-icon>trending_flat</mat-icon>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Block a User</p>
+                <mat-icon>trending_flat</mat-icon>
+            </div>
+            <hr>
+            <div class="inner-box">
+                <p>Reset Password</p>
+                <button class="primary-button">Reset</button>
+            </div>
+        </div>
+        <div class="box2">
+            <p>Admin Actions</p>
+            <button>Analytics <mat-icon>timeline</mat-icon></button>
+            <button>Manage Users <mat-icon>perm_identity</mat-icon></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+section{
+    form.actions{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap:20px;
+    }
+    div.data{
+        margin-top: 50px;
+        table{
+            width: 100%;
+            column-gap: 0px;
+            thead,tbody{
+                width: 100%;
+                td,th{
+                   border-top: 2px solid rgb(182, 182, 182);
+                   border-bottom: 2px solid rgb(182, 182, 182);
+                   border-right: 2px solid rgb(182, 182, 182);
+                }
+                td:first-child,th:first-child{
+                    border-left:  2px solid rgb(182, 182, 182);
+                }
+            }
+        }
+    }
+}

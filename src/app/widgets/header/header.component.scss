@@ -1,0 +1,28 @@
+div.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.5em;
+
+  h1 {
+    text-transform: capitalize;
+    font-family: var(--font-one);
+    color: var(--tertiary);
+    font-size: var(--large);
+    margin: 0;
+  }
+
+  button {
+    border: none;
+    padding: 0px;
+    margin: 10px;
+    background: transparent;
+    mat-icon {
+      color: var(--secondary-contrast);
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

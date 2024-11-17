@@ -1,0 +1,125 @@
+@keyframes moveGradient {
+  from{
+    background-position: 0% 0%;
+  }
+  to{
+    background-position: 100% 100%;
+  }
+}
+section {
+  font-family: var(--font-one);
+  .transaction_details {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px;
+    .graph,
+    .card {
+      width: 30%;
+      height: 100%;
+    }
+    .card {
+      width: 25%;
+      border-radius: 15px;
+      position: relative;
+      background-color: #3bb78f;
+      background-image: linear-gradient(315deg, #40e7b2 0%, #02a95e 74%);
+      animation: moveGradient 5s linear alternate infinite;
+      background-size: 150% 150%;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      gap: 20px;
+      p {
+        font-size: 16px;
+        color: var(--primary-contrast);
+      }
+      b {
+        font-size: 22px;
+        color: var(--primary-contrast);
+        font-weight: 500;
+      }
+      img {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+  .Alltransactions {
+    width: 100%;
+    // height: 500px;
+    // background-color: red;
+    margin-top: 50px;
+    .last_week {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    img{
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+      height: 300px;
+    }
+    table {
+      width: 100%;
+      border-spacing: 0px;
+      tr {
+        height: 20px;
+        
+        th {
+          font-size: 18px;
+          text-align: start;
+          padding: 20px;
+          color: var(--primary);
+          border-bottom: 5px solid var(--primary);
+          position: sticky;
+          top:0;
+        }
+        td {
+          font-size: 15px;
+          text-align: start;
+          padding: 20px;
+          font-weight: 500;
+          border-bottom: 2px solid var(--primary);
+          gap: 0;
+          button {
+            background-color: var(--primary);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: var(--primary-contrast);
+            &:hover{
+                transform: scale(1.02);
+            }
+          }
+        }
+      }
+      .header {
+        // background-color: red;
+      }
+    }
+  }
+}
+
+.credit{
+  border:2px solid #32ab4a;
+  border-radius: 15px;
+  color: #32ab4a;
+  background-color: #edfff4;
+  padding: 5px;
+  max-height: 40px;
+  text-align: center;
+}
+.debit{
+  border:2px solid #ff8800;
+  border-radius: 15px;
+  color: #ff8800;
+  background-color: #ff880017;
+  padding: 5px;
+  text-align: center;
+}

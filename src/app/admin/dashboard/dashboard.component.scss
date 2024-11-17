@@ -1,0 +1,125 @@
+@keyframes moveBackground {
+  0%{
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 100% 100%;
+  }
+  100%{
+    background-position: 0 0;
+  }
+}
+section {
+  h3 {
+    font-family: var(--font-one);
+    font-size: var(--medium);
+    margin: 0;
+    margin-bottom: 0.75em;
+  }
+
+  #cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2em;
+    .card{
+      padding:40px;
+      border-radius: 20px;
+      box-shadow: 5px 5px 30px rgba(0,0,0,0.3);
+      color:white;
+      background-color: #05e8ba;
+      background-image: linear-gradient(315deg, #18b373 0%, #08e175 74%);
+      background-size: 200%;
+      animation: moveBackground 5s linear alternate;
+      h1{
+        color:white;
+        font-size: 30px;
+      }
+      p{
+        font-size: 25px;
+      }
+    }
+    .card:nth-child(1){
+      animation-delay: random(2000) + ms;
+    }
+    .card:nth-child(2){
+      animation-delay: random(2000) + ms;
+    }
+  }
+
+  .photo-and-name {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 1em;
+    }
+  }
+  table {
+    thead {
+      th {
+        text-align: center;
+      }
+    }
+    tbody {
+      tr {
+        td.buttons {
+          display: flex;
+          justify-content: center;
+          column-gap: 10px;
+          align-items: center;
+          button,a{
+            text-decoration: none;
+            padding:10px;
+            transition: all 0.3s ease-in;
+            &:hover{
+              color:white;
+              scale:1.2;
+              box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            }
+          }
+          i{
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+.blocked{
+  border:2px solid #ff0000;
+  border-radius: 15px;
+  color: #ff0000;
+  background-color: #ff000017;
+  padding: 5px;
+}
+
+.admin,.superDistributor, .masterDistributor{
+  border:2px solid #32ab4a;
+  border-radius: 15px;
+  color: #32ab4a;
+  background-color: #edfff4;
+  padding: 5px;
+}
+
+.user{
+  border:2px solid #ff00ff;
+  border-radius: 15px;
+  color: #ff00ff;
+  background-color: #ff00ff17;
+  padding: 5px;
+}
+.retailer,.distributor{
+  border:2px solid #0099ff;
+  border-radius: 15px;
+  color: #0099ff;
+  background-color: hsl(204, 100%, 94%);
+  padding: 5px;
+}
+.guest{
+  border:2px solid #ff8800;
+  border-radius: 15px;
+  color: #ff8800;
+  background-color: #ff880017;
+  padding: 5px;
+}

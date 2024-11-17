@@ -1,0 +1,11 @@
+<app-header pageName="KYC"></app-header>
+<div>
+  <p>Total requests: <b>{{kycRequests.length}}</b></p>
+</div>
+<ul>
+  <li *ngFor="let kyc of kycRequests;let i = index;">
+    <p>{{i+1}}. <b>{{kyc.displayName | titlecase}}</b> seeks KYC approval</p>
+    <p [class]="kyc.kycStatus">{{kyc.kycStatus | titlecase}}</p>
+    <button class="primary-button" *ngIf="kyc.kycStatus!='incomplete'" (click)="openDetail(kyc)">View</button>
+  </li>
+</ul>

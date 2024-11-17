@@ -1,0 +1,78 @@
+.container{
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: var(--font-one);
+    img{
+        height: 90px;
+        width: 90px;
+        object-fit: cover;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    #name{
+        margin-top: 15px;
+        font-weight: 500;
+        font-size: var(--small);
+    }
+    .inner-container{
+        display: flex;
+        align-items: center;
+        .box{
+            margin-top: 20px;
+            padding: 15px;
+            // border: 1px solid var(--primary);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+            width: 50%;
+            margin-right: 50px;
+            .inner-box{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+                p{
+                    font-size: 400;
+                    font-size: var(--msmall);
+                    margin: 0;
+                }
+                hr{
+                    color: var(--primary);
+                }
+                mat-icon,mat-slide-toggle{
+                    color: var(--primary);
+                }
+            }
+        }
+        .box2{
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 15px;
+            padding-right: 50px;
+            margin-top: -200px;
+
+            p{
+                font-size: var(--msmall);
+                font-weight: 500;
+            }
+            button{
+                display: block;
+                background-color: #fff;
+                color: var(--primary);
+                border: none;
+                border: 3px solid var(--primary);
+                padding: 5px;
+                margin-top: 10px;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                font-size: var(--xsmall);
+                font-weight: 600;
+                font-family: var(--font-one);
+                cursor: pointer;
+                mat-icon{
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

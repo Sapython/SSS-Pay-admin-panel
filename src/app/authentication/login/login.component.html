@@ -1,0 +1,45 @@
+<section>
+  <div class="signup_details">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" *ngIf="checked && !dataProvider.loggedIn">
+      <b>Login</b>
+      <div class="input_conatiner">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="username@host.com" />
+      </div>
+      <div class="input_conatiner">
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="Password" />
+      </div>
+      <div class="authentication">
+        <button type="submit">Login</button>
+        <button (click)="googleSSO()" type="button" class="google"><img src="../../../assets/google.svg">
+          <p>Continue with google</p>
+        </button>
+      </div>
+      <span>
+        Don't have an account?
+        <p routerLink="../signup">Signup</p>
+      </span>
+    </form>
+    <div class="loader" *ngIf="!checked">
+      <mat-spinner></mat-spinner>
+      <h2>Checking for your login info</h2>
+    </div>
+    <div *ngIf="checked && dataProvider.loggedIn" class="loader">
+      <p>You are already logged in.</p>
+      <button routerLink="../admin" *ngIf="dataProvider.userData?.access?.access==='admin'">
+        <p>Continue to Admin Panel</p>
+      </button>
+      <button *ngIf="dataProvider.userData?.access?.access==='guest'" routerLink="../user">
+        <p>Continue to User Panel</p>
+      </button>
+      <button *ngIf="supervisors.includes(dataProvider.userData?.access?.access)" routerLink="../distributor">
+        <p>Continue to {{dataProvider.userData?.access?.access | titlecase}} Panel</p>
+      </button>
+      <button style="margin-top:10px;" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+  <img src="../../../assets/signup.png" />
+</section>

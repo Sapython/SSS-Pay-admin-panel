@@ -1,0 +1,10 @@
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let distributor of distributors" [value]="distributor.id">
+        {{distributor.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>

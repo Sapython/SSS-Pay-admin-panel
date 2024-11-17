@@ -1,0 +1,85 @@
+<app-header pageName="Transactions"></app-header>
+<h3>Total Balance {{ totalBalance }}</h3>
+<mat-button-toggle-group name="timePeriod" (valueChange)="filterOnTime($event)" aria-label="Time period">
+  <mat-button-toggle value="daily">Daily</mat-button-toggle>
+  <mat-button-toggle value="weekly">Weekly</mat-button-toggle>
+  <mat-button-toggle value="monthly">Monthly</mat-button-toggle>
+  <mat-button-toggle value="yearly">Yearly</mat-button-toggle>
+  <mat-button-toggle value="all">All</mat-button-toggle>
+</mat-button-toggle-group>
+<br>
+<mat-button-toggle-group name="timePeriod" (valueChange)="filterOnType($event)" aria-label="Time period">
+  <mat-button-toggle value="CW">Cash Withdrawl</mat-button-toggle>
+  <mat-button-toggle value="BE">Balance Enquiry</mat-button-toggle>
+  <mat-button-toggle value="MS">Mini-Statement</mat-button-toggle>
+  <mat-button-toggle value="cableDth">DTH</mat-button-toggle>
+  <mat-button-toggle value="recharge">Mobile Recharge</mat-button-toggle>
+  <mat-button-toggle value="gas">Gas</mat-button-toggle>
+  <mat-button-toggle value="bbps">BBPS</mat-button-toggle>
+  <mat-button-toggle value="expressPayout">Express Payout</mat-button-toggle>
+  <mat-button-toggle value="dailyPayout">Daily Payout</mat-button-toggle>
+</mat-button-toggle-group>
+<div class="actions">
+  <button mat-flat-button (click)="exportTransactionsPDF()">Export PDF<mat-icon>print</mat-icon></button>
+  <button mat-flat-button (click)="exportTransactionsExcel()">Export Excel<mat-icon>print</mat-icon></button>
+</div>
+<hr>
+<div class="table-container">
+  <table id="transactionsTable">
+    <thead>
+      <tr>
+        <th>Transaction ID <button mat-icon-button color="primary" (click)="sortBy('id')"><mat-icon>sort</mat-icon></button></th>
+        <th>Sender <button mat-icon-button color="primary" (click)="sortBy('sender')"><mat-icon>sort</mat-icon></button></th>
+        <th>Receiver <button mat-icon-button color="primary" (click)="sortBy('receiver')"><mat-icon>sort</mat-icon></button></th>
+        <th>Type <button mat-icon-button color="primary" (click)="sortBy('type')"><mat-icon>sort</mat-icon></button></th>
+        <th>Amount <button mat-icon-button color="primary" (click)="sortBy('amount')"><mat-icon>sort</mat-icon></button></th>
+        <th>Commission</th>
+        <th>Time <button mat-icon-button color="primary" (click)="sortBy('date')"><mat-icon>sort</mat-icon></button></th>
+        <th>Status <button mat-icon-button color="primary" (click)="sortBy('status')"><mat-icon>sort</mat-icon></button></th>
+        <th>Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of this.selectedMode != 'none' ? filteredTransactions : transactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.extraData?.customerId || 'N/A' }}</td>
+        <td>{{ transaction.extraData?.merchantCode }}</td>
+        <td>{{ transaction.type == 'aeps' ? transaction.type + ' : ' +transaction.extraData?.aepsData?.transactionType : transaction.type}}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>
+          <p *ngIf="(transaction.commissions || []).length ==0">No Commission</p>
+          <button *ngIf="(transaction.commissions || []).length > 0" mat-flat-button color="primary" (click)="seeCommissions(transaction.commissions || [])">See Commissions</button>
+        </td>
+        <td>{{ transaction.date.toDate() | date:'short' }}</td>
+        <td>
+          <span class="success" *ngIf="transaction.status === 'success'">
+            <mat-icon>done_all</mat-icon>Success
+          </span>
+          <span class="pending" *ngIf="transaction.status === 'pending'">
+            <mat-icon>update</mat-icon>Pending
+          </span>
+          <span class="pending" *ngIf="transaction.status === 'started'">
+            <mat-icon>update</mat-icon>Started
+          </span>
+          <span class="pending" *ngIf="transaction.status === 'unknown'">
+            <mat-icon>update</mat-icon>Unknown
+          </span>
+          <span class="failed" *ngIf="transaction.status === 'error'">
+            <mat-icon>dangerous</mat-icon>Failed
+          </span>
+        </td>
+        <td>
+          <div class="buttons">
+            <button class="primary-button" (click)="viewDetails(transaction)">View Details</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-paginator [length]="transactionsLength"
+              [pageSize]="currentPageSize"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              (page)="loadPage($event)"
+              aria-label="Select page">
+  </mat-paginator>
+</div>

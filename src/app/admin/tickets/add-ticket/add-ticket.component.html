@@ -1,0 +1,46 @@
+<form class="modal" [formGroup]="ticketForm" (ngSubmit)="addTicket()">
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Problem</mat-label>
+            <input matInput formControlName="problem" placeholder="Placeholder">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" placeholder="Placeholder"></textarea>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>User</mat-label>
+            <mat-select formControlName="user">
+                <mat-option [value]="user" *ngFor="let user of users">
+                    <div class="user">
+                        <img [src]="user.photoURL">
+                        <p class="email">{{user.email}}</p>
+                    </div>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    
+    <p>
+        <!-- Status -->
+        <mat-form-field appearance="standard">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+                <mat-option  value="ongoing">
+                    Ongoing
+                </mat-option>
+                <mat-option  value="unresolved">
+                    Un-Resolved
+                </mat-option>
+                <mat-option  value="resolved">
+                    Resolved
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" [disabled]="!(valid && ticket)" [mat-dialog-close]="ticket">Add Ticket</button>
+</form>

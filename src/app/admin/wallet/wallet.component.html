@@ -1,0 +1,110 @@
+<app-header pageName="Wallet"></app-header>
+<section>
+  <!-- <div class="transaction_details">
+    <div class="graph">
+      <div style="width: 100%">
+        <canvas id="myChart" width="700" height="450" #mychart></canvas>
+      </div>
+    </div>
+    <div class="card last_transaction">
+      <p>LAST WEEK TRANSACTIONS</p>
+      <b>₹{{ lastTransaction }}</b>
+    </div>
+    <div class="card wallet">
+      <p>WALLET</p>
+      <b>₹{{ Balance }}</b>
+    </div>
+  </div> -->
+  <div class="Alltransactions">
+    <ng-container *ngIf="showTransactions">
+      <p class="last_week">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="currentMember = undefined; showTransactions = false"
+        >
+          <mat-icon>arrow_back</mat-icon> Back
+        </button>
+        Wallet Transactions
+      </p>
+      <table>
+        <tr class="header">
+          <th>Time</th>
+          <th>Amount</th>
+          <th>Narration</th>
+          <th>Service</th>
+          <th>Type</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Balance</th>
+        </tr>
+        <tr *ngFor="let transaction of this.filteredTransactions">
+          <td>{{ transaction.transactionTime.toDate() | date : "long" }}</td>
+          <td>₹ {{ transaction.amount }}</td>
+          <td>{{ transaction.narration }}</td>
+          <td>{{ transaction.service | titlecase }}</td>
+          <td>
+            <div [class]="transaction.transactionType">
+              {{ transaction.transactionType | titlecase }}
+            </div>
+          </td>
+          <td>
+            ₹
+            {{
+              transaction.transactionType == "credit"
+                ? transaction.amount
+                : "N/A"
+            }}
+          </td>
+          <td>
+            ₹
+            {{
+              transaction.transactionType == "debit"
+                ? transaction.amount
+                : "N/A"
+            }}
+          </td>
+          <td>{{ transaction.availableBalance ? transaction.availableBalance :(transaction.balance ? transaction.balance : "No Record") }}</td>
+        </tr>
+      </table>
+      <img src="assets/404.svg" alt="No Transactions Found" *ngIf="this.filteredTransactions.length==0">
+      <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="loadPagedData($event)"
+               [length]="transactions.length"
+               [pageSize]="pageSize"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="pageSizeOptions"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+      </mat-paginator>
+    </ng-container>
+    <ng-container *ngIf="!showTransactions">
+      <p class="last_week">
+        Downline Members
+      </p>
+      <table>
+        <tr>
+          <th>Member Name</th>
+          <th>Access</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>User Id</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of downlineMembers">
+          <td>{{ user.displayName }}</td>
+          <td>{{ user.access.access }}</td>
+          <td>{{ user.phoneNumber }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.userId }}</td>
+          <td>
+            <button (click)="seeTransactions(user)">
+              <mat-icon>receipt_long</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+</section>

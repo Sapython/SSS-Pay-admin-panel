@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>Transaction Detail</h2>
+<mat-dialog-content>
+    <table>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Transaction ID</td>
+                <td>{{ transaction.id || 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td>Transaction Title</td>
+                <td>{{ transaction.title || 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td>Transaction Description</td>
+                <td>{{ transaction.description }}</td>
+            </tr>
+            <tr>
+                <td>Transaction completed</td>
+                <td>{{ transaction.completed ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <td>Sender</td>
+                <td>{{ transaction.extraData.customerId || 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td>Receiver</td>
+                <td>{{ transaction.receiver }}</td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>{{ transaction.amount }}</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>{{ transaction.date.toDate() | date }}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <span class="success" *ngIf="transaction.status === 'success'">
+                        <mat-icon>done_all</mat-icon>Success
+                    </span>
+                    <span class="pending" *ngIf="transaction.status === 'pending'">
+                        <mat-icon>update</mat-icon>Pending
+                    </span>
+                    <span class="pending" *ngIf="transaction.status === 'started'">
+                        <mat-icon>update</mat-icon>Started
+                    </span>
+                    <span class="pending" *ngIf="transaction.status === 'unknown'">
+                        <mat-icon>update</mat-icon>Unknown
+                    </span>
+                    <span class="failed" *ngIf="transaction.status === 'error'">
+                        <mat-icon>dangerous</mat-icon>Failed
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Transaction Error</td>
+                <td>{{ transaction.error || 'N/A' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>

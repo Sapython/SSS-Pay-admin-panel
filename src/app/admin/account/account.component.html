@@ -1,0 +1,163 @@
+<app-header pageName="Account"></app-header>
+<section>
+  <ng-container *ngIf="!editMode; else editContainer">
+    <div id="top">
+      <div id="center">
+        <div id="profile-photo">
+          <img [src]="dataProvider.userData?.photoURL || 'assets/img/circle-user-solid.svg'" referrerpolicy="no-referrer" alt="Profile Photo" />
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Name</h4>
+          <p>{{dataProvider.userData?.displayName || 'N/A' | titlecase}}</p>
+        </div>
+        <button mat-flat-button color="primary" (click)="checkOnboardingStatus()">Check Onboarding Status</button>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Email</h4>
+          <p>{{dataProvider.userData?.email || 'N/A'}}</p>
+        </div>
+        <div class="data-field">
+          <h4>Phone</h4>
+          <p>{{dataProvider.userData?.phoneNumber || 'N/A'}}</p>
+        </div>
+      </div>
+      <div class="data-field">
+        <h4>Address</h4>
+        <p>{{dataProvider.userData?.address || 'N/A' | titlecase}}</p>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>City</h4>
+          <p>{{dataProvider.userData?.city || 'N/A' | titlecase}}</p>
+        </div>
+        <div class="data-field">
+          <h4>State</h4>
+          <p>{{dataProvider.userData?.state || 'N/A' | titlecase}}</p>
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Pincode</h4>
+          <p>{{dataProvider.userData?.pincode || 'N/A'}}</p>
+        </div>
+        <div class="data-field">
+          <h4>Country</h4>
+          <p>India</p>
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Date of Birth</h4>
+          <p>{{(dataProvider.userData?.dob.toDate() | date ) || 'N/A'}}</p>
+        </div>
+        <div class="data-field">
+          <h4>Gender</h4>
+          <p>{{dataProvider.userData?.gender || 'N/A' | titlecase}}</p>
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <h4>Aadhaar No.</h4>
+          <p>{{dataProvider.userData?.aadhaarNumber || 'N/A'}}</p>
+        </div>
+        <div class="data-field">
+          <h4>PAN No.</h4>
+          <p>{{dataProvider.userData?.panCardNumber || 'N/A'}}</p>
+        </div>
+      </div>
+      <div id="buttons">
+        <button type="button" class="primary-button" (click)="editMode = true">
+          <mat-icon>edit</mat-icon> Edit
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #editContainer>
+    <div id="top">
+      <div id="center">
+        <div id="upload-photo-wrapper" (click)="photoInput.click()" #wrapper>
+          <div id="upload-photo-container">
+            <img src="assets/img/upload-photo.png" />
+            <p *ngIf="photoInput.files?.length != 1">Upload Photo</p>
+            <p *ngIf="photoInput.files?.length == 1">Change Photo</p>
+            <input type="file" (change)="validateImage($event)" #photoInput id="photo-input" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="container">
+      <div class="data-field">
+        <label for="name-input">Name</label>
+        <input type="text" value="" />
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <label for="email-input">Email</label>
+          <input type="text" value="" />
+        </div>
+        <div class="data-field">
+          <label for="phone-input">Phone</label>
+          <input type="text" value="" />
+        </div>
+      </div>
+      <div class="data-field">
+        <label for="address-input">Address</label>
+        <input type="text" value="" />
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <label for="city-input">City</label>
+          <input type="text" value="" />
+        </div>
+        <div class="data-field">
+          <label for="state-input">State</label>
+          <input type="text" value="" />
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <label for="pincode-input">Pincode</label>
+          <input type="text" value="" />
+        </div>
+        <div class="data-field">
+          <label for="country-input">Country</label>
+          <input type="text" value="" />
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <label for="dob-input">Date of Birth</label>
+          <input type="text" value="" />
+        </div>
+        <div class="data-field">
+          <label for="gender-input">Gender</label>
+          <input type="text" value="" />
+        </div>
+      </div>
+      <div class="flex-data-fields">
+        <div class="data-field">
+          <label for="aadhar-input">Aadhar No.</label>
+          <input type="text" value="" />
+        </div>
+        <div class="data-field">
+          <label for="pan-input">PAN No.</label>
+          <input type="text" value="" />
+        </div>
+      </div>
+      <div id="buttons">
+        <button type="button" class="primary-button" (click)="saveChanges()">
+          <mat-icon>check_circle</mat-icon> Save Changes
+        </button>
+        <button type="button" class="primary-button" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-template>
+  <a hidden [href]="webLink" #webRef target="_blank"></a>
+</section>

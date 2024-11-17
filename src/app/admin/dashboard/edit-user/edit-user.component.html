@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>Edit Profile</h2>
+
+<mat-dialog-content class="mat-typography">
+    <img [src]="image.value ? image.value : this.data?.photoURL" alt="">
+    <input type="file" hidden (change)="this.userForm.value.photo = $event" #image>
+    <form [formGroup]="userForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Full Name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="displayName">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-hint>Your Full Name Like John Doe</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="email">
+            <mat-icon matSuffix>mail</mat-icon>
+            <mat-hint>Your email address example@host.com</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="phoneNumber">
+            <mat-icon matSuffix>call</mat-icon>
+            <mat-hint>Your Phone number 700709235</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>DOB</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+                <mat-option value="other">Other</mat-option>
+                <mat-option value="not-specified">Not Specified</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Access</mat-label>
+            <mat-select formControlName="access">
+                <mat-option value="admin">Admin</mat-option>
+                <mat-option value="agent">Agent</mat-option>
+                <mat-option value="supervisor">Supervisor</mat-option>
+                <mat-option value="guest">Guest</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state" (selectionChange)="setCities($event)">
+                <mat-option [value]="state.name" *ngFor="let state of states">{{state.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="city">
+                <mat-option [value]="state.city" *ngFor="let state of filteredCities">{{state.city}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="Placeholder" formControlName="address"></textarea>
+            <mat-icon matSuffix>home</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Pin Code</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="pincode">
+            <mat-icon matSuffix>signpost</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="userForm.value" [disabled]="userForm.valid" color="primary" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

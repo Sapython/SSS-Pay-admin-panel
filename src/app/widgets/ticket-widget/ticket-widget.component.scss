@@ -1,0 +1,29 @@
+.container{
+    margin-left: -10px;
+    background-color: #fff;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    p{
+        margin-right: 15px;
+        margin-top: 2px;
+        font-size: var(--xsmall);
+    }
+    .info{
+        p:nth-child(2){
+            font-size: var(--xxsmall);
+            font-weight: 300;
+            color: grey;
+            line-height: 10px;
+        }
+    }
+    input{
+        margin-top: -1%;
+        border: 0.5px solid var(--primary);
+    }
+    img{
+        margin: 0px 10px
+    };
+}

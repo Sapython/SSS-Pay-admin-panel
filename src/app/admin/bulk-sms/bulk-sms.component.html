@@ -1,0 +1,31 @@
+<app-header pageName="Bulk SMS"></app-header>
+<hr>
+<div class="container">
+    <div class="box">
+        <div class="inner-box">
+            <button>Select Member type</button>
+            <div class="select">
+                <p>Select All Members<input type="checkbox" (change)="selectAll()" id="round"></p>
+            </div>
+        </div>
+        <button class="new_message" (click)="openMessage()">
+            <i class="fa-solid fa-plus"></i>New Message
+          </button>
+        <div class="inner-box-second">
+            <img src="assets/search.svg" alt="">
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+    <div class="list-container">
+        
+        <div class="parent-container">
+            <app-sms-widget 
+            *ngFor="let customer of customers"
+            [name]="customer.displayName"
+            [image]="customer.photoURL"
+            [selected]="customer.selected"
+            ></app-sms-widget>
+        </div>
+    </div>
+ 
+</div>

@@ -1,0 +1,22 @@
+<table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
+    <thead>
+        <tr>
+            <th>Transaction Id</th>
+            <th>Total Amount</th>
+            <th>Commission</th>
+            <th>Service</th>
+            <th>Date/Time</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let commission of data">
+            <td>{{commission.id}}</td>
+            <td>{{commission.amount}}</td>
+            <td>{{commission.exchangeAmount}}</td>
+            <td>{{commission.serviceType}}</td>
+            <td>{{commission.transactionTime.toDate() | date:'short'}}</td>
+            <td>{{commission.type}}</td>
+        </tr>
+    </tbody>
+</table>
